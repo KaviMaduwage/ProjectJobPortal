@@ -22,16 +22,10 @@ public class SignUpController {
 
     @RequestMapping(value = "/homePage.htm", method = RequestMethod.POST)
     public String getHomePage(Model model, HttpServletRequest request){
-        String userName = request.getParameter("email");
-        String password = request.getParameter("password");
 
-        User userDetalil = userService.getUserByUserName(userName);
-        if(userDetalil != null){
-            model.addAttribute("message","success login");
-        }else{
-            model.addAttribute("message","error login");
-        }
-        
+
+
+
         return "home";
     }
 }

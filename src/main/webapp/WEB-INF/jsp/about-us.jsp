@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 <head>
@@ -41,7 +42,7 @@
 <header id="header">
   <div class="container">
     <div class="row align-items-center justify-content-between d-flex">
-      <div id="logo" style="background-color: white;">
+      <div id="logo">
         <h1 class="text-white"><img src="img/companyLogo.png"
 
                                     alt="" style="width: 100px; height: 66px;"></h1>
@@ -61,8 +62,13 @@
               <li><a href="single.html">single</a></li>
             </ul>
           </li>
-          <li><a class="ticker-btn" href="#">Signup</a></li>
-          <li><a class="ticker-btn" href="#">Login</a></li>
+          <c:if test="${empty sessionScope.userLogin}">
+            <li><a class="ticker-btn" href="#">Signup</a></li>
+            <li><a class="ticker-btn" href="/login">Login</a></li>
+          </c:if>
+          <c:if test="${sessionScope.userLogin != null}">
+            <li><a class="ticker-btn" href="/logOut">Log Out</a></li>
+          </c:if>
         </ul>
       </nav>
       <!-- #nav-menu-container --> </div>
@@ -76,14 +82,8 @@
     <div class="row d-flex align-items-center justify-content-center">
       <div class="about-content col-lg-12">
         <h1 class="text-white"> </h1>
-        <h1 class="text-white"><img src="../UI%20part/XTIDAa92_2x-removebg-preview.png"
 
-                                    alt="" style="width: 100px; height: 65px;"></h1>
         <h1 class="text-white">About Us </h1>
-        <p class="text-white link-nav"><a href="index.html">Home </a> <span
-
-                class="lnr lnr-arrow-right"></span> <a href="about-us.html">
-          About Us</a></p>
       </div>
     </div>
   </div>

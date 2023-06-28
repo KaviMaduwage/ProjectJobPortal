@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 <head>
@@ -61,8 +62,13 @@
               <li><a href="single.html">single</a></li>
             </ul>
           </li>
-          <li><a class="ticker-btn" href="#">Signup</a></li>
-          <li><a class="ticker-btn" href="#">Login</a></li>
+          <c:if test="${empty sessionScope.userLogin}">
+            <li><a class="ticker-btn" href="#">Signup</a></li>
+            <li><a class="ticker-btn" href="/login">Login</a></li>
+          </c:if>
+          <c:if test="${sessionScope.userLogin != null}">
+            <li><a class="ticker-btn" href="/logOut">Log Out</a></li>
+          </c:if>
         </ul>
       </nav>
       <!-- #nav-menu-container --> </div>
@@ -76,10 +82,7 @@
     <div class="row d-flex align-items-center justify-content-center">
       <div class="about-content col-lg-12">
         <h1 class="text-white"> Job category </h1>
-        <p class="text-white link-nav"><a href="index.html">Home </a> <span
 
-                class="lnr lnr-arrow-right"></span> <a href="category.html">
-          Job category</a></p>
       </div>
     </div>
   </div>
