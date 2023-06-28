@@ -42,7 +42,7 @@
     <div class="container">
         <div class="row align-items-center justify-content-between d-flex">
             <div id="logo">
-                <h1 class="text-white"><img src="img/jobGateWayLogo.jpeg"
+                <h1 class="text-white"><img src="img/companyLogo.png"
 
                                             alt="" style="width: 100px; height: 66px;"></h1>
             </div>
@@ -219,65 +219,51 @@
         <div class="row">
             <div class="col-lg-3  col-md-12">
                 <div class="single-footer-widget">
-                    <h6>Top Products</h6>
+                    <h6>About Us</h6>
                     <ul class="footer-nav">
-                        <li><a href="#">Managed Website</a></li>
-                        <li><a href="#">Manage Reputation</a></li>
-                        <li><a href="#">Power Tools</a></li>
-                        <li><a href="#">Marketing Service</a></li>
+                        <li>329 1/1, Galle Road, Colombo 03, Sri Lanka</li>
+                        <li>(+94) ( 011) 6375163</li>
+                        <li>jobGateWay@gmail.com</li>
                     </ul>
                 </div>
             </div>
             <div class="col-lg-6  col-md-12">
                 <div class="single-footer-widget newsletter">
-                    <h6>Newsletter</h6>
-                    <p>You can trust us. we only send promo offers, not a single spam.</p>
+                    <h6>Connect With Us</h6>
+                    <p>For quick news...</p>
                     <div id="mc_embed_signup">
-                        <form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
 
-                              method="get" class="form-inline">
-                            <div class="form-group row" style="width: 100%">
-                                <div class="col-lg-8 col-md-12"> <input name="EMAIL" placeholder="Enter Email"
-
-                                                                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '"
-
-                                                                        required="" type="email">
-                                    <div style="position: absolute; left: -5000px;"> <input name="b_36c4fd991d266f23781ded980_aefe40901a"
-
-                                                                                            tabindex="-1" value="" type="text"> </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12"> <button class="nw-btn primary-btn">Subscribe<span
-
-                                        class="lnr lnr-arrow-right"></span></button> </div>
+                        <div class="form-group row" style="width: 100%">
+                            <div class="col-lg-8 col-md-12"> <input name="EMAIL" placeholder="Enter Email"
+                                                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '"
+                                                                    required="" type="email">
+                                <div style="position: absolute; left: -5000px;"> <input name="email" tabindex="-1" value="" type="text"> </div>
                             </div>
-                            <div class="info"></div>
-                        </form>
+                            <div class="col-lg-4 col-md-12"> <button class="nw-btn primary-btn">Subscribe<span
+
+                                    class="lnr lnr-arrow-right"></span></button> </div>
+                        </div>
+                        <div class="info"></div>
+
                     </div>
                 </div>
             </div>
             <div class="col-lg-3  col-md-12">
                 <div class="single-footer-widget mail-chimp">
-                    <h6 class="mb-20">Instragram Feed</h6>
+                    <h6 class="mb-20">Photoes</h6>
                     <ul class="instafeed d-flex flex-wrap">
-                        <li><img src="img/i1.jpg" alt=""></li>
                         <li><img src="img/i2.jpg" alt=""></li>
                         <li><img src="img/i3.jpg" alt=""></li>
                         <li><img src="img/i4.jpg" alt=""></li>
-                        <li><img src="img/i5.jpg" alt=""></li>
+
+                    </ul><br>
+                    <ul class="instafeed d-flex flex-wrap">
                         <li><img src="img/i6.jpg" alt=""></li>
                         <li><img src="img/i7.jpg" alt=""></li>
                         <li><img src="img/i8.jpg" alt=""></li>
                     </ul>
                 </div>
             </div>
-        </div>
-        <div class="row footer-bottom d-flex justify-content-between">
-            <p class="col-lg-8 col-sm-12 footer-text m-0 text-white">
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->&nbsp;
-            </p>
-            <div class="col-lg-4 col-sm-12 footer-social"> <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-dribbble"></i></a>
-                <a href="#"><i class="fa fa-behance"></i></a> </div>
         </div>
     </div>
 </footer>
