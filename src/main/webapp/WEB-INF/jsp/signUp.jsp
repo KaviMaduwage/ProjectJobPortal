@@ -19,15 +19,7 @@
 <body>
 <h2>Sign Up Page</h2>
 
-<form action="" name="signUpPage" id="signUpPage" method="POST">
-    <label for="email"> User Name :</label>
-    <input type="text" name="email" id="email"><br>
-    <label for="password"> Password :</label>
-    <input type="password" name="password" id="password"><br>
 
-    <input type="button" id="signUp" name="signUp" value="signUp" onclick="loadHomePage()">
-
-</form>
 
 </body>
 </html>
