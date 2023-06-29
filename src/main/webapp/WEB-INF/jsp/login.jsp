@@ -1,12 +1,11 @@
 <%--
   Created by IntelliJ IDEA.
   User: DELL
-  Date: 6/25/2023
-  Time: 12:52 AM
+  Date: 6/28/2023
+  Time: 9:24 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 <head>
@@ -27,6 +26,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700"
 
           rel="stylesheet">
+
     <!--
 			CSS			============================================= -->
     <link rel="stylesheet" href="css/linearicons.css">
@@ -37,6 +37,14 @@
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/owl.carousel.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script type="text/javascript">
+        function login(){
+            document.loginForm.action = "getLoginAccess.htm";
+            document.loginForm.submit();
+        }
+    </script>
 </head>
 <body>
 <header id="header">
@@ -62,13 +70,8 @@
                             <li><a href="single.html">single</a></li>
                         </ul>
                     </li>
-                    <c:if test="${empty sessionScope.userLogin}">
-                        <li><a class="ticker-btn" href="#">Signup</a></li>
-                        <li><a class="ticker-btn" href="/login">Login</a></li>
-                    </c:if>
-                    <c:if test="${sessionScope.userLogin != null}">
-                        <li><a class="ticker-btn" href="/logOut">Log Out</a></li>
-                    </c:if>
+                    <li><a class="ticker-btn" href="#">Signup</a></li>
+                    <li><a class="ticker-btn" href="/login">Login</a></li>
                 </ul>
             </nav>
             <!-- #nav-menu-container --> </div>
@@ -81,141 +84,50 @@
     <div class="container">
         <div class="row d-flex align-items-center justify-content-center">
             <div class="about-content col-lg-12">
-                <h1 class="text-white"> Pricing Plan </h1>
+                <h1 class="text-white"> LOGIN </h1>
 
             </div>
         </div>
     </div>
 </section>
 <!-- End banner Area -->
-<!-- Start price Area -->
-<section class="price-area section-gap" id="price">
-    <div class="container">
-        <div class="row d-flex justify-content-center">
-            <div class="menu-content pb-60 col-lg-8">
-                <div class="title text-center">
-                    <h1 class="mb-10">Choose the best pricing for you</h1>
-                    <p>Who are in extremely love with eco friendly system.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="single-price no-padding">
-                    <div class="price-top">
-                        <h4>Real basic</h4>
-                    </div>
-                    <ul class="lists">
-                        <li>Top ad search</li>
-                        <li>Secure online chat</li>
-                        <li>Unlimited Styles</li>
-                        <li>Customer Service</li>
-                    </ul>
-                    <div class="price-bottom">
-                        <div class="price-wrap d-flex flex-row justify-content-center">
-                            <span class="price">Rs.</span>
-                            <h1> 399 </h1>
-                            <span class="time">Per <br>
-                    Month</span> </div>
-                        <a href="#" class="primary-btn header-btn">Get Started</a> </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="single-price no-padding">
-                    <div class="price-top">
-                        <h4>Real Standed</h4>
-                    </div>
-                    <ul class="lists">
-                        <li>Top ad search</li>
-                        <li>Secure online chat</li>
-                        <li>Unlimited Styles</li>
-                        <li>Customer Service</li>
-                        <li>10GB cloud space</li>
-                    </ul>
-                    <div class="price-bottom">
-                        <div class="price-wrap d-flex flex-row justify-content-center">
-                            <span class="price">Rs</span>
-                            <h1> 699 </h1>
-                            <span class="time">Per <br>
-                    Month</span> </div>
-                        <a href="#" class="primary-btn header-btn">Get Started</a> </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="single-price no-padding">
-                    <div class="price-top">
-                        <h4>Real Ultimate</h4>
-                    </div>
-                    <ul class="lists">
-                        <li>Top ad search</li>
-                        <li>Secure online chat</li>
-                        <li>Unlimited Styles</li>
-                        <li>Customer Service</li>
-                        <li>10GB cloud space</li>
-                    </ul>
-                    <div class="price-bottom">
-                        <div class="price-wrap d-flex flex-row justify-content-center">
-                            <span class="price">Rs.</span>
-                            <h1> 1099 </h1>
-                            <span class="time">Per <br>
-                    Month</span> </div>
-                        <a href="#" class="primary-btn header-btn">Get Started</a> </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End price Area -->
-<!-- Start feature Area -->
-<section class="feature-area">
-    <div class="container-fluid">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-lg-3 feat-img no-padding"> <img class="img-fluid" src="img/pages/f1.jpg"
 
-                                                            alt=""> </div>
-            <div class="col-lg-3 no-padding feat-txt">
-                <h6 class="text-uppercase text-white"><br>
-                </h6>
-                <h1>Who we are</h1>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting
-                    industry. Lorem Ipsum has been the industry's standard dummy text
-                    ever since the 1500s, when an unknown printer </p>
-            </div>
-            <div class="col-lg-3 feat-img no-padding"> <img class="img-fluid" src="img/pages/f2.jpg"
 
-                                                            alt=""> </div>
-            <div class="col-lg-3 no-padding feat-txt"><br>
-                <h1>What we do</h1>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting
-                    industry. Lorem Ipsum has been the industry's standard dummy text
-                    ever since the 1500s, </p>
-            </div>
+<!-- start form Area -->
+<div class="container" style="padding: 40px">
+    <div class="screen">
+        <div class="screen__content">
+
+            <form class="login" name="loginForm" method="POST">
+                <div>
+                    <p style="color: red;font-weight: bold">${errorMessage}</p>
+                </div>
+                <div class="login__field">
+                    <i class="login__icon fas fa-lock"></i>
+                    <input type="text" class="login__input" id="userName_email" name="userName_email" placeholder="User name / Email">
+                </div>
+                <div class="login__field">
+                    <i class="login__icon fas fa-lock"></i>
+                    <input type="password" class="login__input" id="password" name="password" placeholder="Password">
+                </div>
+                <button class="button login__submit" onclick="login()">
+                    <span class="button__text">Login Now</span>
+                    <i class="button__icon fas fa-chevron-right"></i>
+
+                </button>
+            </form>
+
+        </div>
+        <div class="screen__background">
+            <span class="screen__background__shape screen__background__shape4"></span>
+            <span class="screen__background__shape screen__background__shape3"></span>
+            <span class="screen__background__shape screen__background__shape2"></span>
+            <span class="screen__background__shape screen__background__shape1"></span>
         </div>
     </div>
-</section>
-<!-- End feature Area -->
-<!-- Start submit Area -->
-<section class="submit-area section-gap">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="submit-left">
-                    <h4>Submit Your Resume Today</h4>
-                    <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                        do eiusmod tempor incididunt ut labore. </p>
-                    <a href="#" class="primary-btn header-btn">Submit Your CV</a> </div>
-            </div>
-            <div class="col-lg-6 ">
-                <div class="submit-right">
-                    <h4>Submit a New Job Now!</h4>
-                    <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                        do eiusmod tempor incididunt ut labore. </p>
-                    <a href="#" class="primary-btn header-btn">Post a Job</a> </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End submit Area -->
+</div>
+<!-- End form Area -->
+
 <!-- start footer Area -->
 <footer class="footer-area section-gap">
     <div class="container">
@@ -292,3 +204,4 @@
 <script src="js/main.js"></script>
 </body>
 </html>
+
