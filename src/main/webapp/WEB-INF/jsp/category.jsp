@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 <head>
@@ -37,6 +38,57 @@
   <link rel="stylesheet" href="css/animate.min.css">
   <link rel="stylesheet" href="css/owl.carousel.css">
   <link rel="stylesheet" href="css/main.css">
+
+  <script src="js/vendor/jquery-2.2.4.min.js"></script>
+
+  <script type="text/javascript">
+    function loadCompanyList(selectedIndustryType){
+      $.ajax({
+        url : '<c:url value="/loadCompanyList.htm"/>',
+        dataType : "json",
+        data : ({
+          'selectedIndustryTypeId' :selectedIndustryType
+        }),
+        success : function (response){
+          var companyList = response;
+
+
+          var dropdown = document.getElementById("company");
+
+          // Clear existing options
+          dropdown.innerHTML = "";
+          var defaultOption = document.createElement("option");
+          defaultOption.value = '0';
+          defaultOption.text = "Select Company";
+          dropdown.appendChild(defaultOption);
+
+          // Iterate over the company list and create options
+          for (var i = 0; i < companyList.length; i++) {
+            var company = companyList[i];
+
+
+            // Create an option element
+            var option = document.createElement("option");
+
+            option.value = company.employerId;
+            option.appendChild(document.createTextNode(company.companyName));
+
+            // Append the option to the dropdown
+            dropdown.appendChild(option);
+          }
+        }
+      });
+
+    }
+
+    function searchVacancies(){
+      console.log("1234");
+      document.searchForm.action = "searchVacancies.htm";
+      document.searchForm.submit();
+    }
+
+
+  </script>
 </head>
 <body>
 <header id="header">
@@ -93,20 +145,47 @@
   <div class="row fullscreen d-flex align-items-center justify-content-center" style="height: 300px">
     <div class="banner-content col-lg-12">
 
-                      <form action="search.html" class="serach-form-area">
+                      <form action="" class="serach-form-area" name="searchForm" method="POST">
                           <div class="row justify-content-center form-wrap">
-                              <div class="col-lg-4 form-cols">
-                                  <div class="default-select" id="default-select">
-                                      <select id="company" name="company">
-                                          <option value="0">Select Company</option>
+                            <div class="col-lg-3 form-cols">
+                              <div class="default-select" id="default-select3">
+                                <select id="industryType" name="industryType" >
+                                  <option value="0">Select Industry Type</option>
+                                  <c:forEach items="${industryTypeList}" var="industryType" varStatus="status">
+                                    <c:if test="${industryType.industryTypeId eq selectedIndustryTypeId}">
+                                      <option value="${industryType.industryTypeId}" SELECTED>
+                                          ${industryType.description}
+                                      </option>
+                                    </c:if>
+                                    <c:if test="${industryType.industryTypeId ne selectedIndustryTypeId}">
+                                      <option value="${industryType.industryTypeId}">
+                                          ${industryType.description}
+                                      </option>
+                                    </c:if>
 
-                                      </select>
-                                  </div>
+                                  </c:forEach>
+
+                                </select>
                               </div>
+                            </div>
+
                               <div class="col-lg-3 form-cols">
                                   <div class="default-select" id="default-selects">
                                   <select id="field" name="field">
                                       <option value="0">Select Field</option>
+                                      <c:forEach items="${jobFieldList}" var="jobField" varStatus="status">
+                                        <c:if test="${jobField.jobFieldId eq selectedJobFiledId}">
+                                          <option value="${jobField.jobFieldId}" SELECTED>
+                                              ${jobField.description}
+                                          </option>
+                                        </c:if>
+                                        <c:if test="${jobField.jobFieldId ne selectedJobFiledId}">
+                                          <option value="${jobField.jobFieldId}">
+                                              ${jobField.description}
+                                          </option>
+                                        </c:if>
+
+                                      </c:forEach>
 
                                   </select>
                                   </div>
@@ -115,15 +194,26 @@
                                   <div class="default-select" id="default-selects2">
                                       <select id="position" name="position">
                                           <option value="0">Select Position</option>
-                                          <option value="2">Medical</option>
-                                          <option value="3">Technology</option>
-                                          <option value="4">Goverment</option>
-                                          <option value="5">Development</option>
+                                        <c:forEach items="${positionList}" var="jobPosition" varStatus="status">
+                                          <c:if test="${jobPosition.positionId eq selectedPositionId}">
+                                            <option value="${jobPosition.positionId}" SELECTED>
+                                                ${jobPosition.description}
+                                            </option>
+                                          </c:if>
+                                          <c:if test="${jobPosition.positionId ne selectedPositionId}">
+                                            <option value="${jobPosition.positionId}">
+                                                ${jobPosition.description}
+                                            </option>
+                                          </c:if>
+
+                                        </c:forEach>
                                       </select>
                                   </div>
                               </div>
-                              <div class="col-lg-2 form-cols"> <button type="button" class="btn btn-info">
-                                  <span class="lnr lnr-magnifier"></span> Search </button> </div>
+                              <div class="col-lg-2 form-cols">
+                                <button type="button" class="btn btn-info" onclick="searchVacancies()">
+                                  <span class="lnr lnr-magnifier"></span> Search </button>
+                              </div>
 
                           </div>
                       </form>
@@ -135,6 +225,40 @@
   <div class="container">
     <div class="row justify-content-center d-flex">
       <div class="col-lg-8 post-list">
+        <c:forEach items="${vacancyList}" var="vacancy" varStatus="status">
+          <div class="single-post d-flex flex-row ">
+            <div class="thumb">
+              <img src="img/post.png" alt="">
+              <ul class="tags">
+                <li> ${vacancy.jobField.description} </li>
+                <li> ${vacancy.employer.industryType.description} </li>
+                <li> ${vacancy.position.description} </li>
+
+              </ul>
+            </div>
+            <div class="details">
+              <div class="title d-flex flex-row justify-content-between">
+                <div class="titles"><a href="single.html">
+                  <h4>${vacancy.description}</h4>
+                </a>
+                  <h6>${vacancy.employer.companyName}</h6>
+                </div>
+                <ul class="btns">
+<%--                  <li><a href="#"><span class="lnr lnr-heart"></span></a><br>--%>
+<%--                  </li>--%>
+                  <li><a href="#">View</a></li>
+                  <li><a href="#">Apply</a></li>
+                </ul>
+              </div>
+              <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                sed do eiusmod temporinc ididunt ut dolore magna aliqua. </p>
+              <h5>Job Nature: ${vacancy.vacancyType.description}</h5>
+              <p>Posted on : <fmt:formatDate value="${vacancy.postedDate}" pattern="yyyy/MM/dd" />    Closing Date : <fmt:formatDate value="${vacancy.closingDate}" pattern="yyyy/MM/dd" /></p>
+              <p class="address"><span class="lnr lnr-map"></span> ${vacancy.employer.address}</p>
+            </div>
+          </div>
+
+        </c:forEach>
         <div class="single-post d-flex flex-row">
           <div class="thumb"> <img src="img/post.png" alt="">
             <ul class="tags">
@@ -165,186 +289,7 @@
               25k</p>
           </div>
         </div>
-        <div class="single-post d-flex flex-row">
-          <div class="thumb"> <img src="img/post.png" alt="">
-            <ul class="tags">
-              <li> <a href="#">Art</a> </li>
-              <li> <a href="#">Media</a> </li>
-              <li> <a href="#">Design</a> </li>
-            </ul>
-          </div>
-          <div class="details">
-            <div class="title d-flex flex-row justify-content-between">
-              <div class="titles"> <a href="single.html">
-                <h4>Creative Art Designer</h4>
-              </a>
-                <h6>Premium Labels Limited</h6>
-              </div>
-              <ul class="btns">
-                <li><a href="#"><span class="lnr lnr-heart"></span></a><br>
-                </li>
-                <li><a href="#">Apply</a></li>
-              </ul>
-            </div>
-            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-              sed do eiusmod temporinc ididunt ut dolore magna aliqua. </p>
-            <h5>Job Nature: Full time</h5>
-            <p class="address"><span class="lnr lnr-map"></span> 56/8,
-              Colombo Rd, Kiribathgoda</p>
-            <p class="address"><span class="lnr lnr-database"></span> 15k -
-              25k</p>
-          </div>
-        </div>
-        <div class="single-post d-flex flex-row">
-          <div class="thumb"> <img src="img/post.png" alt="">
-            <ul class="tags">
-              <li> <a href="#">Art</a> </li>
-              <li> <a href="#">Media</a> </li>
-              <li> <a href="#">Design</a> </li>
-            </ul>
-          </div>
-          <div class="details">
-            <div class="title d-flex flex-row justify-content-between">
-              <div class="titles"> <a href="single.html">
-                <h4>Creative Art Designer</h4>
-              </a>
-                <h6>Premium Labels Limited</h6>
-              </div>
-              <ul class="btns">
-                <li><a href="#"><span class="lnr lnr-heart"></span></a><br>
-                </li>
-                <li><a href="#">Apply</a></li>
-              </ul>
-            </div>
-            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-              sed do eiusmod temporinc ididunt ut dolore magna aliqua. </p>
-            <h5>Job Nature: Full time</h5>
-            <p class="address"><span class="lnr lnr-map"></span> 56/8,
-              Colombo Rd, Kiribathgoda</p>
-            <p class="address"><span class="lnr lnr-database"></span> 15k -
-              25k</p>
-          </div>
-        </div>
-        <div class="single-post d-flex flex-row">
-          <div class="thumb"> <img src="img/post.png" alt="">
-            <ul class="tags">
-              <li> <a href="#">Art</a> </li>
-              <li> <a href="#">Media</a> </li>
-              <li> <a href="#">Design</a> </li>
-            </ul>
-          </div>
-          <div class="details">
-            <div class="title d-flex flex-row justify-content-between">
-              <div class="titles"> <a href="single.html">
-                <h4>Creative Art Designer</h4>
-              </a>
-                <h6>Premium Labels Limited</h6>
-              </div>
-              <ul class="btns">
-                <li><a href="#"><span class="lnr lnr-heart"></span></a><br>
-                </li>
-                <li><a href="#">Apply</a></li>
-              </ul>
-            </div>
-            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-              sed do eiusmod temporinc ididunt ut dolore magna aliqua. </p>
-            <h5>Job Nature: Full time</h5>
-            <p class="address"><span class="lnr lnr-map"></span> 56/8,
-              Colombo Rd, Kiribathgoda</p>
-            <p class="address"><span class="lnr lnr-database"></span> 15k -
-              25k</p>
-          </div>
-        </div>
-        <div class="single-post d-flex flex-row">
-          <div class="thumb"> <img src="img/post.png" alt="">
-            <ul class="tags">
-              <li> <a href="#">Art</a> </li>
-              <li> <a href="#">Media</a> </li>
-              <li> <a href="#">Design</a> </li>
-            </ul>
-          </div>
-          <div class="details">
-            <div class="title d-flex flex-row justify-content-between">
-              <div class="titles"> <a href="single.html">
-                <h4>Creative Art Designer</h4>
-              </a>
-                <h6>Premium Labels Limited</h6>
-              </div>
-              <ul class="btns">
-                <li><a href="#"><span class="lnr lnr-heart"></span></a><br>
-                </li>
-                <li><a href="#">Apply</a></li>
-              </ul>
-            </div>
-            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-              sed do eiusmod temporinc ididunt ut dolore magna aliqua. </p>
-            <h5>Job Nature: Full time</h5>
-            <p class="address"><span class="lnr lnr-map"></span> 56/8,
-              Colombo Rd, Kiribathgoda</p>
-            <p class="address"><span class="lnr lnr-database"></span> 15k -
-              25k</p>
-          </div>
-        </div>
-        <div class="single-post d-flex flex-row">
-          <div class="thumb"> <img src="img/post.png" alt="">
-            <ul class="tags">
-              <li> <a href="#">Art</a> </li>
-              <li> <a href="#">Media</a> </li>
-              <li> <a href="#">Design</a> </li>
-            </ul>
-          </div>
-          <div class="details">
-            <div class="title d-flex flex-row justify-content-between">
-              <div class="titles"> <a href="single.html">
-                <h4>Creative Art Designer</h4>
-              </a>
-                <h6>Premium Labels Limited</h6>
-              </div>
-              <ul class="btns">
-                <li><a href="#"><span class="lnr lnr-heart"></span></a><br>
-                </li>
-                <li><a href="#">Apply</a></li>
-              </ul>
-            </div>
-            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-              sed do eiusmod temporinc ididunt ut dolore magna aliqua. </p>
-            <h5>Job Nature: Full time</h5>
-            <p class="address"><span class="lnr lnr-map"></span> 56/8,
-              Colombo Rd, Kiribathgoda</p>
-            <p class="address"><span class="lnr lnr-database"></span> 15k -
-              25k</p>
-          </div>
-        </div>
-        <div class="single-post d-flex flex-row">
-          <div class="thumb"> <img src="img/post.png" alt="">
-            <ul class="tags">
-              <li> <a href="#">Art</a> </li>
-              <li> <a href="#">Media</a> </li>
-              <li> <a href="#">Design</a> </li>
-            </ul>
-          </div>
-          <div class="details">
-            <div class="title d-flex flex-row justify-content-between">
-              <div class="titles"> <a href="single.html">
-                <h4>Creative Art Designer</h4>
-              </a>
-                <h6>Premium Labels Limited</h6>
-              </div>
-              <ul class="btns">
-                <li><a href="#"><span class="lnr lnr-heart"></span></a><br>
-                </li>
-                <li><a href="#">Apply</a></li>
-              </ul>
-            </div>
-            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-              sed do eiusmod temporinc ididunt ut dolore magna aliqua. </p>
-            <h5>Job Nature: Full time</h5>
-            <p class="address"><span class="lnr lnr-map"></span> 56/8,
-              Colombo Rd, Kiribathgoda</p>
-            <p class="address"><span class="lnr lnr-database"></span> 15k -
-              25k</p>
-          </div>
-        </div>
+
       </div>
       <div class="col-lg-4 sidebar">
         <div class="single-slidebar">
@@ -563,7 +508,7 @@
   </div>
 </footer>
 <!-- End footer Area -->
-<script src="js/vendor/jquery-2.2.4.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
 
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"

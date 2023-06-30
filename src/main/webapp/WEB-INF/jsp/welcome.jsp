@@ -260,42 +260,42 @@
         </div>
         <div class="row">
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="single-fcat"> <a href="category.html"> <img src="img/o1.png"
+                <div class="single-fcat"> <a href="category.html"> <img src="img/accountant.png" style="height: 50px"
 
                                                                         alt=""> </a>
                     <p>Accounting</p>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="single-fcat"> <a href="category.html"> <img src="img/o2.png"
+                <div class="single-fcat"> <a href="category.html"> <img src="img/software-engineer.png" style="height: 50px"
 
                                                                         alt=""> </a>
                     <p>IT</p>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="single-fcat"> <a href="category.html"> <img src="img/o3.png"
+                <div class="single-fcat"> <a href="category.html"> <img src="img/banker.png" style="height: 50px"
 
                                                                         alt=""> </a>
                     <p>Banking/Insurance</p>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="single-fcat"> <a href="category.html"> <img src="img/o4.png"
+                <div class="single-fcat"> <a href="category.html"> <img src="img/media.png" style="height: 50px"
 
                                                                         alt=""> </a>
                     <p>Media &amp; News</p>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="single-fcat"> <a href="category.html"> <img src="img/o5.png"
+                <div class="single-fcat"> <a href="category.html"> <img src="img/medical-team.png" style="height: 50px"
 
                                                                         alt=""> </a>
                     <p>Medical</p>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="single-fcat"> <a href="category.html"> <img src="img/o6.png"
+                <div class="single-fcat"> <a href="category.html"> <img src="img/government.png" style="height: 50px"
 
                                                                         alt=""> </a>
                     <p>Government</p>
@@ -305,42 +305,42 @@
 
         <div class="row" style="padding-top: 20px">
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="single-fcat"> <a href="category.html"> <img src="img/o1.png"
+                <div class="single-fcat"> <a href="category.html"> <img src="img/salesman.png" style="height: 50px"
 
                                                                         alt=""> </a>
                     <p>Sales/Marketing</p>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="single-fcat"> <a href="category.html"> <img src="img/o2.png"
+                <div class="single-fcat"> <a href="category.html"> <img src="img/logistic.png" style="height: 50px"
 
                                                                         alt=""> </a>
                     <p>Logistic</p>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="single-fcat"> <a href="category.html"> <img src="img/o3.png"
+                <div class="single-fcat"> <a href="category.html"> <img src="img/civil engineer.png" style="height: 50px"
 
                                                                         alt=""> </a>
                     <p>Civil Engineering</p>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="single-fcat"> <a href="category.html"> <img src="img/o4.png"
+                <div class="single-fcat"> <a href="category.html"> <img src="img/elec.png" style="height: 50px"
 
                                                                         alt=""> </a>
                     <p>Electrical Engineering</p>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="single-fcat"> <a href="category.html"> <img src="img/o5.png"
+                <div class="single-fcat"> <a href="category.html"> <img src="img/manufacturer.png" style="height: 50px"
 
                                                                         alt=""> </a>
                     <p>Manufacturing</p>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="single-fcat"> <a href="category.html"> <img src="img/o6.png"
+                <div class="single-fcat"> <a href="category.html"> <img src="img/chef.png" style="height: 50px"
 
                                                                         alt=""> </a>
                     <p>Hotel/Restaurants</p>
@@ -350,42 +350,42 @@
 
         <div class="row" style="padding-top: 20px">
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="single-fcat"> <a href="category.html"> <img src="img/o1.png"
+                <div class="single-fcat"> <a href="category.html"> <img src="img/research.png" style="height: 50px"
 
                                                                         alt=""> </a>
                     <p>R&D</p>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="single-fcat"> <a href="category.html"> <img src="img/o2.png"
+                <div class="single-fcat"> <a href="category.html"> <img src="img/designer.png" style="height: 50px"
 
                                                                         alt=""> </a>
                     <p>Apparel/Clothing</p>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="single-fcat"> <a href="category.html"> <img src="img/o3.png"
+                <div class="single-fcat"> <a href="category.html"> <img src="img/security.png" style="height: 50px"
 
                                                                         alt=""> </a>
-                    <p>Fashion Design</p>
+                    <p>Security</p>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="single-fcat"> <a href="category.html"> <img src="img/o4.png"
+                <div class="single-fcat"> <a href="category.html"> <img src="img/hr.png" style="height: 50px"
 
                                                                         alt=""> </a>
                     <p>HR</p>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="single-fcat"> <a href="category.html"> <img src="img/o5.png"
+                <div class="single-fcat"> <a href="category.html"> <img src="img/law.png" style="height: 50px"
 
                                                                         alt=""> </a>
                     <p>Law</p>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="single-fcat"> <a href="category.html"> <img src="img/o6.png"
+                <div class="single-fcat"> <a href="category.html"> <img src="img/others.png" style="height: 50px"
 
                                                                         alt=""> </a>
                     <p>Others</p>
