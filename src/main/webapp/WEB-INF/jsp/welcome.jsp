@@ -76,47 +76,51 @@
 </header>
 <!-- #header -->
 <!-- start banner Area -->
-<section class="banner-area relative" id="home">
-    <div class="overlay overlay-bg"></div>
+<section class="banner-area relative" id="home" style="background-image: url(../img/job_seeker1.jpg); background-repeat: no-repeat">
+    <div class="overlay overlay-bg" style="opacity: 0.15"></div>
     <div class="container">
         <div class="row fullscreen d-flex align-items-center justify-content-center">
             <div class="banner-content col-lg-12">
-                <h1 class="text-white"> <span>1500+</span> Jobs posted last week </h1>
-                <form action="search.html" class="serach-form-area">
-                    <div class="row justify-content-center form-wrap">
-                        <div class="col-lg-4 form-cols"> <input class="form-control" name="search"
+                <h1 class="text-white" style="font-weight: bold;font-size: 50px"> Find Your Dream Job </h1><br>
+                <h1 class="text-white" style="font-weight: bold;font-size: 50px"> Join With Us Today  </h1><br>
+<%--                <h1 class="text-white" style="font-weight: bold;font-size: 60px"> - JOB GATEWAY - </h1><br>--%>
+<%--                <form action="search.html" class="serach-form-area">--%>
+<%--                    <div class="row justify-content-center form-wrap">--%>
+<%--                        <div class="col-lg-4 form-cols">--%>
+<%--                            <div class="default-select" id="default-select">--%>
+<%--                                <select id="company" name="company">--%>
+<%--                                    <option value="0">Select Company</option>--%>
 
-                                                                placeholder="what are you looging for?" type="text"> </div>
-                        <div class="col-lg-3 form-cols">
-                            <div class="default-select" id="default-selects" "="">
-                            <select>
-                                <option value="1">Select area</option>
-                                <option value="2">Dhaka</option>
-                                <option value="3">Rajshahi</option>
-                                <option value="4">Barishal</option>
-                                <option value="5">Noakhali</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 form-cols">
-                        <div class="default-select" id="default-selects2">
-                            <select>
-                                <option value="1">All Category</option>
-                                <option value="2">Medical</option>
-                                <option value="3">Technology</option>
-                                <option value="4">Goverment</option>
-                                <option value="5">Development</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 form-cols"> <button type="button" class="btn btn-info">
-                        <span class="lnr lnr-magnifier"></span> Search </button> </div>
+<%--                                </select>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <div class="col-lg-3 form-cols">--%>
+<%--                            <div class="default-select" id="default-selects">--%>
+<%--                            <select id="field" name="field">--%>
+<%--                                <option value="0">Select Field</option>--%>
+
+<%--                            </select>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <div class="col-lg-3 form-cols">--%>
+<%--                            <div class="default-select" id="default-selects2">--%>
+<%--                                <select id="position" name="position">--%>
+<%--                                    <option value="0">Select Position</option>--%>
+<%--                                    <option value="2">Medical</option>--%>
+<%--                                    <option value="3">Technology</option>--%>
+<%--                                    <option value="4">Goverment</option>--%>
+<%--                                    <option value="5">Development</option>--%>
+<%--                                </select>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <div class="col-lg-2 form-cols"> <button type="button" class="btn btn-info">--%>
+<%--                            <span class="lnr lnr-magnifier"></span> Search </button> </div>--%>
+
+<%--                    </div>--%>
+<%--                </form>--%>
+
             </div>
-            </form>
-            <p class="text-white"> <span>Search by tags:</span> Tecnology,
-                Business, Consulting, IT Company, Design, Development</p>
         </div>
-    </div>
     </div>
 </section>
 <!-- End banner Area -->
@@ -127,25 +131,25 @@
             <div class="col-lg-3 col-md-6">
                 <div class="single-feature">
                     <h4>Searching</h4>
-                    <p> Lorem ipsum dolor sit amet, consectetur adipisicing. </p>
+                    <p>Find what you're looking for quickly and effortlessly</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="single-feature">
                     <h4>Applying</h4>
-                    <p> Lorem ipsum dolor sit amet, consectetur adipisicing. </p>
+                    <p>Apply now to start your journey towards success</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="single-feature">
-                    <h4>Security</h4>
-                    <p> Lorem ipsum dolor sit amet, consectetur adipisicing. </p>
+                    <h4>History</h4>
+                    <p>Explore your past applications and their status </p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="single-feature">
                     <h4>Notifications</h4>
-                    <p> Lorem ipsum dolor sit amet, consectetur adipisicing. </p>
+                    <p>Stay updated with important news and job alerts </p>
                 </div>
             </div>
         </div>
@@ -249,8 +253,8 @@
         <div class="row d-flex justify-content-center">
             <div class="menu-content pb-60 col-lg-10">
                 <div class="title text-center">
-                    <h1 class="mb-10">Featured Job Categories</h1>
-                    <p>Who are in extremely love with eco friendly system.</p>
+                    <h1 class="mb-10">Available Job Categories</h1>
+
                 </div>
             </div>
         </div>
@@ -266,14 +270,14 @@
                 <div class="single-fcat"> <a href="category.html"> <img src="img/o2.png"
 
                                                                         alt=""> </a>
-                    <p>Development</p>
+                    <p>IT</p>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6">
                 <div class="single-fcat"> <a href="category.html"> <img src="img/o3.png"
 
                                                                         alt=""> </a>
-                    <p>Technology</p>
+                    <p>Banking/Insurance</p>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6">
@@ -294,7 +298,97 @@
                 <div class="single-fcat"> <a href="category.html"> <img src="img/o6.png"
 
                                                                         alt=""> </a>
-                    <p>Goverment</p>
+                    <p>Government</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="padding-top: 20px">
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="single-fcat"> <a href="category.html"> <img src="img/o1.png"
+
+                                                                        alt=""> </a>
+                    <p>Sales/Marketing</p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="single-fcat"> <a href="category.html"> <img src="img/o2.png"
+
+                                                                        alt=""> </a>
+                    <p>Logistic</p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="single-fcat"> <a href="category.html"> <img src="img/o3.png"
+
+                                                                        alt=""> </a>
+                    <p>Civil Engineering</p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="single-fcat"> <a href="category.html"> <img src="img/o4.png"
+
+                                                                        alt=""> </a>
+                    <p>Electrical Engineering</p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="single-fcat"> <a href="category.html"> <img src="img/o5.png"
+
+                                                                        alt=""> </a>
+                    <p>Manufacturing</p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="single-fcat"> <a href="category.html"> <img src="img/o6.png"
+
+                                                                        alt=""> </a>
+                    <p>Hotel/Restaurants</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="padding-top: 20px">
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="single-fcat"> <a href="category.html"> <img src="img/o1.png"
+
+                                                                        alt=""> </a>
+                    <p>R&D</p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="single-fcat"> <a href="category.html"> <img src="img/o2.png"
+
+                                                                        alt=""> </a>
+                    <p>Apparel/Clothing</p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="single-fcat"> <a href="category.html"> <img src="img/o3.png"
+
+                                                                        alt=""> </a>
+                    <p>Fashion Design</p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="single-fcat"> <a href="category.html"> <img src="img/o4.png"
+
+                                                                        alt=""> </a>
+                    <p>HR</p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="single-fcat"> <a href="category.html"> <img src="img/o5.png"
+
+                                                                        alt=""> </a>
+                    <p>Law</p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="single-fcat"> <a href="category.html"> <img src="img/o6.png"
+
+                                                                        alt=""> </a>
+                    <p>Others</p>
                 </div>
             </div>
         </div>

@@ -2032,7 +2032,7 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
   color: #fff;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 15px;
   text-transform: uppercase;
   outline: none;
 }
@@ -2298,12 +2298,12 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .banner-area {
-  background: url(../img/header-bg.jpg) center;
+  background: url(../img/job_seeker1.jpg) center;
   background-size: cover;
 }
 
 .banner-area .overlay-bg {
-  opacity: .95;
+  opacity: .15;
 }
 
 .banner-content {

@@ -76,8 +76,8 @@
 </header>
 <!-- #header -->
 <!-- start banner Area -->
-<section class="banner-area relative" id="home">
-  <div class="overlay overlay-bg"></div>
+<section class="banner-area relative" id="home" style="background-image: url(../img/category.jpg); background-repeat: no-repeat">
+  <div class="overlay overlay-bg" style="opacity: 0;"></div>
   <div class="container">
     <div class="row d-flex align-items-center justify-content-center">
       <div class="about-content col-lg-12">
@@ -89,7 +89,49 @@
 </section>
 <!-- End banner Area -->
 <!-- Start post Area -->
-<section class="post-area section-gap">
+<div class="container" style="height: 350px">
+  <div class="row fullscreen d-flex align-items-center justify-content-center" style="height: 300px">
+    <div class="banner-content col-lg-12">
+
+                      <form action="search.html" class="serach-form-area">
+                          <div class="row justify-content-center form-wrap">
+                              <div class="col-lg-4 form-cols">
+                                  <div class="default-select" id="default-select">
+                                      <select id="company" name="company">
+                                          <option value="0">Select Company</option>
+
+                                      </select>
+                                  </div>
+                              </div>
+                              <div class="col-lg-3 form-cols">
+                                  <div class="default-select" id="default-selects">
+                                  <select id="field" name="field">
+                                      <option value="0">Select Field</option>
+
+                                  </select>
+                                  </div>
+                              </div>
+                              <div class="col-lg-3 form-cols">
+                                  <div class="default-select" id="default-selects2">
+                                      <select id="position" name="position">
+                                          <option value="0">Select Position</option>
+                                          <option value="2">Medical</option>
+                                          <option value="3">Technology</option>
+                                          <option value="4">Goverment</option>
+                                          <option value="5">Development</option>
+                                      </select>
+                                  </div>
+                              </div>
+                              <div class="col-lg-2 form-cols"> <button type="button" class="btn btn-info">
+                                  <span class="lnr lnr-magnifier"></span> Search </button> </div>
+
+                          </div>
+                      </form>
+
+    </div>
+  </div>
+</div>
+<section class="post-area section-gap" style="padding: 0px">
   <div class="container">
     <div class="row justify-content-center d-flex">
       <div class="col-lg-8 post-list">
