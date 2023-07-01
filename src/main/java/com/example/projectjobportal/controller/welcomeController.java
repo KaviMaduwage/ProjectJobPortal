@@ -20,11 +20,11 @@ public class welcomeController {
         return "about-us";
     }
 
-    @RequestMapping("/category")
-    public String getCategoryPage(Model model){
-
-        return "category";
-    }
+//    @RequestMapping("/category")
+//    public String getCategoryPage(Model model){
+//
+//        return "category";
+//    }
 
     @RequestMapping("/subscription")
     public String getSubscriptionPage(Model model){

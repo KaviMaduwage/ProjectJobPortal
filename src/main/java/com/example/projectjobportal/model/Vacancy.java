@@ -22,6 +22,17 @@ public class Vacancy {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "employer_id")
     private Employer employer;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "position_id")
+    private Position position;
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
 
     public int getVacancyId() {
         return vacancyId;
