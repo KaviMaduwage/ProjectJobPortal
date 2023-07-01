@@ -20,12 +20,31 @@ public class SignUpController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "/homePage.htm", method = RequestMethod.POST)
+    @RequestMapping(value = "/signUp")
     public String getHomePage(Model model, HttpServletRequest request){
 
+        return "signUp";
+    }
+
+    @RequestMapping(value = "/jobSeekerSignUp.htm", method = RequestMethod.POST)
+    public String jobSeekerSignUp(HttpServletRequest request, Model model){
+        String firstName = request.getParameter("firstName");
+        String lastName = request.getParameter("lastName");
+        return "signUp";
+    }
+    @RequestMapping(value = "/employerSignUp.htm", method = RequestMethod.POST)
+    public String employerSignUp(HttpServletRequest request, Model model){
+        String companyName = request.getParameter("companyName");
+        String address = request.getParameter("address");
+        String telNo = request.getParameter("telNo");
+        String headquarters = request.getParameter("headquarters");
+        String description = request.getParameter("description");
+        String noOfEmployees = request.getParameter("noOfEmployees");
+        String found = request.getParameter("found");
+        String website = request.getParameter("website");
+        String companyLogo = request.getParameter("companyLogo");
 
 
-
-        return "home";
+        return "signUp";
     }
 }

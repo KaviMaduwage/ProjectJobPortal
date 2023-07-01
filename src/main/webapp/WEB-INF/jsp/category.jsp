@@ -82,7 +82,6 @@
     }
 
     function searchVacancies(){
-      console.log("1234");
       document.searchForm.action = "searchVacancies.htm";
       document.searchForm.submit();
     }
@@ -115,7 +114,7 @@
             </ul>
           </li>
           <c:if test="${empty sessionScope.userLogin}">
-            <li><a class="ticker-btn" href="#">Signup</a></li>
+            <li><a class="ticker-btn" href="/signUp">Signup</a></li>
             <li><a class="ticker-btn" href="/login">Login</a></li>
           </c:if>
           <c:if test="${sessionScope.userLogin != null}">

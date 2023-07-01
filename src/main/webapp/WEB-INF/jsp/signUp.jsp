@@ -6,20 +6,256 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+
+<!DOCTYPE html>
+<html class="no-js" lang="zxx">
 <head>
-    <title>Title</title>
-    <script type="text/javascript">
-        function loadHomePage(){
-            document.signUpPage.action = "homePage.htm";
-            document.signUpPage.submit();
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/fav.png">
+    <!-- Author Meta -->
+    <meta name="author" content="codepixer">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <!-- Site Title -->
+    <title>Job Gateway</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700"
+
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!--
+            CSS			============================================= -->
+    <link rel="stylesheet" href="css/linearicons.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/nice-select.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/sign.css">
+    <style>
+        .form-box {
+            background-color: #7b6e9b;
+            padding: 50px;
+            margin-top: 50px;
+
+        }
+
+        .tab-content {
+            margin-top: 30px;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function(){
+            $('.nav-tabs a').click(function(){
+                $(this).tab('show');
+            });
+        });
+
+        function registerJobSeeker(){
+            document.jobSeekerForm.action = "jobSeekerSignUp.htm";
+            document.jobSeekerForm.submit();
+        }
+
+        function registerEmployer(){
+            document.employerForm.action = "employerSignUp.htm";
+            document.employerForm.submit();
         }
     </script>
 </head>
 <body>
-<h2>Sign Up Page</h2>
+<header id="header">
+    <div class="container">
+        <div class="row align-items-center justify-content-between d-flex">
+            <div id="logo">
+                <h1 class="text-white"><img src="img/companyLogo.png"
+
+                                            alt="" style="width: 100px; height: 66px;"></h1>
+            </div>
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+                    <li class="menu-active"><a href="/">Home</a></li>
+                    <li><a href="/about-us">About Us</a></li>
+                    <li><a href="/category">Category</a></li>
+                    <li><a href="/subscription">Subscriptions</a></li>
+                    <li><a href="/blog-home">Blog</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li class="menu-has-children"><a href="">Pages</a>
+                        <ul>
+                            <li><a href="elements.html">elements</a></li>
+                            <li><a href="search.html">search</a></li>
+                            <li><a href="single.html">single</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="ticker-btn" href="/signUp">Signup</a></li>
+                    <li><a class="ticker-btn" href="/login">Login</a></li>
+                </ul>
+            </nav>
+            <!-- #nav-menu-container --> </div>
+    </div>
+</header>
+<!-- #header -->
+<!-- start banner Area -->
+<section class="banner-area relative" id="home">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white"> Sign Up </h1>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
 
 
+<!-- start form Area -->
+<div class="container form-box" style="width: 900px;">
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#jobseekers">Job Seekers</a></li>
+        <li><a data-toggle="tab" href="#employers">Employers</a></li>
+    </ul>
 
+    <div class="tab-content">
+        <div id="jobseekers" class="tab-pane fade in active">
+
+            <!-- Job Seeker form fields -->
+            <h1>Job Seekers' Form</h1>
+            <p>Please fill out this form with the required information</p>
+            <form action='jobSeekerSignUp.htm' method="POST" name="jobSeekerForm">
+                <fieldset>
+                    <label>First Name: <input type="text" name="firstName" id="firstName" required /></label>
+                    <label>Last Name: <input type="text" name="lastName" id="lastName" required /></label>
+                    <label>Address: <input type="text" name="address" required /></label>
+                    <label>Contact No: <input type="text" name="tpno" required /></label>
+                    <label>DOB: <input type="date" name="dob" required /></label>
+                    <label>Age (years): <input type="number" name="age" min="10" max="120" /></label>
+                    <label>Gender:</label>
+                    <label><input type="radio" name="account-type" class="inline" /> Male</label>
+                    <label><input type="radio" name="account-type" class="inline" /> Female</label>
+                    <fieldset>
+                        <label>Upload Your CV: <input type="file" name="file" /></label>
+                    </fieldset>
+                </fieldset>
+                <input type="button" value="Register" onclick="registerJobSeeker()"/>
+            </form>
+
+        </div>
+
+        <div id="employers" class="tab-pane fade">
+
+            <!-- Employers form fields -->
+            <h1>Employers' Form</h1>
+            <p>Please fill out this form with the required information</p>
+            <form action='employerSignUp.htm' method="POST" name="employerForm">
+                <fieldset>
+
+                    <label>Company Name: <input type="text" name="companyName" id="companyName" required /></label>
+                    <label>Address: <input type="text" name="address" id="address" required /></label>
+                    <label>Contact No: <input type="text" name="telNo" id="telNo" required /></label>
+                    <label>Headquarters:</label>
+                    <select name = "headquarters" id="headquarters">
+                        <option value = "Select one" selected>Select</option>
+                        <option value = "country">Sri Lanka</option>
+                        <option value = "country">Foreign</option>
+                    </select>
+                    <label>Description: <textarea name="description" id="description" rows="3" cols="5"></textarea></label>
+                        <label>No of Employees: <input type="number" name="noOfEmployees" id="noOfEmployees" required /></label>
+                        <label>Founded by: <input type="text" name="found" id="found" required /></label>
+                        <label>Website: <input type="text" name="website" id="website" required /></label>
+                        <label>Upload Company Logo: <input type="file" name="companyLogo" id="companyLogo" /></label>
+                </fieldset>
+                <input type="button" value="Register" onclick="registerEmployer()" />
+            </form>
+
+        </div>
+    </div>
+</div>
+<!-- End form Area -->
+
+<!-- start footer Area -->
+<footer class="footer-area section-gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3  col-md-12">
+                <div class="single-footer-widget">
+                    <h6>About Us</h6>
+                    <ul class="footer-nav">
+                        <li>329 1/1, Galle Road, Colombo 03, Sri Lanka</li>
+                        <li>(+94) ( 011) 6375163</li>
+                        <li>jobGateWay@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6  col-md-12">
+                <div class="single-footer-widget newsletter">
+                    <h6>Connect With Us</h6>
+                    <p>For quick news...</p>
+                    <div id="mc_embed_signup">
+
+                        <div class="form-group row" style="width: 100%">
+                            <div class="col-lg-8 col-md-12"> <input name="EMAIL" placeholder="Enter Email"
+                                                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '"
+                                                                    required="" type="email">
+                                <div style="position: absolute; left: -5000px;"> <input name="email" tabindex="-1" value="" type="text"> </div>
+                            </div>
+                            <div class="col-lg-4 col-md-12"> <button class="nw-btn primary-btn">Subscribe<span
+
+                                    class="lnr lnr-arrow-right"></span></button> </div>
+                        </div>
+                        <div class="info"></div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3  col-md-12">
+                <div class="single-footer-widget mail-chimp">
+                    <h6 class="mb-20">Photoes</h6>
+                    <ul class="instafeed d-flex flex-wrap">
+                        <li><img src="img/i2.jpg" alt=""></li>
+                        <li><img src="img/i3.jpg" alt=""></li>
+                        <li><img src="img/i4.jpg" alt=""></li>
+
+                    </ul><br>
+                    <ul class="instafeed d-flex flex-wrap">
+                        <li><img src="img/i6.jpg" alt=""></li>
+                        <li><img src="img/i7.jpg" alt=""></li>
+                        <li><img src="img/i8.jpg" alt=""></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End footer Area -->
+<script src="js/vendor/jquery-2.2.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+
+        crossorigin="anonymous"></script>
+<script src="js/vendor/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+<script src="js/easing.min.js"></script>
+<script src="js/hoverIntent.js"></script>
+<script src="js/superfish.min.js"></script>
+<script src="js/jquery.ajaxchimp.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.sticky.js"></script>
+<script src="js/jquery.nice-select.min.js"></script>
+<script src="js/parallax.min.js"></script>
+<script src="js/mail-script.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
