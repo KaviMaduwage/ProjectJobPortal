@@ -13,7 +13,7 @@ public class User {
     @Column(unique = true)
     private String email;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "user_type_id")
     private UserType userType;
 

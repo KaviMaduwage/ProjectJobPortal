@@ -70,7 +70,7 @@
                             <li><a href="single.html">single</a></li>
                         </ul>
                     </li>
-                    <li><a class="ticker-btn" href="#">Signup</a></li>
+                    <li><a class="ticker-btn" href="/signUp">Signup</a></li>
                     <li><a class="ticker-btn" href="/login">Login</a></li>
                 </ul>
             </nav>

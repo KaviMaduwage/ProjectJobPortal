@@ -18,4 +18,9 @@ public class IndustryTypeServiceImpl implements IndustryTypeService {
     public List<IndustryType> getAllIndustryTypes() {
         return industryTypeDao.findAll();
     }
+
+    @Override
+    public IndustryType getIndustryTypeById(int industryTypeId) {
+        return industryTypeDao.findById(industryTypeId).get();
+    }
 }

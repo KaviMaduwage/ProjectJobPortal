@@ -82,7 +82,6 @@
     }
 
     function searchVacancies(){
-      console.log("1234");
       document.searchForm.action = "searchVacancies.htm";
       document.searchForm.submit();
     }
@@ -115,7 +114,7 @@
             </ul>
           </li>
           <c:if test="${empty sessionScope.userLogin}">
-            <li><a class="ticker-btn" href="#">Signup</a></li>
+            <li><a class="ticker-btn" href="/signUp">Signup</a></li>
             <li><a class="ticker-btn" href="/login">Login</a></li>
           </c:if>
           <c:if test="${sessionScope.userLogin != null}">
@@ -228,8 +227,10 @@
         <c:forEach items="${vacancyList}" var="vacancy" varStatus="status">
           <div class="single-post d-flex flex-row ">
             <div class="thumb">
-              <img src="img/post.png" alt="">
-              <ul class="tags">
+              <img src="img/company-logos/${vacancy.employer.employerId}_${vacancy.employer.companyName}/${vacancy.employer.logoImage}" alt="" style="width: 100px;height: 100px">
+<%--  <c:out value="img/company-logos/${vacancy.employer.employerId}_${vacancy.employer.companyName}/${vacancy.employer.logoImage}" />--%>
+<%--  <img src="img/company-logos/1_LSEG/logo_LSEG.png" alt="" style="width: 100px;height: 100px">--%>
+            <ul class="tags">
                 <li> ${vacancy.jobField.description} </li>
                 <li> ${vacancy.employer.industryType.description} </li>
                 <li> ${vacancy.position.description} </li>
