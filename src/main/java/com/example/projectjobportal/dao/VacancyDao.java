@@ -1,6 +1,7 @@
 package com.example.projectjobportal.dao;
 
 import com.example.projectjobportal.model.Vacancy;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -11,4 +12,6 @@ public interface VacancyDao extends JpaRepository<Vacancy,Integer> {
             "(0 = : jobFieldId OR v.jobField.jobFieldId = :jobFieldId) AND " +
             "(0 = : positionId OR v.position.positionId = :positionId)")
     List<Vacancy> getVacancyListByCriteria(int industryTypeId, int jobFieldId, int positionId);
+    @Query("SELECT v FROM Vacancy v ORDER BY v.vacancyId DESC")
+    List<Vacancy> getRecentVacancyList(Pageable pageable);
 }

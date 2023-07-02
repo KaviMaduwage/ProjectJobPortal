@@ -6,6 +6,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -32,6 +36,22 @@ public class ViewVacancyController {
         this.positionService = positionService;
         this.employerService = employerService;
         this.vacancyService = vacancyService;
+    }
+
+    @ModelAttribute("vacancyList")
+    public List<Vacancy> getVacancies(){
+        List<Vacancy> vacancyList = new ArrayList<>();
+        Pageable pageable = PageRequest.of(0, 5, Sort.by("vacancyId").descending());
+        vacancyList = vacancyService.getRecentVacancyList(pageable);
+        return vacancyList;
+    }
+
+    @ModelAttribute("recentVacancyList")
+    public List<Vacancy> getResentVacancies(){
+        List<Vacancy> vacancyList = new ArrayList<>();
+        Pageable pageable = PageRequest.of(0, 5, Sort.by("vacancyId").descending());
+        vacancyList = vacancyService.getRecentVacancyList(pageable);
+        return vacancyList;
     }
 
 
