@@ -12,18 +12,20 @@ public class JobSeeker {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int jobSeekerId;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-    private String fullName;
-    private String nameWtInitials;
+    private String firstName;
+    private String lastName;
+
     private Date dob;
+    private String gender;
     @Transient
     private int age;
 
     private String address;
-    private String mobileNo;
-    private String cvFilePath;
+    private String telNo;
+    private String cvFileName;
 
 
     public int getJobSeekerId() {
@@ -42,21 +44,7 @@ public class JobSeeker {
         this.user = user;
     }
 
-    public String getFullName() {
-        return fullName;
-    }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getNameWtInitials() {
-        return nameWtInitials;
-    }
-
-    public void setNameWtInitials(String nameWtInitials) {
-        this.nameWtInitials = nameWtInitials;
-    }
 
     public Date getDob() {
         return dob;
@@ -85,19 +73,44 @@ public class JobSeeker {
         this.address = address;
     }
 
-    public String getMobileNo() {
-        return mobileNo;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setMobileNo(String mobileNo) {
-        this.mobileNo = mobileNo;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getCvFilePath() {
-        return cvFilePath;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setCvFilePath(String cvFilePath) {
-        this.cvFilePath = cvFilePath;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+
+    public String getTelNo() {
+        return telNo;
+    }
+
+    public void setTelNo(String telNo) {
+        this.telNo = telNo;
+    }
+
+    public String getCvFileName() {
+        return cvFileName;
+    }
+
+    public void setCvFileName(String cvFileName) {
+        this.cvFileName = cvFileName;
     }
 }

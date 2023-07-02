@@ -2,7 +2,7 @@ body {
   width: 100%;
   height: 100vh;
   margin: 0;
-  background-color:  #1b1b32;
+  background-color:  #d2d1e8;
 	color: #f5f6f7;
   font-family: Tahoma;
 	font-size: 16px;
@@ -45,9 +45,9 @@ select {
 }
 
 input, textarea {
-  background-color: #0a0a23;
+  background-color: #ffffff;
   border: 1px solid #0a0a23;
-  color: #ffffff;
+  color: #000000;
 }
 
 .inline {
@@ -74,3 +74,17 @@ input[type="file"] {
 a {
   color: #dfdfe2;
 }
+
+
+ .box {
+     border: 1px solid #ccc;
+     border-radius: 5px;
+     padding: 10px;
+     margin-bottom: 10px;
+ }
+
+.box-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+

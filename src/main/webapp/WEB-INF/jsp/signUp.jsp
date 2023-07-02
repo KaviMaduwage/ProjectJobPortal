@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
@@ -40,7 +41,7 @@
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/owl.carousel.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/sign.css">
+    <link rel="stylesheet" href="css/signUp.css">
     <style>
         .form-box {
             background-color: #7b6e9b;
@@ -61,6 +62,7 @@
             });
         });
 
+
         function registerJobSeeker(){
             document.jobSeekerForm.action = "jobSeekerSignUp.htm";
             document.jobSeekerForm.submit();
@@ -69,6 +71,18 @@
         function registerEmployer(){
             document.employerForm.action = "employerSignUp.htm";
             document.employerForm.submit();
+        }
+
+        function showImagePreview(fileInput){
+            $('#imageContainer').show();
+            file = fileInput.files[0];
+            reader = new FileReader();
+
+            reader.onload = function (e){
+                $('#logoPreview').attr('src',e.target.result);
+            }
+            reader.readAsDataURL(file);
+
         }
     </script>
 </head>
@@ -132,21 +146,62 @@
             <!-- Job Seeker form fields -->
             <h1>Job Seekers' Form</h1>
             <p>Please fill out this form with the required information</p>
-            <form action='jobSeekerSignUp.htm' method="POST" name="jobSeekerForm">
-                <fieldset>
-                    <label>First Name: <input type="text" name="firstName" id="firstName" required /></label>
-                    <label>Last Name: <input type="text" name="lastName" id="lastName" required /></label>
-                    <label>Address: <input type="text" name="address" required /></label>
-                    <label>Contact No: <input type="text" name="tpno" required /></label>
-                    <label>DOB: <input type="date" name="dob" required /></label>
-                    <label>Age (years): <input type="number" name="age" min="10" max="120" /></label>
-                    <label>Gender:</label>
-                    <label><input type="radio" name="account-type" class="inline" /> Male</label>
-                    <label><input type="radio" name="account-type" class="inline" /> Female</label>
+            <form action='jobSeekerSignUp.htm' method="POST" name="jobSeekerForm" enctype="multipart/form-data">
+                <div class="box">
+                    <h2 class="box-title">Personal Information</h2>
+
                     <fieldset>
-                        <label>Upload Your CV: <input type="file" name="file" /></label>
+                        <label>First Name: <input type="text" name="firstName" id="firstName" required /></label>
+                        <label>Last Name: <input type="text" name="lastName" id="lastName" required /></label>
+                        <label>Address: <input type="text" name="address" required /></label>
+                        <label>Contact No: <input type="text" name="telNo" required /></label>
+                        <label>DOB: <input type="date" name="dob" required /></label>
+<%--                        <label>Age (years): <input type="number" name="age" min="10" max="120" /></label>--%>
+                        <label>Gender:</label>
+                        <label><input type="radio" name="gender" class="inline" value="M"/> Male</label>
+                        <label><input type="radio" name="gender" class="inline" value="F" /> Female</label>
+                        <fieldset>
+                            <label>Upload Your CV: <input type="file" name="cv"  accept="application/pdf"/></label>
+                        </fieldset>
                     </fieldset>
-                </fieldset>
+                </div>
+                <div class="box">
+                    <h2 class="box-title">General Information</h2>
+
+                    <fieldset>
+                        <label>Field Of Interest: </label>
+                        <select multiple id="field" name="field" style="color: #0a0a23">
+                            <option value="0" style="font-weight: bold">Select Field</option>
+                            <c:forEach items="${jobFieldList}" var="jobField" varStatus="status">
+                                <c:if test="${jobField.jobFieldId eq selectedJobFiledId}">
+                                    <option value="${jobField.jobFieldId}" SELECTED>
+                                            ${jobField.description}
+                                    </option>
+                                </c:if>
+                                <c:if test="${jobField.jobFieldId ne selectedJobFiledId}">
+                                    <option value="${jobField.jobFieldId}">
+                                            ${jobField.description}
+                                    </option>
+                                </c:if>
+
+                            </c:forEach>
+
+                        </select>
+
+                    </fieldset>
+                </div>
+                <div class="box">
+                    <h2 class="box-title">Login Information</h2>
+
+                    <fieldset>
+                        <label>Email: <input type="text" name="email" id="email" required /></label>
+                        <label>User Name: <input type="text" name="userName" id="userName" required /></label>
+                        <label>Password: <input type="password" name="password" id="password" required /></label>
+                        <input type="hidden" name="userType" value="3" /></label>
+
+
+                    </fieldset>
+                </div>
                 <input type="button" value="Register" onclick="registerJobSeeker()"/>
             </form>
 
@@ -157,24 +212,62 @@
             <!-- Employers form fields -->
             <h1>Employers' Form</h1>
             <p>Please fill out this form with the required information</p>
-            <form action='employerSignUp.htm' method="POST" name="employerForm">
+            <form action='employerSignUp.htm' method="POST" name="employerForm" enctype="multipart/form-data">
+                <div class="box">
+                    <h2 class="box-title">General Information</h2>
                 <fieldset>
 
                     <label>Company Name: <input type="text" name="companyName" id="companyName" required /></label>
                     <label>Address: <input type="text" name="address" id="address" required /></label>
                     <label>Contact No: <input type="text" name="telNo" id="telNo" required /></label>
                     <label>Headquarters:</label>
-                    <select name = "headquarters" id="headquarters">
+                    <select name = "headquarters" id="headquarters" style="color: #0a0a23">
                         <option value = "Select one" selected>Select</option>
-                        <option value = "country">Sri Lanka</option>
-                        <option value = "country">Foreign</option>
+                        <option value = "Sri Lanka">Sri Lanka</option>
+                        <option value = "Foreign">Foreign</option>
+                    </select>
+                    <label>Industry Type:</label>
+                    <select id="industryType" name="industryType" style="color: #0a0a23">
+                        <option value="0">Select Industry Type</option>
+                        <c:forEach items="${industryTypeList}" var="industryType" varStatus="status">
+                            <c:if test="${industryType.industryTypeId eq selectedIndustryTypeId}">
+                                <option value="${industryType.industryTypeId}" SELECTED>
+                                        ${industryType.description}
+                                </option>
+                            </c:if>
+                            <c:if test="${industryType.industryTypeId ne selectedIndustryTypeId}">
+                                <option value="${industryType.industryTypeId}">
+                                        ${industryType.description}
+                                </option>
+                            </c:if>
+
+                        </c:forEach>
+
                     </select>
                     <label>Description: <textarea name="description" id="description" rows="3" cols="5"></textarea></label>
                         <label>No of Employees: <input type="number" name="noOfEmployees" id="noOfEmployees" required /></label>
                         <label>Founded by: <input type="text" name="found" id="found" required /></label>
                         <label>Website: <input type="text" name="website" id="website" required /></label>
-                        <label>Upload Company Logo: <input type="file" name="companyLogo" id="companyLogo" /></label>
+                        <label>Upload Company Logo: <input type="file" name="companyLogo" id="companyLogo" accept="image/png, image/jpeg" onchange="showImagePreview(this)"/></label>
+                        <label>Logo Preview:
+                            <div id="imageContainer" style="width: 200px; height: 200px; overflow: hidden; display: none">
+                                <img id="logoPreview" alt="Logo Preview" style="max-width: 100%; max-height: 100%;">
+                            </div>
+                        </label>
                 </fieldset>
+                </div>
+                <div class="box">
+                    <h2 class="box-title">Login Information</h2>
+
+                    <fieldset>
+                        <label>Email: <input type="text" name="email" required /></label>
+                        <label>User Name: <input type="text" name="userName"  required /></label>
+                        <label>Password: <input type="password" name="password"  required /></label>
+                        <input type="hidden" name="userType" value="2" /></label>
+
+
+                    </fieldset>
+                </div>
                 <input type="button" value="Register" onclick="registerEmployer()" />
             </form>
 

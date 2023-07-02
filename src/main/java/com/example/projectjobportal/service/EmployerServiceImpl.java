@@ -19,4 +19,11 @@ public class EmployerServiceImpl implements EmployerService {
     public List<Employer> getEmployerByIndustryTypeId(int industryTypeId) {
         return employerDao.getEmployerByIndustryTypeId(industryTypeId);
     }
+
+    @Override
+    public Employer saveEmployer(Employer employer) {
+        return employerDao.save(employer);
+    }
+
+
 }

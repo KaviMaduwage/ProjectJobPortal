@@ -12,16 +12,19 @@ public class Employer {
     private String address;
     private String headquarters;
     private String website;
-    @Lob
-    private byte[] logoImage;
+
+    private String logoImage;
 
     private String description;
     private int noOfEmployees;
     private String tel;
     private int founded;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "industry_type_id")
     private IndustryType industryType;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public int getEmployerId() {
         return employerId;
@@ -63,11 +66,11 @@ public class Employer {
         this.website = website;
     }
 
-    public byte[] getLogoImage() {
+    public String getLogoImage() {
         return logoImage;
     }
 
-    public void setLogoImage(byte[] logoImage) {
+    public void setLogoImage(String logoImage) {
         this.logoImage = logoImage;
     }
 
@@ -109,5 +112,13 @@ public class Employer {
 
     public void setIndustryType(IndustryType industryType) {
         this.industryType = industryType;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

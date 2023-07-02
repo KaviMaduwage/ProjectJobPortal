@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface IndustryTypeService {
     List<IndustryType> getAllIndustryTypes();
+
+    IndustryType getIndustryTypeById(int industryTypeId);
 }
