@@ -86,6 +86,37 @@
       document.searchForm.submit();
     }
 
+    function viewVacancy(index){
+      var vacancyId= document.getElementById("hiddenVacancyId_" + index).value;
+      console.log(vacancyId);
+      //const url = `viewVacancy.htm?vacancyId=${vacancyId}`;
+      const url = "viewVacancy.htm?vacancyId="+vacancyId;
+
+      window.open(url, '_blank', 'width=900,height=900');
+
+    }
+    var temp_index ='' ;
+    function applyVacancy(index){
+      temp_index = index;
+      var vacancyId= document.getElementById("hiddenVacancyId_" + index).value;
+
+
+      $.ajax({
+        url : '<c:url value="/applyVacancy.htm"/>',
+        method: 'POST',
+        data : ({
+          'selectedVacancyId' :vacancyId
+
+        }),
+        success : function (response){
+          var message = response;
+          document.getElementById("appliedStatus_"+temp_index).innerText = message;
+
+        }
+      });
+
+    }
+
 
   </script>
 </head>
@@ -226,11 +257,13 @@
       <div class="col-lg-8 post-list">
         <c:forEach items="${vacancyList}" var="vacancy" varStatus="status">
           <div class="single-post d-flex flex-row ">
+
             <div class="thumb">
+              <input type="hidden" value="${vacancy.vacancyId}" id="hiddenVacancyId_${status.index}">
               <img src="img/company-logos/${vacancy.employer.employerId}_${vacancy.employer.companyName}/${vacancy.employer.logoImage}" alt="" style="width: 100px;height: 100px">
-<%--  <c:out value="img/company-logos/${vacancy.employer.employerId}_${vacancy.employer.companyName}/${vacancy.employer.logoImage}" />--%>
-<%--  <img src="img/company-logos/1_LSEG/logo_LSEG.png" alt="" style="width: 100px;height: 100px">--%>
+
             <ul class="tags">
+
                 <li> ${vacancy.jobField.description} </li>
                 <li> ${vacancy.employer.industryType.description} </li>
                 <li> ${vacancy.position.description} </li>
@@ -239,16 +272,20 @@
             </div>
             <div class="details">
               <div class="title d-flex flex-row justify-content-between">
+
                 <div class="titles"><a href="single.html">
                   <h4>${vacancy.description}</h4>
                 </a>
                   <h6>${vacancy.employer.companyName}</h6>
                 </div>
                 <ul class="btns">
-<%--                  <li><a href="#"><span class="lnr lnr-heart"></span></a><br>--%>
-<%--                  </li>--%>
-                  <li><a href="#">View</a></li>
-                  <li><a href="#">Apply</a></li>
+
+
+                  <li><button id="viewVacancy" onclick="viewVacancy(${status.index})">View</button></li>
+                  <c:if test="${not empty sessionScope.userLogin && sessionScope.userLogin.userType.userTypeId == 3}">
+                    <li><button id="applyVacancy" onclick="applyVacancy(${status.index})">Apply</button></li>
+
+                  </c:if>
                 </ul>
               </div>
               <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
@@ -256,142 +293,37 @@
               <h5>Job Nature: ${vacancy.vacancyType.description}</h5>
               <p>Posted on : <fmt:formatDate value="${vacancy.postedDate}" pattern="yyyy/MM/dd" />    Closing Date : <fmt:formatDate value="${vacancy.closingDate}" pattern="yyyy/MM/dd" /></p>
               <p class="address"><span class="lnr lnr-map"></span> ${vacancy.employer.address}</p>
+              <label id="appliedStatus_${status.index}" style="font-weight: bold;color: blue"></label>
             </div>
           </div>
 
         </c:forEach>
-        <div class="single-post d-flex flex-row">
-          <div class="thumb"> <img src="img/post.png" alt="">
-            <ul class="tags">
-              <li> <a href="#">Art</a> </li>
-              <li> <a href="#">Media</a> </li>
-              <li> <a href="#">Design</a> </li>
-            </ul>
-          </div>
-          <div class="details">
-            <div class="title d-flex flex-row justify-content-between">
-              <div class="titles"> <a href="single.html">
-                <h4>Creative Art Designer</h4>
-              </a>
-                <h6>Premium Labels Limited</h6>
-              </div>
-              <ul class="btns">
-                <li><a href="#"><span class="lnr lnr-heart"></span></a><br>
-                </li>
-                <li><a href="#">Apply</a></li>
-              </ul>
-            </div>
-            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-              sed do eiusmod temporinc ididunt ut dolore magna aliqua. </p>
-            <h5>Job Nature: Full time</h5>
-            <p class="address"><span class="lnr lnr-map"></span> 56/8,
-              Colombo Rd, Kiribathgoda</p>
-            <p class="address"><span class="lnr lnr-database"></span> 15k -
-              25k</p>
-          </div>
-        </div>
+
 
       </div>
       <div class="col-lg-4 sidebar">
+
         <div class="single-slidebar">
-          <h4>Jobs by Location</h4>
-          <ul class="cat-list">
-            <li><a class="justify-content-between d-flex" href="category.html">
-              <p>Colombo</p>
-              <span>37</span></a></li>
-            <li><a class="justify-content-between d-flex" href="category.html">
-              <p>Gampaha</p>
-              <span>57</span></a></li>
-            <li><a class="justify-content-between d-flex" href="category.html">
-              <p>Kurunagala</p>
-              <span>33</span></a></li>
-            <li><a class="justify-content-between d-flex" href="category.html">
-              <p>Hambanthota</p>
-              <span>36</span></a></li>
-            <li><a class="justify-content-between d-flex" href="category.html">
-              <p>Kurunagala</p>
-              <span>47</span></a></li>
-            <li><a class="justify-content-between d-flex" href="category.html">
-              <p>Jaffa</p>
-              <span>27</span></a></li>
-            <li><a class="justify-content-between d-flex" href="category.html">
-              <p>Anuradhapura</p>
-              <span>17</span></a></li>
-          </ul>
-        </div>
-        <div class="single-slidebar">
-          <h4>Top rated job posts</h4>
+          <h4>Most Recent Job job posts</h4>
           <div class="active-relatedjob-carusel">
-            <div class="single-rated"> <img class="img-fluid" src="img/r1.jpg"
+          <c:forEach items="${recentVacancyList}" var="vacancy" varStatus="status">
+            <div class="single-rated"> <img class="img-fluid" src="img/company-logos/${vacancy.employer.employerId}_${vacancy.employer.companyName}/${vacancy.employer.logoImage}"
 
-                                            alt=""> <a href="single.html">
-              <h4>Creative Art Designer</h4>
+                                            alt="">
+              <h4>${vacancy.description}</h4>
             </a>
-              <h6>Premium Labels Limited</h6>
+              <h6>${vacancy.employer.companyName}</h6>
               <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
                 sed do eiusmod temporinc ididunt ut dolore magna aliqua. </p>
-              <h5>Job Nature: Full time</h5>
-              <p class="address"><span class="lnr lnr-map"></span> 56/8,
-                Colombo Rd, Kiribathgoda</p>
-              <p class="address"><span class="lnr lnr-database"></span> 15k
-                - 25k</p>
-              <a href="#" class="btns text-uppercase">Apply job</a> </div>
-            <div class="single-rated"> <img class="img-fluid" src="img/r1.jpg"
+              <h5>Job Nature: ${vacancy.vacancyType.description}</h5>
+              <p>Posted on : <fmt:formatDate value="${vacancy.postedDate}" pattern="yyyy/MM/dd" />    Closing Date : <fmt:formatDate value="${vacancy.closingDate}" pattern="yyyy/MM/dd" /></p>
+              <p class="address"><span class="lnr lnr-map"></span> ${vacancy.employer.address}</p>
+              <a href="#" class="btns text-uppercase">Apply job</a>
+            </div>
+          </c:forEach>
 
-                                            alt=""> <a href="single.html">
-              <h4>Creative Art Designer</h4>
-            </a>
-              <h6>Premium Labels Limited</h6>
-              <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                sed do eiusmod temporinc ididunt ut dolore magna aliqua. </p>
-              <h5>Job Nature: Full time</h5>
-              <p class="address"><span class="lnr lnr-map"></span> 56/8,
-                Colombo Rd, Kiribathgoda</p>
-              <p class="address"><span class="lnr lnr-database"></span> 15k
-                - 25k</p>
-              <a href="#" class="btns text-uppercase">Apply job</a> </div>
-            <div class="single-rated"> <img class="img-fluid" src="img/r1.jpg"
-
-                                            alt=""> <a href="single.html">
-              <h4>Creative Art Designer</h4>
-            </a>
-              <h6>Premium Labels Limited</h6>
-              <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                sed do eiusmod temporinc ididunt ut dolore magna aliqua. </p>
-              <h5>Job Nature: Full time</h5>
-              <p class="address"><span class="lnr lnr-map"></span> 56/8,
-                Colombo Rd, Kiribathgoda</p>
-              <p class="address"><span class="lnr lnr-database"></span> 15k
-                - 25k</p>
-              <a href="#" class="btns text-uppercase">Apply job</a> </div>
-          </div>
         </div>
-        <div class="single-slidebar">
-          <h4>Jobs by Category</h4>
-          <ul class="cat-list">
-            <li><a class="justify-content-between d-flex" href="category.html">
-              <p>Technology</p>
-              <span>37</span></a></li>
-            <li><a class="justify-content-between d-flex" href="category.html">
-              <p>Media &amp; News</p>
-              <span>57</span></a></li>
-            <li><a class="justify-content-between d-flex" href="category.html">
-              <p>Goverment</p>
-              <span>33</span></a></li>
-            <li><a class="justify-content-between d-flex" href="category.html">
-              <p>Medical</p>
-              <span>36</span></a></li>
-            <li><a class="justify-content-between d-flex" href="category.html">
-              <p>Restaurants</p>
-              <span>47</span></a></li>
-            <li><a class="justify-content-between d-flex" href="category.html">
-              <p>Developer</p>
-              <span>27</span></a></li>
-            <li><a class="justify-content-between d-flex" href="category.html">
-              <p>Accounting</p>
-              <span>17</span></a></li>
-          </ul>
-        </div>
+
         <div class="single-slidebar">
           <h4>Carrer Advice Blog</h4>
           <div class="blog-list">
@@ -442,13 +374,10 @@
       <div class="menu-content col-lg-9">
         <div class="title text-center">
           <h1 class="mb-10 text-white">Join us today without any hesitation</h1>
-          <p class="text-white">Lorem ipsum dolor sit amet, consectetur
-            adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation.</p>
+          <p class="text-white">- Please login before applying to jobs - </p>
           <a class="primary-btn" href="#">I am a Candidate</a> <a class="primary-btn"
 
-                                                                  href="#">Request Free Demo</a> </div>
+                                                                  href="#">I am an Employer</a> </div>
       </div>
     </div>
   </div>

@@ -4,6 +4,7 @@ import com.example.projectjobportal.model.User;
 import com.example.projectjobportal.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,19 @@ public class LoginController {
 
     public LoginController(UserService userService) {
         this.userService = userService;
+    }
+    @RequestMapping("/login")
+    public String getLoginPage(Model model){
+
+        return "login";
+    }
+
+    @GetMapping("/logOut")
+    public String logout(HttpSession session) {
+        // Invalidate the session to remove all session attributes
+        session.invalidate();
+
+        return "welcome";
     }
 
     @RequestMapping("/getLoginAccess.htm")

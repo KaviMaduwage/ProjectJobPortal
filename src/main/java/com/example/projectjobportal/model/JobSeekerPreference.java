@@ -9,11 +9,11 @@ public class JobSeekerPreference {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int jobSeekerPreferenceId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "job_seeker_id")
     private JobSeeker jobSeeker;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "job_field_id")
     private JobField jobField;
 

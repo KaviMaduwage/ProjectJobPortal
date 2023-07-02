@@ -11,15 +11,33 @@ public class JobSeekerQualification {
     private int jobSeekerQualificationId;
 
     private String description;
-    private Date startDate;
-    private Date endDate;
-    @ManyToOne(cascade = CascadeType.ALL)
+    private String startDate;
+    private String endDate;
+    @ManyToOne
     @JoinColumn(name = "job_seeker_id")
     private JobSeeker jobSeeker;
+    private String eduField;
+    private String status;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "qualification_type_id")
     private QualificationType qualificationType;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getEduField() {
+        return eduField;
+    }
+
+    public void setEduField(String eduField) {
+        this.eduField = eduField;
+    }
 
     public int getJobSeekerQualificationId() {
         return jobSeekerQualificationId;
@@ -37,19 +55,19 @@ public class JobSeekerQualification {
         this.description = description;
     }
 
-    public Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 

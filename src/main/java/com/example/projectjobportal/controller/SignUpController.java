@@ -23,6 +23,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 
@@ -35,19 +36,28 @@ public class SignUpController {
     JobFieldService jobFieldService;
     JobSeekerService jobSeekerService;
     UserTypeService userTypeService;
+    QualificationTypeService qualificationTypeService;
+    JobSeekerQualificationService jobSeekerQualificationService;
+    JobSeekerPreferenceService jobSeekerPreferenceService;
     @PersistenceContext
     private EntityManager entityManager;
 
 
     public SignUpController(UserService userService, EmployerService employerService,
                             IndustryTypeService industryTypeService,JobFieldService jobFieldService,
-                            JobSeekerService jobSeekerService, UserTypeService userTypeService) {
+                            JobSeekerService jobSeekerService, UserTypeService userTypeService,
+                            QualificationTypeService qualificationTypeService,
+                            JobSeekerQualificationService jobSeekerQualificationService,
+                            JobSeekerPreferenceService jobSeekerPreferenceService) {
         this.userService = userService;
         this.employerService = employerService;
         this.industryTypeService = industryTypeService;
         this.jobFieldService = jobFieldService;
         this.jobSeekerService = jobSeekerService;
         this.userTypeService = userTypeService;
+        this.qualificationTypeService = qualificationTypeService;
+        this.jobSeekerQualificationService = jobSeekerQualificationService;
+        this.jobSeekerPreferenceService = jobSeekerPreferenceService;
     }
     @ModelAttribute("industryTypeList")
     public List<IndustryType> industryTypeList(){
@@ -78,7 +88,8 @@ public class SignUpController {
         String found = request.getParameter("found");
         String website = request.getParameter("website");
         String industryTypeId = request.getParameter("industryType");
-        //String companyLogo = request.getParameter("companyLogo");
+
+        //get login details
         String email = request.getParameter("email");
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
@@ -148,6 +159,15 @@ public class SignUpController {
         String password = request.getParameter("password");
         int userTypeId = Integer.parseInt(request.getParameter("userType"));
 
+        //get educational details
+        String[] qualifications = request.getParameterValues("qualification");
+        String[] educationFields = request.getParameterValues("educationField");
+        String[] startDates = request.getParameterValues("startDate");
+        String[] endDates = request.getParameterValues("endDate");
+        String[] statuses = request.getParameterValues("StatusType");
+        String[] description = request.getParameterValues("description");
+
+
         UserType userType = userTypeService.getUserTypeById(userTypeId);
         User newUser = new User();
         newUser.setEmail(email);
@@ -176,7 +196,52 @@ public class SignUpController {
             jobSeeker.setDob(date);
             jobSeeker.setCvFileName(cvFileName);
 
-            JobSeeker savedJobSeeker = jobSeekerService.saveJobSeeker(jobSeeker);
+            //job seeker saving
+              JobSeeker savedJobSeeker = jobSeekerService.saveJobSeeker(jobSeeker);
+
+              List<JobSeekerQualification> jobSeekerQualificationList = new ArrayList<>();
+              for(int i=0;i<qualifications.length;i++){
+                  String qualification = qualifications[i];
+                  String startDate = startDates[i];
+                  String endDate = endDates[i];
+                  String status = statuses[i];
+                  String eduField = educationFields[i];
+                  String des = description[i];
+
+                  QualificationType qualificationType = qualificationTypeService.getQualificationTypeById(Integer.parseInt(qualification));
+
+                  JobSeekerQualification jobSeekerQualification = new JobSeekerQualification();
+                  jobSeekerQualification.setJobSeeker(savedJobSeeker);
+                  jobSeekerQualification.setQualificationType(qualificationType);
+                  jobSeekerQualification.setEduField(eduField);
+                  jobSeekerQualification.setStartDate(startDate);
+                  jobSeekerQualification.setEndDate(endDate);
+                  jobSeekerQualification.setDescription(des);
+                  jobSeekerQualification.setStatus(status);
+
+                  jobSeekerQualificationList.add(jobSeekerQualification);
+
+              }
+                // job seeker qualifications saving
+              if(jobSeekerQualificationList.size() > 0){
+                  jobSeekerQualificationService.saveAllJobSeekerQualifications(jobSeekerQualificationList);
+              }
+
+              //job seeker preferences saving
+                List<JobSeekerPreference> jobSeekerPreferenceList = new ArrayList<>();
+                for(int i=0;i<fields.length;i++){
+                    JobField jobField = jobFieldService.getJobFieldList().get(Integer.parseInt(fields[i])-1);
+                    JobSeekerPreference jobSeekerPreference = new JobSeekerPreference();
+                    jobSeekerPreference.setJobField(jobField);
+                    jobSeekerPreference.setJobSeeker(savedJobSeeker);
+
+                    jobSeekerPreferenceList.add(jobSeekerPreference);
+                }
+
+                if(jobSeekerQualificationList.size() >0){
+                    jobSeekerPreferenceService.saveAllJobSeekerPreferences(jobSeekerPreferenceList);
+                }
+
             String uploadDir = "src/main/resources/static/files/cv/"+savedJobSeeker.getJobSeekerId();
             Path uploadpath = Paths.get(uploadDir);
 
@@ -186,8 +251,6 @@ public class SignUpController {
             InputStream inputStream = cv.getInputStream();
             Path filePath = uploadpath.resolve(cvFileName);
             System.out.println(filePath.toFile().getAbsolutePath());
-//            savedEmployer.setLogoFilePath(filePath.toFile().getAbsolutePath());
-//            employerService.saveEmployer(savedEmployer);
             Files.copy(inputStream, filePath,
                     StandardCopyOption.REPLACE_EXISTING);
 

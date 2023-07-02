@@ -1,30 +1,44 @@
 package com.example.projectjobportal.controller;
 
+import com.example.projectjobportal.model.Vacancy;
+import com.example.projectjobportal.service.VacancyService;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class welcomeController {
+
+    VacancyService vacancyService;
+
+    public welcomeController(VacancyService vacancyService) {
+        this.vacancyService = vacancyService;
+    }
+
     @RequestMapping("/")
     public String getWelcomePage(Model model){
         return "welcome";
     }
 
-    @RequestMapping("/about-us")
-    public String getAboutUsPage(Model model){
-        return "about-us";
+    @ModelAttribute("vacancyList")
+    public List<Vacancy> getResentVacancies(){
+        List<Vacancy> vacancyList = new ArrayList<>();
+        Pageable pageable = PageRequest.of(0, 5, Sort.by("vacancyId").descending());
+        vacancyList = vacancyService.getRecentVacancyList(pageable);
+        return vacancyList;
     }
 
-//    @RequestMapping("/category")
-//    public String getCategoryPage(Model model){
-//
-//        return "category";
-//    }
+
 
     @RequestMapping("/subscription")
     public String getSubscriptionPage(Model model){
@@ -44,19 +58,9 @@ public class welcomeController {
         return "contact";
     }
 
-    @RequestMapping("/login")
-    public String getLoginPage(Model model){
 
-        return "login";
-    }
 
-    @GetMapping("/logOut")
-    public String logout(HttpSession session) {
-        // Invalidate the session to remove all session attributes
-        session.invalidate();
 
-        return "welcome";
-    }
 
 
 

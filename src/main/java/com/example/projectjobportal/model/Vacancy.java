@@ -25,6 +25,15 @@ public class Vacancy {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "position_id")
     private Position position;
+    private String vacancyImageName;
+
+    public String getVacancyImageName() {
+        return vacancyImageName;
+    }
+
+    public void setVacancyImageName(String vacancyImageName) {
+        this.vacancyImageName = vacancyImageName;
+    }
 
     public Position getPosition() {
         return position;
