@@ -9,13 +9,13 @@ public class ApplicationHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int applicationHistoryId;
-    private Date appliedDate;
+    private String appliedDate;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "job_seeker_id")
     private JobSeeker jobSeeker;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "vacancy_id")
     private Vacancy vacancy;
 
@@ -27,11 +27,11 @@ public class ApplicationHistory {
         this.applicationHistoryId = applicationHistoryId;
     }
 
-    public Date getAppliedDate() {
+    public String getAppliedDate() {
         return appliedDate;
     }
 
-    public void setAppliedDate(Date appliedDate) {
+    public void setAppliedDate(String appliedDate) {
         this.appliedDate = appliedDate;
     }
 

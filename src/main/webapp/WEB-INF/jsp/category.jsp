@@ -95,6 +95,27 @@
       window.open(url, '_blank', 'width=900,height=900');
 
     }
+    var temp_index ='' ;
+    function applyVacancy(index){
+      temp_index = index;
+      var vacancyId= document.getElementById("hiddenVacancyId_" + index).value;
+
+
+      $.ajax({
+        url : '<c:url value="/applyVacancy.htm"/>',
+        method: 'POST',
+        data : ({
+          'selectedVacancyId' :vacancyId
+
+        }),
+        success : function (response){
+          var message = response;
+          document.getElementById("appliedStatus_"+temp_index).innerText = message;
+
+        }
+      });
+
+    }
 
 
   </script>
@@ -236,11 +257,13 @@
       <div class="col-lg-8 post-list">
         <c:forEach items="${vacancyList}" var="vacancy" varStatus="status">
           <div class="single-post d-flex flex-row ">
+
             <div class="thumb">
               <input type="hidden" value="${vacancy.vacancyId}" id="hiddenVacancyId_${status.index}">
               <img src="img/company-logos/${vacancy.employer.employerId}_${vacancy.employer.companyName}/${vacancy.employer.logoImage}" alt="" style="width: 100px;height: 100px">
 
             <ul class="tags">
+
                 <li> ${vacancy.jobField.description} </li>
                 <li> ${vacancy.employer.industryType.description} </li>
                 <li> ${vacancy.position.description} </li>
@@ -249,17 +272,20 @@
             </div>
             <div class="details">
               <div class="title d-flex flex-row justify-content-between">
+
                 <div class="titles"><a href="single.html">
                   <h4>${vacancy.description}</h4>
                 </a>
                   <h6>${vacancy.employer.companyName}</h6>
                 </div>
                 <ul class="btns">
-<%--                  <li><a href="#"><span class="lnr lnr-heart"></span></a><br>--%>
-<%--                  </li>--%>
+
 
                   <li><button id="viewVacancy" onclick="viewVacancy(${status.index})">View</button></li>
-                  <li><button id="applyVacancy">Apply</button></li>
+                  <c:if test="${not empty sessionScope.userLogin && sessionScope.userLogin.userType.userTypeId == 3}">
+                    <li><button id="applyVacancy" onclick="applyVacancy(${status.index})">Apply</button></li>
+
+                  </c:if>
                 </ul>
               </div>
               <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
@@ -267,6 +293,7 @@
               <h5>Job Nature: ${vacancy.vacancyType.description}</h5>
               <p>Posted on : <fmt:formatDate value="${vacancy.postedDate}" pattern="yyyy/MM/dd" />    Closing Date : <fmt:formatDate value="${vacancy.closingDate}" pattern="yyyy/MM/dd" /></p>
               <p class="address"><span class="lnr lnr-map"></span> ${vacancy.employer.address}</p>
+              <label id="appliedStatus_${status.index}" style="font-weight: bold;color: blue"></label>
             </div>
           </div>
 
@@ -347,13 +374,10 @@
       <div class="menu-content col-lg-9">
         <div class="title text-center">
           <h1 class="mb-10 text-white">Join us today without any hesitation</h1>
-          <p class="text-white">Lorem ipsum dolor sit amet, consectetur
-            adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation.</p>
+          <p class="text-white">- Please login before applying to jobs - </p>
           <a class="primary-btn" href="#">I am a Candidate</a> <a class="primary-btn"
 
-                                                                  href="#">Request Free Demo</a> </div>
+                                                                  href="#">I am an Employer</a> </div>
       </div>
     </div>
   </div>

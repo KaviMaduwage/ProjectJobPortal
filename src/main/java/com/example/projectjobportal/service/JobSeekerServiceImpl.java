@@ -13,6 +13,11 @@ public class JobSeekerServiceImpl implements JobSeekerService{
     }
 
     @Override
+    public JobSeeker getJobSeekerByUserId(int userId) {
+        return jobSeekerDao.getJobSeekerByUserId(userId);
+    }
+
+    @Override
     public JobSeeker saveJobSeeker(JobSeeker jobSeeker) {
         return jobSeekerDao.save(jobSeeker);
     }
