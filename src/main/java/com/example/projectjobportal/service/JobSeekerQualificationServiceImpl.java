@@ -18,4 +18,9 @@ public class JobSeekerQualificationServiceImpl implements JobSeekerQualification
     public void saveAllJobSeekerQualifications(List<JobSeekerQualification> jobSeekerQualificationList) {
         jobSeekerQualificationDao.saveAll(jobSeekerQualificationList);
     }
+
+    @Override
+    public List<JobSeekerQualification> getQualificationsByJobSeekerId(int jobSeekerId) {
+        return jobSeekerQualificationDao.getQualificationsByJobSeekerId(jobSeekerId);
+    }
 }

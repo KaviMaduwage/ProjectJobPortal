@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 <head>
@@ -63,13 +64,10 @@
                     <li><a href="/subscription">Subscriptions</a></li>
                     <li><a href="/blog-home">Blog</a></li>
                     <li><a href="/contact">Contact</a></li>
-                    <li class="menu-has-children"><a href="">Pages</a>
-                        <ul>
-                            <li><a href="elements.html">elements</a></li>
-                            <li><a href="search.html">search</a></li>
-                            <li><a href="single.html">single</a></li>
-                        </ul>
-                    </li>
+                    <c:if test="${not empty sessionScope.userLogin && (sessionScope.userLogin.userType.userTypeId == 2 ||
+                                            sessionScope.userLogin.userType.userTypeId ==3)}">
+                        <li><a  href="/viewProfile">Profile</a></li>
+                    </c:if>
                     <li><a class="ticker-btn" href="/signUp">Signup</a></li>
                     <li><a class="ticker-btn" href="/login">Login</a></li>
                 </ul>

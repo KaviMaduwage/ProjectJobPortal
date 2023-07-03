@@ -22,11 +22,29 @@ public class JobSeeker {
     private String gender;
     @Transient
     private int age;
+    private String currentJobTitle;
+    @Column(length = 1000)
+    private String mySelfDes;
 
     private String address;
     private String telNo;
     private String cvFileName;
 
+    public String getMySelfDes() {
+        return mySelfDes;
+    }
+
+    public void setMySelfDes(String mySelfDes) {
+        this.mySelfDes = mySelfDes;
+    }
+
+    public String getCurrentJobTitle() {
+        return currentJobTitle;
+    }
+
+    public void setCurrentJobTitle(String currentJobTitle) {
+        this.currentJobTitle = currentJobTitle;
+    }
 
     public int getJobSeekerId() {
         return jobSeekerId;

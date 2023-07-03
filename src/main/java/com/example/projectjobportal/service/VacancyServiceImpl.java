@@ -28,4 +28,9 @@ public class VacancyServiceImpl implements VacancyService{
     public Vacancy getVacancyById(int vacancyId) {
         return vacancyDao.findById(vacancyId).get();
     }
+
+    @Override
+    public List<Vacancy> getVacancyListByEmployerId(int employerId) {
+        return vacancyDao.getVacancyListByEmployerId(employerId);
+    }
 }

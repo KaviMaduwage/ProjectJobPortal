@@ -133,13 +133,10 @@
                     <li><a href="/subscription">Subscriptions</a></li>
                     <li><a href="/blog-home">Blog</a></li>
                     <li><a href="/contact">Contact</a></li>
-                    <li class="menu-has-children"><a href="">Pages</a>
-                        <ul>
-                            <li><a href="elements.html">elements</a></li>
-                            <li><a href="search.html">search</a></li>
-                            <li><a href="single.html">single</a></li>
-                        </ul>
-                    </li>
+                    <c:if test="${not empty sessionScope.userLogin && (sessionScope.userLogin.userType.userTypeId == 2 ||
+                                            sessionScope.userLogin.userType.userTypeId ==3)}">
+                        <li><a  href="/viewProfile">Profile</a></li>
+                    </c:if>
                     <li><a class="ticker-btn" href="/signUp">Signup</a></li>
                     <li><a class="ticker-btn" href="/login">Login</a></li>
                 </ul>
@@ -186,10 +183,12 @@
                         <label>Address: <input type="text" name="address" required /></label>
                         <label>Contact No: <input type="text" name="telNo" required /></label>
                         <label>DOB: <input type="date" name="dob" required /></label>
+                        <label>Current Job Title: <input type="text" name="currentJobTitle" required /></label>
 <%--                        <label>Age (years): <input type="number" name="age" min="10" max="120" /></label>--%>
                         <label>Gender:</label>
                         <label><input type="radio" name="gender" class="inline" value="M"/> Male</label>
                         <label><input type="radio" name="gender" class="inline" value="F" /> Female</label>
+                        <label>Special Note: <textarea name="mySelfDes" rows="3" cols="5"></textarea></label>
                         <fieldset>
                             <label>Upload Your CV: <input type="file" name="cv"  accept="application/pdf"/></label>
                         </fieldset>

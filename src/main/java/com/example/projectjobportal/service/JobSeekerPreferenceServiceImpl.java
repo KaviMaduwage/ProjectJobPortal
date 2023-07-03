@@ -18,4 +18,9 @@ public class JobSeekerPreferenceServiceImpl implements JobSeekerPreferenceServic
     public void saveAllJobSeekerPreferences(List<JobSeekerPreference> jobSeekerPreferenceList) {
         jobSeekerPreferenceDao.saveAll(jobSeekerPreferenceList);
     }
+
+    @Override
+    public List<JobSeekerPreference> getPreferenceListByJobSeekerId(int jobSeekerId) {
+        return jobSeekerPreferenceDao.getPreferenceListByJobSeekerId(jobSeekerId);
+    }
 }
