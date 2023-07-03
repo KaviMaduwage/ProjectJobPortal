@@ -86,6 +86,16 @@
       document.searchForm.submit();
     }
 
+    function viewVacancy(index){
+      var vacancyId= document.getElementById("hiddenVacancyId_" + index).value;
+      console.log(vacancyId);
+      //const url = `viewVacancy.htm?vacancyId=${vacancyId}`;
+      const url = "viewVacancy.htm?vacancyId="+vacancyId;
+
+      window.open(url, '_blank', 'width=900,height=900');
+
+    }
+
 
   </script>
 </head>
@@ -227,9 +237,9 @@
         <c:forEach items="${vacancyList}" var="vacancy" varStatus="status">
           <div class="single-post d-flex flex-row ">
             <div class="thumb">
+              <input type="hidden" value="${vacancy.vacancyId}" id="hiddenVacancyId_${status.index}">
               <img src="img/company-logos/${vacancy.employer.employerId}_${vacancy.employer.companyName}/${vacancy.employer.logoImage}" alt="" style="width: 100px;height: 100px">
-<%--  <c:out value="img/company-logos/${vacancy.employer.employerId}_${vacancy.employer.companyName}/${vacancy.employer.logoImage}" />--%>
-<%--  <img src="img/company-logos/1_LSEG/logo_LSEG.png" alt="" style="width: 100px;height: 100px">--%>
+
             <ul class="tags">
                 <li> ${vacancy.jobField.description} </li>
                 <li> ${vacancy.employer.industryType.description} </li>
@@ -247,8 +257,9 @@
                 <ul class="btns">
 <%--                  <li><a href="#"><span class="lnr lnr-heart"></span></a><br>--%>
 <%--                  </li>--%>
-                  <li><a href="#">View</a></li>
-                  <li><a href="#">Apply</a></li>
+
+                  <li><button id="viewVacancy" onclick="viewVacancy(${status.index})">View</button></li>
+                  <li><button id="applyVacancy">Apply</button></li>
                 </ul>
               </div>
               <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,

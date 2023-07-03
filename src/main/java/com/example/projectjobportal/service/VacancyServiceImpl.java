@@ -23,4 +23,9 @@ public class VacancyServiceImpl implements VacancyService{
     public List<Vacancy> getRecentVacancyList(Pageable pageable) {
         return vacancyDao.getRecentVacancyList(pageable);
     }
+
+    @Override
+    public Vacancy getVacancyById(int vacancyId) {
+        return vacancyDao.findById(vacancyId).get();
+    }
 }

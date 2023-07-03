@@ -9,4 +9,6 @@ public interface VacancyService {
     List<Vacancy> getVacancyListByCriteria(int industryTypeId, int jobFieldId, int positionId);
 
     List<Vacancy> getRecentVacancyList(Pageable pageable);
+
+    Vacancy getVacancyById(int vacancyId);
 }

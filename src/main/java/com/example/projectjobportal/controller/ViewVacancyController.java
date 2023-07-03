@@ -11,12 +11,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,6 +94,17 @@ public class ViewVacancyController {
 
         return "category";
     }
+
+    @RequestMapping("/viewVacancy.htm")
+    public String getViewVacancyPage(@RequestParam("vacancyId") String vacancyId, Model model,HttpServletRequest request){
+
+        Vacancy vacancy = vacancyService.getVacancyById(Integer.parseInt(vacancyId));
+        String image_path = "img/vacancies/"+vacancy.getEmployer().getEmployerId()+"_"+vacancy.getEmployer().getCompanyName()+"/"+vacancy.getVacancyImageName();
+        model.addAttribute("imageSrc",image_path);
+
+        return "viewVacancy";
+    }
+
     @RequestMapping(value = "/searchVacancies.htm", method = RequestMethod.POST)
     public String searchVacancies(HttpServletRequest request, Model model){
 
