@@ -4,6 +4,8 @@ import com.example.projectjobportal.dao.ApplicationHistoryDao;
 import com.example.projectjobportal.model.ApplicationHistory;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ApplicationHistoryServiceImpl implements ApplicationHistoryService{
     ApplicationHistoryDao applicationHistoryDao;
@@ -20,5 +22,10 @@ public class ApplicationHistoryServiceImpl implements ApplicationHistoryService{
     @Override
     public void saveApplicationDate(ApplicationHistory newHistory) {
         applicationHistoryDao.save(newHistory);
+    }
+
+    @Override
+    public List<ApplicationHistory> getAppliedJobHistoryByJobSeekerId(int jobSeekerId) {
+        return applicationHistoryDao.getAppliedJobHistoryByJobSeekerId(jobSeekerId);
     }
 }

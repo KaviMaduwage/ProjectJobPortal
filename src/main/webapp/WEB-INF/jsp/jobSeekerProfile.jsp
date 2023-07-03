@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -18,6 +20,17 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+
+    <script>
+        function viewVacancy(index){
+            var vacancyId= document.getElementById("hiddenVacancyId_" + index).value;
+            console.log(vacancyId);
+            const url = "viewVacancy.htm?vacancyId="+vacancyId;
+
+            window.open(url, '_blank', 'width=900,height=900');
+
+        }
+    </script>
 </head>
 <header class="head">
     <div class="logo border-bottom">
@@ -29,44 +42,13 @@
     <div id="navbarNav" class="navcol d-none d-lg-block">
         <ul>
             <li><a href="/"><i class="bi bi-house-door fs-5 me-2"></i> Home</a></li>
-            <li><a href="#about"><i class="bi fs-5 bi-info-square me-2"></i> About</a></li>
-            <li><a href="#service"><i class="bi fs-5 bi-gear me-2"></i> Service</a></li>
-            <li><a href="#portfolio"><i class="bi fs-5 bi-columns-gap me-2"></i> Portfolio</a></li>
-            <li><a href="#testimonial"><i class="bi fs-5 bi-people me-2"></i> Testimonil</a></li>
-            <li><a href="#blog"><i class="bi fs-5 bi-newspaper me-2"></i> Blog</a></li>
+            <li><a href="#about"><i class="bi fs-5 bi-info-square me-2"></i> About me</a></li>
+            <li><a href="#fields"><i class="bi fs-5 bi-gear me-2"></i> Preferred Fields</a></li>
+            <li><a href="#appliedJobs"><i class="bi fs-5 bi-people me-2"></i> Applied Jobs</a></li>
             <li><a href="#contact"><i class="bifs-5  bi-envelope me-2"></i> Contact</a></li>
         </ul>
     </div>
-    <!-- <header id="header"> -->
-    <div class="container">
-        <div class="row align-items-center justify-content-between d-flex">
-            <div id="logo">
-                <h1 class="text-white"><img src="img/jobGateWayLogo.jpeg"
 
-                                            alt="logo" style="width: 100px; height: 66px;"></h1>
-            </div>
-            <nav id="nav-menu-container">
-                <ul class="nav-menu">
-                    <li class="menu-active"><a href="index.html">Home</a></li>
-                    <li><a href="about-us.html">About Us</a></li>
-                    <li><a href="category.html">Category</a></li>
-                    <li><a href="price.html">Price</a></li>
-                    <li><a href="blog-home.html">Blog</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li class="menu-has-children"><a href="">Pages</a>
-                        <ul>
-                            <li><a href="elements.html">elements</a></li>
-                            <li><a href="search.html">search</a></li>
-                            <li><a href="single.html">single</a></li>
-                        </ul>
-                    </li>
-                    <li><a class="ticker-btn" href="#">Signup</a></li>
-                    <li><a class="ticker-btn" href="#">Login</a></li>
-                </ul>
-            </nav>
-            <!-- #nav-menu-container --> </div>
-    </div>
-    <!-- </header> -->
 </header>
 <div  class="main-content">
 
@@ -167,10 +149,9 @@
 
     <!--########################## Services Starts Here ############################# -->
 
-    <div id="service" class="service px-4 py-5">
+    <div id="fields" class="service px-4 py-5">
         <div class="titie-row row mb-3">
-            <h2 class="fw-bolder">Services</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ipsum sit nibh amet egestas tellus.</p>
+            <h2 class="fw-bolder">Preferred Fields</h2>
         </div>
         <div class="row mt-5">
             <div class="col-lg-4 col-md-6 mb-4">
@@ -223,162 +204,52 @@
         </div>
     </div>
 
-    <!--########################## Portfolio Starts Here ############################# -->
 
-    <div id="portfolio" class="service px-4 bg-white py-5">
+    <div id="appliedJobs" class="service px-4 py-5">
         <div class="titie-row row mb-3">
-            <h2 class="fw-bolder">Portfolio</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ipsum sit nibh amet egestas tellus.</p>
+            <h2 class="fw-bolder">Applied Jobs</h2>
+
         </div>
         <div class="row mt-5">
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove shadow-md rounded bg-white p-2">
-                    <img src="assets/images/blog/1.jpg" alt="">
-                    <h5 class="mt-3 fs-6 fw-bold">Creative Page Design</h5>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove shadow-md rounded bg-white p-2">
-                    <img src="assets/images/blog/2.jpg" alt="">
-                    <h5 class="mt-3 fs-6 fw-bold">Creative Page Design</h5>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove shadow-md rounded bg-white p-2">
-                    <img src="assets/images/blog/3.jpg" alt="">
-                    <h5 class="mt-3 fs-6 fw-bold">Creative Page Design</h5>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove shadow-md rounded bg-white p-2">
-                    <img src="assets/images/blog/4.jpg" alt="">
-                    <h5 class="mt-3 fs-6 fw-bold">Creative Page Design</h5>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove shadow-md rounded bg-white p-2">
-                    <img src="assets/images/blog/5.jpg" alt="">
-                    <h5 class="mt-3 fs-6 fw-bold">Creative Page Design</h5>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove shadow-md rounded bg-white p-2">
-                    <img src="assets/images/blog/6.jpg" alt="">
-                    <h5 class="mt-3 fs-6 fw-bold">Creative Page Design</h5>
-                </div>
-            </div>
-        </div>
-    </div>
+            <c:forEach items="${appliedJobs}" var="appliedJob" varStatus="status">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="serv-cove shadow-md rounded bg-white p-3">
+                        <input type="hidden" value="${appliedJob.vacancy.vacancyId}" id="hiddenVacancyId_${status.index}">
+                        <div class="prf row mb-3">
+                            <div class="col-md-3">
+                                <img class="rounded-pill"
+                                     src="img/company-logos/${appliedJob.vacancy.employer.employerId}_${appliedJob.vacancy.employer.companyName}/${appliedJob.vacancy.employer.logoImage}"
+                                     alt="" style="width: 70px;height: 70px">
+                            </div>
+                            <div class="col-md-9 align-self-center">
+                                <h6 class="mb-0 fw-bolder">${appliedJob.vacancy.description}</h6>
+                                <span>${appliedJob.vacancy.employer.companyName}</span>
+                            </div>
 
-    <!--########################## Portfolio Starts Here ############################# -->
 
-    <div id="testimonial" class="service px-4 py-5">
-        <div class="titie-row row mb-3">
-            <h2 class="fw-bolder">Testimonial</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ipsum sit nibh amet egestas tellus.</p>
-        </div>
-        <div class="row mt-5">
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove shadow-md rounded bg-white p-3">
-                    <div class="prf row mb-3">
-                        <div class="col-md-3">
-                            <img class="rounded-pill" src="assets/images/testimonial/member-01.jpg" alt="">
                         </div>
-                        <div class="col-md-9 align-self-center">
-                            <h6 class="mb-0 fw-bolder">Vinoth Parkash</h6>
-                            <span>CEO Fabric Nation</span>
+                        <div class="details">
+                            <p class="fs-7 fst-italic">Job Nature : ${appliedJob.vacancy.vacancyType.description}</p>
+                            <p class="fs-7 fst-italic">Applied on : ${appliedJob.appliedDate}"</p><br>
+                            <ul class="btns">
+                                <li><button id="viewVacancy" onclick="viewVacancy(${status.index})">View</button></li>
+
+                            </ul>
                         </div>
-                    </div>
-                    <div class="det text-center">
-                        <p class="fs-7 fst-italic">Sed lectus ante, pharetra in lacus sed, efficitur luctus elit. Suspendisse commodo felis dictum, tempor tortor a, dapibus tellus. Nam ornare felis ut arcu tristique luctus. Curabitur </p>
                     </div>
                 </div>
-            </div>
+            </c:forEach>
 
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove shadow-md rounded bg-white p-3">
-                    <div class="prf row mb-3">
-                        <div class="col-md-3">
-                            <img class="rounded-pill" src="assets/images/testimonial/member-03.jpg" alt="">
-                        </div>
-                        <div class="col-md-9 align-self-center">
-                            <h6 class="mb-0 fw-bolder">Jackson Daniel</h6>
-                            <span>CEO Notitech</span>
-                        </div>
-                    </div>
-                    <div class="det text-center">
-                        <p class="fs-7 fst-italic">Sed lectus ante, pharetra in lacus sed, efficitur luctus elit. Suspendisse commodo felis dictum, tempor tortor a, dapibus tellus. Nam ornare felis ut arcu tristique luctus. Curabitur </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove shadow-md rounded bg-white p-3">
-                    <div class="prf row mb-3">
-                        <div class="col-md-3">
-                            <img class="rounded-pill" src="assets/images/testimonial/member-02.jpg" alt="">
-                        </div>
-                        <div class="col-md-9 align-self-center">
-                            <h6 class="mb-0 fw-bolder">Praveen Thaney</h6>
-                            <span>Admin Vintech</span>
-                        </div>
-                    </div>
-                    <div class="det text-center">
-                        <p class="fs-7 fst-italic">Sed lectus ante, pharetra in lacus sed, efficitur luctus elit. Suspendisse commodo felis dictum, tempor tortor a, dapibus tellus. Nam ornare felis ut arcu tristique luctus. Curabitur </p>
-                    </div>
-                </div>
-            </div>
 
         </div>
     </div>
 
-    <!--########################## Blog Starts Here ############################# -->
-
-    <div id="blog" class="service px-4 bg-white py-5">
-        <div class="titie-row row mb-3">
-            <h2 class="fw-bolder">Blog</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ipsum sit nibh amet egestas tellus.</p>
-        </div>
-        <div class="row mt-5">
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove rounded bg-white p-2">
-                    <img src="assets/images/blog/1.jpg" alt="">
-                    <div class="p-2">
-                        <h5 class="mt-3 fs-7 fw-bold">Top 10 Trends in  Webdesign sit nibh amet  Mauris ipsum sit nibh</h5>
-                        <span class="fs-8">22 May 2015</span>
-                        <span class="float-end fs-8"><i class="bi bi-person"></i> Sam Anderson</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove rounded bg-white p-2">
-                    <img src="assets/images/blog/2.jpg" alt="">
-                    <div class="p-2">
-                        <h5 class="mt-3 fs-7 fw-bold">Top 10 Trends in  Webdesign sit nibh amet  Mauris ipsum sit nibh</h5>
-                        <span class="fs-8">22 May 2015</span>
-                        <span class="float-end fs-8"><i class="bi bi-person"></i> Sam Anderson</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove rounded bg-white p-2">
-                    <img src="assets/images/blog/3.jpg" alt="">
-                    <div class="p-2">
-                        <h5 class="mt-3 fs-7 fw-bold">Top 10 Trends in  Webdesign sit nibh amet  Mauris ipsum sit nibh</h5>
-                        <span class="fs-8">22 May 2015</span>
-                        <span class="float-end fs-8"><i class="bi bi-person"></i> Sam Anderson</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
 
     <!--########################## Contact Us Starts Here ############################# -->
 
     <div class="service px-4 py-5">
         <div class="titie-row row mb-3">
-            <h2 class="fw-bolder">Contact Us</h2>
+            <h2 class="fw-bolder">Contact</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ipsum sit nibh amet egestas tellus.</p>
         </div>
         <div class="contact-row m-0 mt-5 row">
