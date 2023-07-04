@@ -183,10 +183,12 @@
                         <label>Address: <input type="text" name="address" required /></label>
                         <label>Contact No: <input type="text" name="telNo" required /></label>
                         <label>DOB: <input type="date" name="dob" required /></label>
+                        <label>Current Job Title: <input type="text" name="currentJobTitle" required /></label>
 <%--                        <label>Age (years): <input type="number" name="age" min="10" max="120" /></label>--%>
                         <label>Gender:</label>
                         <label><input type="radio" name="gender" class="inline" value="M"/> Male</label>
                         <label><input type="radio" name="gender" class="inline" value="F" /> Female</label>
+                        <label>Special Note: <textarea name="mySelfDes" rows="3" cols="5"></textarea></label>
                         <fieldset>
                             <label>Upload Your CV: <input type="file" name="cv"  accept="application/pdf"/></label>
                         </fieldset>

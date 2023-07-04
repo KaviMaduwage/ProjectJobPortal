@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface JobSeekerQualificationService {
     void saveAllJobSeekerQualifications(List<JobSeekerQualification> jobSeekerQualificationList);
+
+    List<JobSeekerQualification> getQualificationsByJobSeekerId(int jobSeekerId);
 }

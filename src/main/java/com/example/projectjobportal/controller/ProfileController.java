@@ -1,12 +1,7 @@
 package com.example.projectjobportal.controller;
 
-import com.example.projectjobportal.model.ApplicationHistory;
-import com.example.projectjobportal.model.JobSeeker;
-import com.example.projectjobportal.model.User;
-import com.example.projectjobportal.model.Vacancy;
-import com.example.projectjobportal.service.ApplicationHistoryService;
-import com.example.projectjobportal.service.JobSeekerService;
-import com.example.projectjobportal.service.UserService;
+import com.example.projectjobportal.model.*;
+import com.example.projectjobportal.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,10 +14,15 @@ public class ProfileController {
 
     JobSeekerService jobSeekerService;
     ApplicationHistoryService applicationHistoryService;
+    JobSeekerPreferenceService jobSeekerPreferenceService;
+    JobSeekerQualificationService jobSeekerQualificationService;
 
-    public ProfileController(JobSeekerService jobSeekerService,ApplicationHistoryService applicationHistoryService) {
+    public ProfileController(JobSeekerService jobSeekerService,ApplicationHistoryService applicationHistoryService,
+                             JobSeekerPreferenceService jobSeekerPreferenceService,JobSeekerQualificationService jobSeekerQualificationService) {
         this.jobSeekerService = jobSeekerService;
         this.applicationHistoryService =applicationHistoryService;
+        this.jobSeekerPreferenceService = jobSeekerPreferenceService;
+        this.jobSeekerQualificationService = jobSeekerQualificationService;
     }
 
     @RequestMapping("/viewProfile")
@@ -46,6 +46,21 @@ public class ProfileController {
         }else{
             model.addAttribute("noVacancy","No Applied Vacancies To Show.");
         }
+        model.addAttribute("jobSeeker",jobSeeker);
 
+        List<JobSeekerPreference> jobSeekerPreferenceList = jobSeekerPreferenceService.getPreferenceListByJobSeekerId(jobSeeker.getJobSeekerId());
+        if(jobSeekerPreferenceList != null && jobSeekerPreferenceList.size() > 0){
+            model.addAttribute("preferences",jobSeekerPreferenceList);
+        }else{
+            model.addAttribute("noPreference","No Preference To Show.");
+
+        }
+
+        List<JobSeekerQualification> jobSeekerQualificationList = jobSeekerQualificationService.getQualificationsByJobSeekerId(jobSeeker.getJobSeekerId());
+        if(jobSeekerQualificationList != null && jobSeekerQualificationList.size() > 0){
+            model.addAttribute("qualifications",jobSeekerQualificationList);
+        }else{
+            model.addAttribute("noQualification","No Qualification To Show.");
+        }
     }
 }

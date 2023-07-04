@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface JobSeekerPreferenceService {
     void saveAllJobSeekerPreferences(List<JobSeekerPreference> jobSeekerPreferenceList);
+
+    List<JobSeekerPreference> getPreferenceListByJobSeekerId(int jobSeekerId);
 }

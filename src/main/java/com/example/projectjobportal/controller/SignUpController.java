@@ -152,6 +152,8 @@ public class SignUpController {
         String telNo = request.getParameter("telNo");
         String dob = request.getParameter("dob");
         String gender = request.getParameter("gender");
+        String currentJobTitle = request.getParameter("currentJobTitle");
+        String mySelfDes = request.getParameter("mySelfDes");
         String[] fields = request.getParameterValues("field");
 
         String email = request.getParameter("email");
@@ -187,6 +189,8 @@ public class SignUpController {
         jobSeeker.setAddress(address);
         jobSeeker.setGender(gender);
         jobSeeker.setTelNo(telNo);
+        jobSeeker.setCurrentJobTitle(currentJobTitle);
+        jobSeeker.setMySelfDes(mySelfDes);
         jobSeeker.setUser(savedUser);
 
         String pattern = "yyyy-MM-dd";

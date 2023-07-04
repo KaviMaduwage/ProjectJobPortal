@@ -30,6 +30,10 @@
             window.open(url, '_blank', 'width=900,height=900');
 
         }
+
+        function showResumeInput(){
+            $('#resumeInput').show();
+        }
     </script>
 </head>
 <header class="head">
@@ -43,6 +47,7 @@
         <ul>
             <li><a href="/"><i class="bi bi-house-door fs-5 me-2"></i> Home</a></li>
             <li><a href="#about"><i class="bi fs-5 bi-info-square me-2"></i> About me</a></li>
+            <li><a href="#qualifications"><i class="bi fs-5 bi-people me-2"></i> Qualifications</a></li>
             <li><a href="#fields"><i class="bi fs-5 bi-gear me-2"></i> Preferred Fields</a></li>
             <li><a href="#appliedJobs"><i class="bi fs-5 bi-people me-2"></i> Applied Jobs</a></li>
             <li><a href="#contact"><i class="bifs-5  bi-envelope me-2"></i> Contact</a></li>
@@ -58,15 +63,16 @@
         <div class="row vh-100">
             <div class="col-xl-6 text-center mx-auto align-self-center ">
                 <div class="imgcover mb-4">
-                    <img src="assets/images/square.jpg" class="rounded-pill bg-white p-2 shadow" alt="">
+                    <img src="img/profileImg.png" class="rounded-pill bg-white p-2 shadow" alt="">
                 </div>
-                <b class="fs-6">Hellow I am, Eiden Jackeson</b>
-                <h1 class="fw-bold mb-4 fs-1">Full Stack Develper</h1>
-                <p>Mauris cursus libero eu gravida malesuada. Vivamus efficitur sollicitudin tincidunt. Vivamus iaculis, est et posuere facilisis, sem nisi volutpat enim, eget hendrerit libero ligula quis lacus</p>
-                <ul>
-                    <li></li>
-                </ul>
+                <b class="fs-6">Hello I am, ${jobSeeker.firstName} ${jobSeeker.lastName}</b>
+                <h1 class="fw-bold mb-4 fs-1">${jobSeeker.currentJobTitle}</h1>
+                <p style="text-transform: uppercase">As a dedicated and experienced job seeker, I am motivated to contribute my versatile skills and be a results-oriented team player, bringing enthusiasm
+                    and a detail-oriented approach to solve challenges in your organization.</p>
+
                 <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill">Download Resume</button>
+                <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill" onclick="showResumeInput()">Upload Resume</button>
+                <input type="file" id="resumeInput" accept="application/pdf" style="display: none;">
             </div>
         </div>
     </div>
@@ -79,71 +85,73 @@
         </div>
         <div class="row">
             <div class="col-md-7">
-                <p><b>I am, Eiden Jackeson</b></p>
-                <p class="pt-2 fs-6 text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar magna ut bibendum imperdiet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum id tempor libero. Praesent vel magna eget purus dignissim interdum. Sed efficitur malesuada dui, ac interdum ante scelerisque non. Curabitur quis euismod lorem, vel rutrum ante. Sed non vestibulum turpis. Phasellus sit amet nisl in diam congue tristique. Nullam convallis lectus ac nisl iaculis, non posuere ipsum interdum. Vivamus nec justo ac sapien convallis maximus.</p>
+                <p><b>I am, ${jobSeeker.firstName} ${jobSeeker.lastName}</b></p>
+                <p class="pt-2 fs-6 text-justify">${jobSeeker.mySelfDes}</p>
+                <h4 class=" fs-5 my-3 mt-4 fw-bolder">Other Details</h4>
 
-                <h4 class=" fs-5 my-3 mt-4 fw-bolder">What is my skill level ?</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ipsum sit nibh amet egestas tellus.</p>
 
                 <div class="row skill-set">
                     <div class="col-md-6 py-3">
-                        <h6 class="fw-bold">React.Js</h6>
-                        <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" aria-label="Example with label" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-                        </div>
+                        <span><h6 class="fw-bold">Date Of Birth : </h6>${jobSeeker.dob}</span>
                     </div>
                     <div class="col-md-6 py-3">
-                        <h6 class="fw-bold">Vue.Js</h6>
-                        <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" aria-label="Example with label" style="width: 65%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
-                        </div>
+                        <span><h6 class="fw-bold">Age : </h6>${jobSeeker.age}</span>
                     </div>
                     <div class="col-md-6 py-3">
-                        <h6 class="fw-bold">Angular.Js</h6>
-                        <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" aria-label="Example with label" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
-                        </div>
+                        <span><h6 class="fw-bold">Gender : </h6>${jobSeeker.gender}</span>
                     </div>
 
                     <div class="col-md-6 py-3">
-                        <h6 class="fw-bold">Laravel</h6>
-                        <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" aria-label="Example with label" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
-                        </div>
+                        <span><h6 class="fw-bold">Address : </h6>${jobSeeker.address}</span>
+                    </div>
+                    <div class="col-md-6 py-3">
+                        <span><h6 class="fw-bold">Tel No : </h6>${jobSeeker.telNo}</span>
+                    </div>
+                    <div class="col-md-6 py-3">
+                        <span><h6 class="fw-bold">Email : </h6> ${jobSeeker.user.email}</span>
                     </div>
 
-                    <div class="col-md-6 py-3">
-                        <h6 class="fw-bold">Django</h6>
-                        <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" aria-label="Example with label" style="width: 55%;" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">55%</div>
-                        </div>
-                    </div>
 
-                    <div class="col-md-6 py-3">
-                        <h6 class="fw-bold">Next Js</h6>
-                        <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" aria-label="Example with label" style="width: 66%;" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100">66%</div>
-                        </div>
-                    </div>
 
-                    <div class="col-md-6 py-3">
-                        <h6 class="fw-bold">Phoptoshop</h6>
-                        <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" aria-label="Example with label" style="width: 82%;" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100">82%</div>
-                        </div>
-                    </div>
 
-                    <div class="col-md-6 py-3">
-                        <h6 class="fw-bold">Sketch</h6>
-                        <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" aria-label="Example with label" style="width: 45%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%</div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
             <div class="col-md-5">
-                <img src="assets/images/profile.jpg" alt="">
+                <img src="img/profileImg.png" alt="" style="height: 400px;width: 300px">
             </div>
+        </div>
+    </div>
+
+    <div id="qualifications" class="service px-4 py-5">
+        <div class="titie-row row mb-3">
+            <h2 class="fw-bolder">Educational Qualifications</h2>
+
+        </div>
+        <div class="row mt-5">
+            <label>${noQualification}</label>
+            <c:forEach items="${qualifications}" var="qualification" varStatus="status">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="serv-cove shadow-md rounded bg-white p-3">
+                        <div class="prf row mb-3">
+
+                            <div class="col-md-12 align-self-center">
+                                <h6 class="mb-0 fw-bolder" style="text-transform: uppercase;">${qualification.qualificationType.description}</h6>
+                                <span>${qualification.eduField}</span>
+                            </div>
+
+                        </div>
+                        <div class="details">
+                            <span style="color: blue"><label class="fs-7 fst-italic" style="font-weight: bold">Status   : </label>  ${qualification.status}</span><br>
+                            <span><label class="fs-7 fst-italic" style="font-weight: bold">Started On   : </label>  ${qualification.startDate}</span><br>
+                            <span><label class="fs-7 fst-italic" style="font-weight: bold">Ended on   : </label>  ${qualification.endDate}</span><br>
+
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
+
+
         </div>
     </div>
 
@@ -153,54 +161,17 @@
         <div class="titie-row row mb-3">
             <h2 class="fw-bolder">Preferred Fields</h2>
         </div>
+        <label>${noPreference}</label>
         <div class="row mt-5">
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove shadow-md rounded bg-white text-center p-4">
-                    <i class="bi fs-1 bi-boxes"></i>
-                    <h5 class="mt-3 fs-6 fw-bold">Website Design</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar magna ut bibendum imperdiet</p>
-                </div>
-            </div>
+            <c:forEach items="${preferences}" var="preference" varStatus="status">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="serv-cove shadow-md rounded bg-white text-center p-4">
+                        <i class="bi fs-1 bi-boxes"></i>
+                        <h5 class="mt-3 fs-6 fw-bold">${preference.jobField.description}</h5>
 
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove shadow-md rounded bg-white text-center p-4">
-                    <i class="bi fs-1 bi-boxes"></i>
-                    <h5 class="mt-3 fs-6 fw-bold">UI/UX Development</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar magna ut bibendum imperdiet</p>
+                    </div>
                 </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove shadow-md rounded bg-white text-center p-4">
-                    <i class="bi fs-1 bi-boxes"></i>
-                    <h5 class="mt-3 fs-6 fw-bold">Web Development</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar magna ut bibendum imperdiet</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove shadow-md rounded bg-white text-center p-4">
-                    <i class="bi fs-1 bi-boxes"></i>
-                    <h5 class="mt-3 fs-6 fw-bold">Android Development</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar magna ut bibendum imperdiet</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove shadow-md rounded bg-white text-center p-4">
-                    <i class="bi fs-1 bi-boxes"></i>
-                    <h5 class="mt-3 fs-6 fw-bold">IOS Developement</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar magna ut bibendum imperdiet</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove shadow-md rounded bg-white text-center p-4">
-                    <i class="bi fs-1 bi-boxes"></i>
-                    <h5 class="mt-3 fs-6 fw-bold">Digital Marketing</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar magna ut bibendum imperdiet</p>
-                </div>
-            </div>
+            </c:forEach>
         </div>
     </div>
 
@@ -210,6 +181,7 @@
             <h2 class="fw-bolder">Applied Jobs</h2>
 
         </div>
+        <label>${noVacancy}</label>
         <div class="row mt-5">
             <c:forEach items="${appliedJobs}" var="appliedJob" varStatus="status">
                 <div class="col-lg-4 col-md-6 mb-4">
@@ -250,7 +222,7 @@
     <div class="service px-4 py-5">
         <div class="titie-row row mb-3">
             <h2 class="fw-bolder">Contact</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ipsum sit nibh amet egestas tellus.</p>
+
         </div>
         <div class="contact-row m-0 mt-5 row">
             <div class="col-lg-4 col-md-6 mb-4">
@@ -261,8 +233,7 @@
                     <div class="col-md-9">
                         <h6 class="fs-7 fw-bolder">Phone</h6>
                         <ul>
-                            <li>+94 989 8787 878</li>
-                            <li>+94 889 1287 978</li>
+                            <li>${jobSeeker.telNo}</li>
                         </ul>
                     </div>
                 </div>
@@ -276,8 +247,8 @@
                     <div class="col-md-9">
                         <h6 class="fs-7 fw-bolder">Email</h6>
                         <ul>
-                            <li>demo@smarteyeapps.com</li>
-                            <li>app@maildeaci.com</li>
+                            <li style="white-space: normal; word-wrap: break-word;">${jobSeeker.user.email}</li>
+
                         </ul>
                     </div>
                 </div>
@@ -291,40 +262,39 @@
                     <div class="col-md-9">
                         <h6 class="fs-7 fw-bolder">Address</h6>
                         <ul>
-                            <li>First Floor Vincent Plaza, Kuzhithurai</li>
-
+                            <li style="white-space: normal; word-wrap: break-word;">${jobSeeker.address}</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
         </div>
-        <div id="contact" class="contact-row m-0 row">
-            <div class="col-md-6">
-                <div class="shadow-md p-4 rounded bg-white">
-                    <h4 class="fs-6 fw-bolder mb-3">Contact Form</h4>
-                    <form action="">
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label fw-bolder fs-8">Email address</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter Email Address">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label fw-bolder fs-8">Enter Subject</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter Subject">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label fw-bolder fs-8">Example textarea</label>
-                            <textarea class="form-control" placeholder="Enter Message" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="shadow-md p-4 rounded bg-white">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15659.16664494769!2d77.32095495000002!3d11.1288885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1660839868672!5m2!1sen!2sin" style="width:100%" height="340" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
-        </div>
+<%--        <div id="contact" class="contact-row m-0 row">--%>
+<%--            <div class="col-md-6">--%>
+<%--                <div class="shadow-md p-4 rounded bg-white">--%>
+<%--                    <h4 class="fs-6 fw-bolder mb-3">Contact Form</h4>--%>
+<%--                    <form action="">--%>
+<%--                        <div class="mb-3">--%>
+<%--                            <label for="exampleFormControlInput1" class="form-label fw-bolder fs-8">Email address</label>--%>
+<%--                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter Email Address">--%>
+<%--                        </div>--%>
+<%--                        <div class="mb-3">--%>
+<%--                            <label for="exampleFormControlInput1" class="form-label fw-bolder fs-8">Enter Subject</label>--%>
+<%--                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter Subject">--%>
+<%--                        </div>--%>
+<%--                        <div class="mb-3">--%>
+<%--                            <label for="exampleFormControlTextarea1" class="form-label fw-bolder fs-8">Example textarea</label>--%>
+<%--                            <textarea class="form-control" placeholder="Enter Message" id="exampleFormControlTextarea1" rows="3"></textarea>--%>
+<%--                        </div>--%>
+<%--                    </form>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-md-6">--%>
+<%--                <div class="shadow-md p-4 rounded bg-white">--%>
+<%--                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15659.16664494769!2d77.32095495000002!3d11.1288885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1660839868672!5m2!1sen!2sin" style="width:100%" height="340" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
     </div>
 
 
