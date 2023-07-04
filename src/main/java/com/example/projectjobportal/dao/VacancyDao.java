@@ -14,4 +14,6 @@ public interface VacancyDao extends JpaRepository<Vacancy,Integer> {
     List<Vacancy> getVacancyListByCriteria(int industryTypeId, int jobFieldId, int positionId);
     @Query("SELECT v FROM Vacancy v ORDER BY v.vacancyId DESC")
     List<Vacancy> getRecentVacancyList(Pageable pageable);
+    @Query("SELECT v FROM Vacancy  v WHERE v.employer.employerId = :employerId")
+    List<Vacancy> getVacancyListByEmployerId(int employerId);
 }

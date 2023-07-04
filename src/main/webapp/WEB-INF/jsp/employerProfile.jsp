@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -31,9 +33,9 @@
         <ul>
             <li><a href="/"><i class="bi bi-house-door fs-5 me-2"></i> Home</a></li>
             <li><a href="#about"><i class="bi fs-5 bi-info-square me-2"></i> About</a></li>
-            <li><a href="#service"><i class="bi fs-5 bi-gear me-2"></i> Service</a></li>
-            <li><a href="#portfolio"><i class="bi fs-5 bi-columns-gap me-2"></i> Portfolio</a></li>
-            <li><a href="#blog"><i class="bi fs-5 bi-newspaper me-2"></i> Blog</a></li>
+            <li><a href="#preVacancies"><i class="bi fs-5 bi-gear me-2"></i> Previous Vacancies</a></li>
+            <li><a href="#addNewVacancy"><i class="bi fs-5 bi-columns-gap me-2"></i>New Vacancies</a></li>
+            <li><a href="#viewApplicants"><i class="bi fs-5 bi-newspaper me-2"></i> View Applicants</a></li>
             <li><a href="#contact"><i class="bifs-5  bi-envelope me-2"></i> Contact</a></li>
         </ul>
     </div>
@@ -46,13 +48,15 @@
         <div class="row vh-100">
             <div class="col-xl-6 text-center mx-auto align-self-center ">
                 <div class="imgcover mb-4">
-                    <img src="assets/images/square.jpg" class="rounded-pill bg-white p-2 shadow" alt="">
+                    <img src="img/company-logos/${employer.employerId}_${employer.companyName}/${employer.logoImage}" class="rounded-pill bg-white p-2 shadow" alt="">
                 </div>
-                <b class="fs-6">Hellow we are, Jhone Keels</b>
-                <h1 class="fw-bold mb-4 fs-1">Leading holding company in Sri Lanka</h1>
-                <p>Mauris cursus libero eu gravida malesuada. Vivamus efficitur sollicitudin tincidunt. Vivamus iaculis, est et posuere facilisis, sem nisi volutpat enim, eget hendrerit libero ligula quis lacus</p>
+                <b class="fs-6">Hello we are, ${employer.companyName}</b>
+                <h1 class="fw-bold mb-4 fs-1">Leading ${employer.industryType.description} company in Sri Lanka</h1>
+                <p></p>
                 <ul>
-                    <li></li>
+                    <li>
+                        <a href="#addNewVacancy"><button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill">Post a  Vacancy</button></a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -66,225 +70,188 @@
         </div>
         <div class="row">
             <div class="col-md-7">
-                <p class="pt-2 fs-6 text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar magna ut bibendum imperdiet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum id tempor libero. Praesent vel magna eget purus dignissim interdum. Sed efficitur malesuada dui, ac interdum ante scelerisque non. Curabitur quis euismod lorem, vel rutrum ante. Sed non vestibulum turpis. Phasellus sit amet nisl in diam congue tristique. Nullam convallis lectus ac nisl iaculis, non posuere ipsum interdum. Vivamus nec justo ac sapien convallis maximus.</p>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ipsum sit nibh amet egestas tellus.</p>
+                <p class="pt-2 fs-6 text-justify">${employer.description}</p>
+                <h4 class=" fs-5 my-3 mt-4 fw-bolder">Other Details</h4>
 
                 <div class="row skill-set">
                     <div class="col-md-6 py-3">
-                        <h6 class="fw-bold">React.Js</h6>
-                        <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" aria-label="Example with label" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-                        </div>
+                        <span><h6 class="fw-bold">Address : </h6>${employer.address}</span>
                     </div>
                     <div class="col-md-6 py-3">
-                        <h6 class="fw-bold">Vue.Js</h6>
-                        <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" aria-label="Example with label" style="width: 65%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
-                        </div>
+                        <span><h6 class="fw-bold">Telephone No : </h6>${employer.tel}</span>
                     </div>
                     <div class="col-md-6 py-3">
-                        <h6 class="fw-bold">Angular.Js</h6>
-                        <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" aria-label="Example with label" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
-                        </div>
+                        <span><h6 class="fw-bold">Email : </h6>${employer.user.email}</span>
+                    </div>
+                    <div class="col-md-6 py-3">
+                        <span><h6 class="fw-bold">Founded On : </h6>${employer.founded}</span>
+                    </div>
+                    <div class="col-md-6 py-3">
+                        <span><h6 class="fw-bold">HeadQuarters : </h6>${employer.headquarters}</span>
+                    </div>
+                    <div class="col-md-6 py-3">
+                        <span><h6 class="fw-bold">No Of Employees : </h6>${employer.noOfEmployees}</span>
+                    </div>
+                    <div class="col-md-6 py-3">
+                        <span><h6 class="fw-bold">Website : </h6>${employer.website}</span>
+                    </div>
+                    <div class="col-md-6 py-3">
+                        <span><h6 class="fw-bold">Industry Type : </h6>${employer.industryType.description}</span>
                     </div>
 
-                    <div class="col-md-6 py-3">
-                        <h6 class="fw-bold">Laravel</h6>
-                        <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" aria-label="Example with label" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 py-3">
-                        <h6 class="fw-bold">Django</h6>
-                        <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" aria-label="Example with label" style="width: 55%;" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">55%</div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 py-3">
-                        <h6 class="fw-bold">Next Js</h6>
-                        <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" aria-label="Example with label" style="width: 66%;" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100">66%</div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 py-3">
-                        <h6 class="fw-bold">Phoptoshop</h6>
-                        <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" aria-label="Example with label" style="width: 82%;" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100">82%</div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 py-3">
-                        <h6 class="fw-bold">Sketch</h6>
-                        <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" aria-label="Example with label" style="width: 45%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%</div>
-                        </div>
-                    </div>
                 </div>
             </div>
-            <div class="col-md-5"><center>
-                <img src="assets/images/profile.jpg" alt="" style="width: 1000px;"></center>
+            <div class="col-md-5">
+                <img src="img/company-logos/${employer.employerId}_${employer.companyName}/${employer.companyName}_env.png" alt="" style="width: 1000px;height: 400px;border-radius: 10px">
             </div>
         </div>
     </div>
 
-    <!--########################## Services Starts Here ############################# -->
+    <!--########################## Previous Vacancies Starts Here ############################# -->
 
-    <div id="service" class="service px-4 py-5">
+    <div id="preVacancies" class="service px-4 py-5">
         <div class="titie-row row mb-3">
-            <h2 class="fw-bolder">Services</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ipsum sit nibh amet egestas tellus.</p>
+            <h2 class="fw-bolder">Previous Vacancies</h2>
         </div>
         <div class="row mt-5">
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove shadow-md rounded bg-white text-center p-4">
-                    <i class="bi fs-1 bi-boxes"></i>
-                    <h5 class="mt-3 fs-6 fw-bold">Website Design</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar magna ut bibendum imperdiet</p>
+            <c:forEach items="${vacancies}" var="vacancy" varStatus="status">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="serv-cove shadow-md rounded bg-white text-center p-4">
+                        <i class="bi fs-1 bi-boxes"></i>
+                        <h5 class="mt-3 fs-6 fw-bold">${vacancy.description}</h5>
+                        <h5>Job Nature: ${vacancy.vacancyType.description}</h5>
+                        <p>Posted on : <fmt:formatDate value="${vacancy.postedDate}" pattern="yyyy/MM/dd" />  <br>  Closing Date : <fmt:formatDate value="${vacancy.closingDate}" pattern="yyyy/MM/dd" /></p>
+                    </div>
                 </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove shadow-md rounded bg-white text-center p-4">
-                    <i class="bi fs-1 bi-boxes"></i>
-                    <h5 class="mt-3 fs-6 fw-bold">UI/UX Development</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar magna ut bibendum imperdiet</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove shadow-md rounded bg-white text-center p-4">
-                    <i class="bi fs-1 bi-boxes"></i>
-                    <h5 class="mt-3 fs-6 fw-bold">Web Development</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar magna ut bibendum imperdiet</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove shadow-md rounded bg-white text-center p-4">
-                    <i class="bi fs-1 bi-boxes"></i>
-                    <h5 class="mt-3 fs-6 fw-bold">Android Development</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar magna ut bibendum imperdiet</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove shadow-md rounded bg-white text-center p-4">
-                    <i class="bi fs-1 bi-boxes"></i>
-                    <h5 class="mt-3 fs-6 fw-bold">IOS Developement</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar magna ut bibendum imperdiet</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove shadow-md rounded bg-white text-center p-4">
-                    <i class="bi fs-1 bi-boxes"></i>
-                    <h5 class="mt-3 fs-6 fw-bold">Digital Marketing</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar magna ut bibendum imperdiet</p>
-                </div>
-            </div>
+            </c:forEach>
         </div>
     </div>
 
-    <!--########################## Portfolio Starts Here ############################# -->
 
-    <div id="portfolio" class="service px-4 bg-white py-5">
+
+
+        <!--########################## Post a Vacancy Starts Here ############################# -->
+    <div id="addNewVacancy" class="service px-4 py-5">
         <div class="titie-row row mb-3">
-            <h2 class="fw-bolder">Portfolio</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ipsum sit nibh amet egestas tellus.</p>
+            <h2 class="fw-bolder">New Vacancy</h2>
+
+        </div>
+        <div class="contact-row m-0 row">
+            <div>
+                <div class="shadow-md p-4 rounded bg-white">
+
+                    <div class="mb-3">
+                        <label for="field" class="form-label fw-bolder fs-8">Select Job Field:</label>
+                        <select class="form-control" id="field" name="field">
+                            <option value="0">Select Field</option>
+                            <c:forEach items="${jobFieldList}" var="jobField" varStatus="status">
+                                <c:if test="${jobField.jobFieldId eq selectedJobFiledId}">
+                                    <option value="${jobField.jobFieldId}" SELECTED>
+                                            ${jobField.description}
+                                    </option>
+                                </c:if>
+                                <c:if test="${jobField.jobFieldId ne selectedJobFiledId}">
+                                    <option value="${jobField.jobFieldId}">
+                                            ${jobField.description}
+                                    </option>
+                                </c:if>
+
+                            </c:forEach>
+
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="vacancyType" class="form-label fw-bolder fs-8">Select Vacancy Type:</label>
+                        <select class="form-control" id="vacancyType" name="vacancyType">
+                            <option value="0">Select Vacancy Type</option>
+                            <option value="1">Full-time</option>
+                            <option value="2">Part-time</option>
+                            <option value="3">Contract</option>
+                            <option value="4">Temporary</option>
+                            <option value="5">Internship</option>
+
+                        </select>
+                    </div>
+
+                        <div class="mb-3">
+                            <label for="position" class="form-label fw-bolder fs-8">Select Position Type:</label>
+                            <select class="form-control" id="position" name="position" >
+                                <option value="0">Select Position</option>
+                                <c:forEach items="${positionList}" var="jobPosition" varStatus="status">
+                                    <c:if test="${jobPosition.positionId eq selectedPositionId}">
+                                        <option value="${jobPosition.positionId}" SELECTED>
+                                                ${jobPosition.description}
+                                        </option>
+                                    </c:if>
+                                    <c:if test="${jobPosition.positionId ne selectedPositionId}">
+                                        <option value="${jobPosition.positionId}">
+                                                ${jobPosition.description}
+                                        </option>
+                                    </c:if>
+
+                                </c:forEach>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="closingDate" class="form-label fw-bolder fs-8">Select Closing Date:</label>
+                            <input type="date" class="form-control" id="closingDate" name="closingDate" placeholder="Enter Closing date">
+                        </div>
+                        <div class="mb-3">
+                            <label for="jobDes" class="form-label fw-bolder fs-8">Job Description:</label>
+                            <input type="text" class="form-control" placeholder="Enter Description" id="jobDes" name="jobDes" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="vacancyImg" class="form-label fw-bolder fs-8">Upload Image
+                                <input type="file" id="vacancyImg" name="vacancyImg" accept="image/png,image/jpeg"></label>
+                        </div>
+                        <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill" onclick="">Post Vacancy</button>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--########################################recived applicaions######################## -->
+
+
+    <div id="viewApplicants" class="service px-4 py-5">
+        <div class="titie-row row mb-3">
+            <h2 class="fw-bolder">Received Applications</h2>
         </div>
         <div class="row mt-5">
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove shadow-md rounded bg-white p-2">
-                    <img src="assets/images/blog/1.jpg" alt="">
-                    <h5 class="mt-3 fs-6 fw-bold">Creative Page Design</h5>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove shadow-md rounded bg-white p-2">
-                    <img src="assets/images/blog/2.jpg" alt="">
-                    <h5 class="mt-3 fs-6 fw-bold">Creative Page Design</h5>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove shadow-md rounded bg-white p-2">
-                    <img src="assets/images/blog/3.jpg" alt="">
-                    <h5 class="mt-3 fs-6 fw-bold">Creative Page Design</h5>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove shadow-md rounded bg-white p-2">
-                    <img src="assets/images/blog/4.jpg" alt="">
-                    <h5 class="mt-3 fs-6 fw-bold">Creative Page Design</h5>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove shadow-md rounded bg-white p-2">
-                    <img src="assets/images/blog/5.jpg" alt="">
-                    <h5 class="mt-3 fs-6 fw-bold">Creative Page Design</h5>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove shadow-md rounded bg-white p-2">
-                    <img src="assets/images/blog/6.jpg" alt="">
-                    <h5 class="mt-3 fs-6 fw-bold">Creative Page Design</h5>
-                </div>
-            </div>
-        </div>
-    </div>
+<%--            <c:forEach var="entry" items="${applicants}">--%>
+<%--                <h3>${entry.key}</h3>--%>
+<%--                <c:forEach var="applicant" items="${entry.value}">--%>
 
-    <!--########################## Blog Starts Here ############################# -->
+<%--                    <h5 class="mt-3 fs-6 fw-bold">${entry.value[status.index].jobSeeker.firstName}</h5>--%>
 
-    <div id="blog" class="service px-4 bg-white py-5">
-        <div class="titie-row row mb-3">
-            <h2 class="fw-bolder">Blog</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ipsum sit nibh amet egestas tellus.</p>
-        </div>
-        <div class="row mt-5">
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove rounded bg-white p-2">
-                    <img src="assets/images/blog/1.jpg" alt="">
-                    <div class="p-2">
-                        <h5 class="mt-3 fs-7 fw-bold">Top 10 Trends in  Webdesign sit nibh amet  Mauris ipsum sit nibh</h5>
-                        <span class="fs-8">22 May 2015</span>
-                        <span class="float-end fs-8"><i class="bi bi-person"></i> Sam Anderson</span>
+<%--                </c:forEach>--%>
+<%--            </c:forEach>--%>
+
+            <c:forEach items="${applicants}" var="applicant" varStatus="status">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="serv-cove shadow-md rounded bg-white text-center p-4">
+                        <h5 class="mt-3 fs-6 fw-bold">${applicant.jobSeeker.firstName} ${applicant.jobSeeker.lastName}</h5>
+                        <h5 class="mt-3 fs-6 fw-bold">${applicant.vacancy.description} Position</h5>
+                        <p>Posted on : <fmt:formatDate value="${applicant.vacancy.postedDate}" pattern="yyyy/MM/dd" />  <br>  Applied On Date : ${applicant.appliedDate} </p>
+
+                        <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill">Download Resume</button>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove rounded bg-white p-2">
-                    <img src="assets/images/blog/2.jpg" alt="">
-                    <div class="p-2">
-                        <h5 class="mt-3 fs-7 fw-bold">Top 10 Trends in  Webdesign sit nibh amet  Mauris ipsum sit nibh</h5>
-                        <span class="fs-8">22 May 2015</span>
-                        <span class="float-end fs-8"><i class="bi bi-person"></i> Sam Anderson</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="serv-cove rounded bg-white p-2">
-                    <img src="assets/images/blog/3.jpg" alt="">
-                    <div class="p-2">
-                        <h5 class="mt-3 fs-7 fw-bold">Top 10 Trends in  Webdesign sit nibh amet  Mauris ipsum sit nibh</h5>
-                        <span class="fs-8">22 May 2015</span>
-                        <span class="float-end fs-8"><i class="bi bi-person"></i> Sam Anderson</span>
-                    </div>
-                </div>
-            </div>
+            </c:forEach>
+
 
         </div>
     </div>
+
 
     <!--########################## Contact Us Starts Here ############################# -->
 
-    <div class="service px-4 py-5">
+    <div id="contact" class="service px-4 py-5">
         <div class="titie-row row mb-3">
             <h2 class="fw-bolder">Contact Us</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ipsum sit nibh amet egestas tellus.</p>
         </div>
         <div class="contact-row m-0 mt-5 row">
             <div class="col-lg-4 col-md-6 mb-4">
@@ -295,8 +262,8 @@
                     <div class="col-md-9">
                         <h6 class="fs-7 fw-bolder">Phone</h6>
                         <ul>
-                            <li>+94 989 8787 878</li>
-                            <li>+94 889 1287 978</li>
+                            <li>${employer.tel}</li>
+
                         </ul>
                     </div>
                 </div>
@@ -310,8 +277,8 @@
                     <div class="col-md-9">
                         <h6 class="fs-7 fw-bolder">Email</h6>
                         <ul>
-                            <li>demo@smarteyeapps.com</li>
-                            <li>app@maildeaci.com</li>
+                            <li>${employer.user.email}</li>
+
                         </ul>
                     </div>
                 </div>
@@ -325,37 +292,10 @@
                     <div class="col-md-9">
                         <h6 class="fs-7 fw-bolder">Address</h6>
                         <ul>
-                            <li>First Floor Vincent Plaza, Kuzhithurai</li>
+                            <li>${employer.address}</li>
 
                         </ul>
                     </div>
-                </div>
-            </div>
-
-        </div>
-        <div id="contact" class="contact-row m-0 row">
-            <div class="col-md-6">
-                <div class="shadow-md p-4 rounded bg-white">
-                    <h4 class="fs-6 fw-bolder mb-3">Contact Form</h4>
-                    <form action="">
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label fw-bolder fs-8">Email address</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter Email Address">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label fw-bolder fs-8">Enter Subject</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter Subject">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label fw-bolder fs-8">Example textarea</label>
-                            <textarea class="form-control" placeholder="Enter Message" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="shadow-md p-4 rounded bg-white">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15659.16664494769!2d77.32095495000002!3d11.1288885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1660839868672!5m2!1sen!2sin" style="width:100%" height="340" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>

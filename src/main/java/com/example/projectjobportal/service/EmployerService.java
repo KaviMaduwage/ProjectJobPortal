@@ -10,4 +10,5 @@ public interface EmployerService {
     Employer saveEmployer(Employer employer);
 
 
+    Employer getEmployerByUserId(int userId);
 }

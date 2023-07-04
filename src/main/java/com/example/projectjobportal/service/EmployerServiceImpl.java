@@ -25,5 +25,10 @@ public class EmployerServiceImpl implements EmployerService {
         return employerDao.save(employer);
     }
 
+    @Override
+    public Employer getEmployerByUserId(int userId) {
+        return employerDao.getEmployerByUserId(userId);
+    }
+
 
 }

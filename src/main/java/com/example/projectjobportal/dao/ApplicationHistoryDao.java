@@ -12,4 +12,9 @@ public interface ApplicationHistoryDao extends JpaRepository<ApplicationHistory,
 
     @Query("SELECT h FROM ApplicationHistory  h WHERE h.jobSeeker.jobSeekerId = :jobSeekerId")
     List<ApplicationHistory> getAppliedJobHistoryByJobSeekerId(int jobSeekerId);
+    @Query("SELECT h FROM ApplicationHistory  h WHERE h.vacancy.employer.employerId = :employerId")
+    List<ApplicationHistory> getApplicationsByEmployerId(int employerId);
+
+    @Query("SELECT h FROM ApplicationHistory  h WHERE h.vacancy.vacancyId = :vacancyId")
+    List<ApplicationHistory> getApplicationsByVacancyId(int vacancyId);
 }

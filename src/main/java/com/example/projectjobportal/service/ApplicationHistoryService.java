@@ -10,4 +10,8 @@ public interface ApplicationHistoryService {
     void saveApplicationDate(ApplicationHistory newHistory);
 
     List<ApplicationHistory> getAppliedJobHistoryByJobSeekerId(int jobSeekerId);
+
+    List<ApplicationHistory> getApplicationsByEmployerId(int employerId);
+
+    List<ApplicationHistory> getApplicationsByVacancyId(int vacancyId);
 }

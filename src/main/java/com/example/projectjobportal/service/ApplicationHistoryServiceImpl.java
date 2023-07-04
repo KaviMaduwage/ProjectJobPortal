@@ -28,4 +28,14 @@ public class ApplicationHistoryServiceImpl implements ApplicationHistoryService{
     public List<ApplicationHistory> getAppliedJobHistoryByJobSeekerId(int jobSeekerId) {
         return applicationHistoryDao.getAppliedJobHistoryByJobSeekerId(jobSeekerId);
     }
+
+    @Override
+    public List<ApplicationHistory> getApplicationsByEmployerId(int employerId) {
+        return applicationHistoryDao.getApplicationsByEmployerId(employerId);
+    }
+
+    @Override
+    public List<ApplicationHistory> getApplicationsByVacancyId(int vacancyId) {
+        return applicationHistoryDao.getApplicationsByVacancyId(vacancyId);
+    }
 }

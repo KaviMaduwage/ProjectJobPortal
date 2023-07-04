@@ -11,4 +11,6 @@ public interface VacancyService {
     List<Vacancy> getRecentVacancyList(Pageable pageable);
 
     Vacancy getVacancyById(int vacancyId);
+
+    List<Vacancy> getVacancyListByEmployerId(int employerId);
 }
