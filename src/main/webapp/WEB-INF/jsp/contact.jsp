@@ -55,8 +55,7 @@
           <li><a href="/subscription">Subscriptions</a></li>
           <li><a href="/blog-home">Blog</a></li>
           <li><a href="/contact">Contact</a></li>
-          <c:if test="${not empty sessionScope.userLogin && (sessionScope.userLogin.userType.userTypeId == 2 ||
-                                            sessionScope.userLogin.userType.userTypeId ==3)}">
+          <c:if test="${not empty sessionScope.userLogin }">
             <li><a  href="/viewProfile">Profile</a></li>
           </c:if>
           <c:if test="${empty sessionScope.userLogin}">

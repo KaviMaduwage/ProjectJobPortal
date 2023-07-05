@@ -36,13 +36,14 @@ public class ProfileController {
     PositionService positionService;
     JobFieldService jobFieldService;
     VacancyTypeService vacancyTypeService;
+    RequestService requestService;
     User userObject;
     Employer employerObject;
 
     public ProfileController(JobSeekerService jobSeekerService,ApplicationHistoryService applicationHistoryService,
                              JobSeekerPreferenceService jobSeekerPreferenceService,JobSeekerQualificationService jobSeekerQualificationService,
                              EmployerService employerService,VacancyService vacancyService,PositionService positionService,
-                             JobFieldService jobFieldService,VacancyTypeService vacancyTypeService) {
+                             JobFieldService jobFieldService,VacancyTypeService vacancyTypeService,RequestService requestService) {
         this.jobSeekerService = jobSeekerService;
         this.applicationHistoryService =applicationHistoryService;
         this.jobSeekerPreferenceService = jobSeekerPreferenceService;
@@ -52,6 +53,7 @@ public class ProfileController {
         this.positionService = positionService;
         this.jobFieldService = jobFieldService;
         this.vacancyTypeService = vacancyTypeService;
+        this.requestService = requestService;
     }
 
     @ModelAttribute("positionList")
@@ -75,9 +77,17 @@ public class ProfileController {
         }else if(user.getUserType().getDescription().equalsIgnoreCase("employer")){
             generateEmployerData(model,user);
             return "employerProfile";
+        }else{
+            generateAdminData(model);
+            return "adminProfile";
         }
-        return "welcome";
 
+
+    }
+
+    private void generateAdminData(Model model) {
+        List<Request> requestList = requestService.getNotApprovedRequestList();
+        model.addAttribute("requestList",requestList);
     }
 
     private void generateEmployerData(Model model, User user) {
@@ -235,6 +245,20 @@ public class ProfileController {
             }
 
         }
+    }
+    @RequestMapping(value = "/acceptRequest", method = RequestMethod.GET)
+    public String acceptRequest(@RequestParam("requestId") String requestId, Model model){
+
+        Request request = requestService.getNotApprovedRequestList().get(Integer.parseInt(requestId));
+        if(request!=null){
+            boolean isApproved = true;
+            Date approvedDate = new Date();
+
+            requestService.updateRequest(isApproved,approvedDate, Integer.parseInt(requestId));
+        }
+
+        generateAdminData(model);
+        return "adminProfile";
     }
 
 }
