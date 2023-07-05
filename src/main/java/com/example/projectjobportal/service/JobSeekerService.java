@@ -7,4 +7,6 @@ public interface JobSeekerService {
     JobSeeker getJobSeekerByUserId(int userId);
 
     JobSeeker saveJobSeeker(JobSeeker jobSeeker);
+
+    JobSeeker getJobSeekerByJobSeekerId(int i);
 }

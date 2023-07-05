@@ -21,4 +21,9 @@ public class JobSeekerServiceImpl implements JobSeekerService{
     public JobSeeker saveJobSeeker(JobSeeker jobSeeker) {
         return jobSeekerDao.save(jobSeeker);
     }
+
+    @Override
+    public JobSeeker getJobSeekerByJobSeekerId(int jobSeekerId) {
+        return jobSeekerDao.findById(jobSeekerId).get();
+    }
 }
