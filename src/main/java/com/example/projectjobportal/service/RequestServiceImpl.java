@@ -34,5 +34,15 @@ public class RequestServiceImpl implements RequestService{
 
     }
 
+    @Override
+    public List<Request> getApprovedRequestList() {
+        return requestDao.getApprovedRequestList();
+    }
+
+    @Override
+    public Request getRequestById(int requestId) {
+        return requestDao.findById(requestId).get();
+    }
+
 
 }

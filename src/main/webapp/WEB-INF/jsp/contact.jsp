@@ -53,7 +53,7 @@
           <li><a href="/about-us">About Us</a></li>
           <li><a href="/category">Category</a></li>
           <li><a href="/subscription">Subscriptions</a></li>
-          <li><a href="/blog-home">Blog</a></li>
+
           <li><a href="/contact">Contact</a></li>
           <c:if test="${not empty sessionScope.userLogin }">
             <li><a  href="/viewProfile">Profile</a></li>
@@ -88,7 +88,7 @@
 <section class="contact-page-area section-gap">
   <div class="container">
     <div class="row">
-      <div class="map-wrap" style="width:100%; height: 445px;" id="map"></div>
+
       <div class="col-lg-4 d-flex flex-column"> <a class="contact-btns" href="#">Submit
         Your CV</a> <a class="contact-btns" href="#">Post New Job</a> <a
 
@@ -187,7 +187,6 @@
 
         crossorigin="anonymous"></script>
 <script src="js/vendor/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
 <script src="js/easing.min.js"></script>
 <script src="js/hoverIntent.js"></script>
 <script src="js/superfish.min.js"></script>

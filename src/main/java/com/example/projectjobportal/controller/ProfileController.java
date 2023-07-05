@@ -88,6 +88,9 @@ public class ProfileController {
     private void generateAdminData(Model model) {
         List<Request> requestList = requestService.getNotApprovedRequestList();
         model.addAttribute("requestList",requestList);
+
+        List<Request> approvedList = requestService.getApprovedRequestList();
+        model.addAttribute("approvedRequest",approvedList);
     }
 
     private void generateEmployerData(Model model, User user) {
@@ -249,10 +252,25 @@ public class ProfileController {
     @RequestMapping(value = "/acceptRequest", method = RequestMethod.GET)
     public String acceptRequest(@RequestParam("requestId") String requestId, Model model){
 
-        Request request = requestService.getNotApprovedRequestList().get(Integer.parseInt(requestId));
+        Request request = requestService.getRequestById(Integer.parseInt(requestId));
         if(request!=null){
             boolean isApproved = true;
             Date approvedDate = new Date();
+
+            requestService.updateRequest(isApproved,approvedDate, Integer.parseInt(requestId));
+        }
+
+        generateAdminData(model);
+        return "adminProfile";
+    }
+
+    @RequestMapping(value = "/rejectRequest", method = RequestMethod.GET)
+    public String rejectRequest(@RequestParam("requestId") String requestId, Model model){
+
+        Request request = requestService.getRequestById(Integer.parseInt(requestId));
+        if(request != null){
+            boolean isApproved = false;
+            Date approvedDate = null;
 
             requestService.updateRequest(isApproved,approvedDate, Integer.parseInt(requestId));
         }

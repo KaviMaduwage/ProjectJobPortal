@@ -46,11 +46,6 @@ public class welcomeController {
         return "subscription";
     }
 
-    @RequestMapping("/blog-home")
-    public String getBlogPage(Model model){
-
-        return "blog-home";
-    }
 
     @RequestMapping("/contact")
     public String getContactPage(Model model){

@@ -62,7 +62,7 @@
                     <li><a href="/about-us">About Us</a></li>
                     <li><a href="/category">Category</a></li>
                     <li><a href="/subscription">Subscriptions</a></li>
-                    <li><a href="/blog-home">Blog</a></li>
+
                     <li><a href="/contact">Contact</a></li>
                     <c:if test="${not empty sessionScope.userLogin }">
                         <li><a  href="/viewProfile">Profile</a></li>
@@ -112,6 +112,8 @@
                     <i class="button__icon fas fa-chevron-right"></i>
 
                 </button>
+                <br>
+                <label style="text-align: center;color: black">No Account...<a href="/signUp" style="color: darkblue">Create an account</a></label>
             </form>
 
         </div>

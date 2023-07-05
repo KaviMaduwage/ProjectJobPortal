@@ -53,7 +53,7 @@
                     <li><a href="/about-us">About Us</a></li>
                     <li><a href="/category">Category</a></li>
                     <li><a href="/subscription">Subscriptions</a></li>
-                    <li><a href="/blog-home">Blog</a></li>
+
                     <li><a href="/contact">Contact</a></li>
                     <c:if test="${not empty sessionScope.userLogin }">
                         <li><a  href="/viewProfile">Profile</a></li>
@@ -73,7 +73,7 @@
 <!-- #header -->
 <!-- start banner Area -->
 <section class="banner-area relative" id="home">
-    <div class="overlay overlay-bg"></div>
+    <div class="overlay overlay-bg" style="opacity: 0;"></div>
     <div class="container">
         <div class="row d-flex align-items-center justify-content-center">
             <div class="about-content col-lg-12">
@@ -90,8 +90,7 @@
         <div class="row d-flex justify-content-center">
             <div class="menu-content pb-60 col-lg-8">
                 <div class="title text-center">
-                    <h1 class="mb-10">Choose the best pricing for you</h1>
-                    <p>Who are in extremely love with eco friendly system.</p>
+                    <h1 class="mb-10">Choose the best pricing plan for you</h1>
                 </div>
             </div>
         </div>
@@ -99,12 +98,12 @@
             <div class="col-lg-4">
                 <div class="single-price no-padding">
                     <div class="price-top">
-                        <h4>Real basic</h4>
+                        <h4>Basic</h4>
                     </div>
                     <ul class="lists">
-                        <li>Top ad search</li>
+                        <li>Top search</li>
                         <li>Secure online chat</li>
-                        <li>Unlimited Styles</li>
+                        <li>Limited vacancy posting</li>
                         <li>Customer Service</li>
                     </ul>
                     <div class="price-bottom">
@@ -113,18 +112,18 @@
                             <h1> 399 </h1>
                             <span class="time">Per <br>
                     Month</span> </div>
-                        <a href="#" class="primary-btn header-btn">Get Started</a> </div>
+                        <a href="" class="primary-btn header-btn">Get Started</a> </div>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="single-price no-padding">
                     <div class="price-top">
-                        <h4>Real Standed</h4>
+                        <h4>Standard</h4>
                     </div>
                     <ul class="lists">
-                        <li>Top ad search</li>
+                        <li>Top search</li>
                         <li>Secure online chat</li>
-                        <li>Unlimited Styles</li>
+                        <li>Limited vacancy posting</li>
                         <li>Customer Service</li>
                         <li>10GB cloud space</li>
                     </ul>
@@ -134,20 +133,20 @@
                             <h1> 699 </h1>
                             <span class="time">Per <br>
                     Month</span> </div>
-                        <a href="#" class="primary-btn header-btn">Get Started</a> </div>
+                        <a href="" class="primary-btn header-btn">Get Started</a> </div>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="single-price no-padding">
                     <div class="price-top">
-                        <h4>Real Ultimate</h4>
+                        <h4>Ultimate</h4>
                     </div>
                     <ul class="lists">
-                        <li>Top ad search</li>
+                        <li>Top search</li>
                         <li>Secure online chat</li>
-                        <li>Unlimited Styles</li>
+                        <li>Unlimited job posting</li>
                         <li>Customer Service</li>
-                        <li>10GB cloud space</li>
+                        <li>30GB cloud space</li>
                     </ul>
                     <div class="price-bottom">
                         <div class="price-wrap d-flex flex-row justify-content-center">
@@ -155,7 +154,7 @@
                             <h1> 1099 </h1>
                             <span class="time">Per <br>
                     Month</span> </div>
-                        <a href="#" class="primary-btn header-btn">Get Started</a> </div>
+                        <a href="" class="primary-btn header-btn">Get Started</a> </div>
                 </div>
             </div>
         </div>
@@ -173,45 +172,21 @@
                 <h6 class="text-uppercase text-white"><br>
                 </h6>
                 <h1>Who we are</h1>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting
-                    industry. Lorem Ipsum has been the industry's standard dummy text
-                    ever since the 1500s, when an unknown printer </p>
+                <p>Welcome to our job portal, where we strive to bridge the gap between job seekers and employers. We understand the challenges individuals face when searching for their dream job or the perfect candidate to join their team. </p>
+
             </div>
             <div class="col-lg-3 feat-img no-padding"> <img class="img-fluid" src="img/pages/f2.jpg"
 
                                                             alt=""> </div>
             <div class="col-lg-3 no-padding feat-txt"><br>
                 <h1>What we do</h1>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting
-                    industry. Lorem Ipsum has been the industry's standard dummy text
-                    ever since the 1500s, </p>
+                <p>With a user-friendly interface and powerful search functionality, our job portal offers a vast database of job listings from various industries and locations.</p>
+
             </div>
         </div>
     </div>
 </section>
-<!-- End feature Area -->
-<!-- Start submit Area -->
-<section class="submit-area section-gap">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="submit-left">
-                    <h4>Submit Your Resume Today</h4>
-                    <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                        do eiusmod tempor incididunt ut labore. </p>
-                    <a href="#" class="primary-btn header-btn">Submit Your CV</a> </div>
-            </div>
-            <div class="col-lg-6 ">
-                <div class="submit-right">
-                    <h4>Submit a New Job Now!</h4>
-                    <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                        do eiusmod tempor incididunt ut labore. </p>
-                    <a href="#" class="primary-btn header-btn">Post a Job</a> </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End submit Area -->
+
 <!-- start footer Area -->
 <footer class="footer-area section-gap">
     <div class="container">

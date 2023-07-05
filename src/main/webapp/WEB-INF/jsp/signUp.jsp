@@ -131,7 +131,7 @@
                     <li><a href="/about-us">About Us</a></li>
                     <li><a href="/category">Category</a></li>
                     <li><a href="/subscription">Subscriptions</a></li>
-                    <li><a href="/blog-home">Blog</a></li>
+
                     <li><a href="/contact">Contact</a></li>
                     <c:if test="${not empty sessionScope.userLogin}">
                         <li><a  href="/viewProfile">Profile</a></li>

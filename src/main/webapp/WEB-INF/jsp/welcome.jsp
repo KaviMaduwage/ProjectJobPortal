@@ -53,7 +53,7 @@
                     <li><a href="/about-us">About Us</a></li>
                     <li><a href="/category">Category</a></li>
                     <li><a href="/subscription">Subscriptions</a></li>
-                    <li><a href="/blog-home">Blog</a></li>
+
                     <li><a href="/contact">Contact</a></li>
                     <c:if test="${not empty sessionScope.userLogin}">
                         <li><a  href="/viewProfile">Profile</a></li>
@@ -111,106 +111,15 @@
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="single-feature">
-                    <h4>Notifications</h4>
-                    <p>Stay updated with important news and job alerts </p>
+                    <h4>CV upload/download</h4>
+                    <p>Update your latest CV</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- End features Area -->
-<!-- Start popular-post Area -->
-<section class="popular-post-area pt-100">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="active-popular-post-carusel">
-                <div class="single-popular-post d-flex flex-row">
-                    <div class="thumb"> <img class="img-fluid" src="img/p1.png" alt="">
-                        <a class="btns text-uppercase" href="#">view job post</a> </div>
-                    <div class="details"> <a href="#">
-                        <h4>Creative Designer</h4>
-                    </a>
-                        <h6>Colombo</h6>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                            sed do eiusmod temporinc ididunt ut labore et dolore magna
-                            aliqua. Ut enim ad minim veniam quis. </p>
-                    </div>
-                </div>
-                <div class="single-popular-post d-flex flex-row">
-                    <div class="thumb"> <img src="img/p2.png" alt=""> <a class="btns text-uppercase"
 
-                                                                         href="#">view job post</a> </div>
-                    <div class="details"> <a href="#">
-                        <h4>Creative Designer</h4>
-                    </a>
-                        <h6>Colombo</h6>
-                        <h6></h6>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                            sed do eiusmod temporinc ididunt ut labore et dolore magna
-                            aliqua. Ut enim ad minim veniam quis. </p>
-                    </div>
-                </div>
-                <div class="single-popular-post d-flex flex-row">
-                    <div class="thumb"> <img src="img/p1.png" alt=""> <a class="btns text-uppercase"
 
-                                                                         href="#">view job post</a> </div>
-                    <div class="details"> <a href="#">
-                        <h4>Creative Designer</h4>
-                    </a>
-                        <h6>Colombo</h6>
-                        <h6></h6>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                            sed do eiusmod temporinc ididunt ut labore et dolore magna
-                            aliqua. Ut enim ad minim veniam quis. </p>
-                    </div>
-                </div>
-                <div class="single-popular-post d-flex flex-row">
-                    <div class="thumb"> <img src="img/p2.png" alt=""> <a class="btns text-uppercase"
-
-                                                                         href="#">view job post</a> </div>
-                    <div class="details"> <a href="#">
-                        <h4>Creative Designer</h4>
-                    </a>
-                        <h6>Colombo</h6>
-                        <h6></h6>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                            sed do eiusmod temporinc ididunt ut labore et dolore magna
-                            aliqua. Ut enim ad minim veniam quis. </p>
-                    </div>
-                </div>
-                <div class="single-popular-post d-flex flex-row">
-                    <div class="thumb"> <img src="img/p1.png" alt=""> <a class="btns text-uppercase"
-
-                                                                         href="#">view job post</a> </div>
-                    <div class="details"> <a href="#">
-                        <h4>Creative Designer</h4>
-                    </a>
-                        <h6>Colombo</h6>
-                        <h6></h6>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                            sed do eiusmod temporinc ididunt ut labore et dolore magna
-                            aliqua. Ut enim ad minim veniam quis. </p>
-                    </div>
-                </div>
-                <div class="single-popular-post d-flex flex-row">
-                    <div class="thumb"> <img src="img/p2.png" alt=""> <a class="btns text-uppercase"
-
-                                                                         href="#">view job post</a> </div>
-                    <div class="details"> <a href="#">
-                        <h4>Creative Designer</h4>
-                    </a>
-                        <h6>Los Angeles</h6>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                            sed do eiusmod temporinc ididunt ut labore et dolore magna
-                            aliqua. Ut enim ad minim veniam quis. </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End popular-post Area -->
-<!-- Start feature-cat Area -->
 <section class="feature-cat-area pt-100" id="category">
     <div class="container">
         <div class="row d-flex justify-content-center">
@@ -410,40 +319,27 @@
             <div class="col-lg-4 sidebar">
 
                 <div class="single-slidebar">
-                    <h4>Carrer Advice Blog</h4>
-                    <div class="blog-list">
-                        <div class="single-blog " style="background:#000 url(img/blog1.jpg);">
-                            <a href="single.html">
-                                <h4>Home Audio Recording <br>
-                                    For Everyone</h4>
-                            </a>
-                            <div class="meta justify-content-between d-flex">
-                                <p> 02 Hours ago </p>
-                                <p> <span class="lnr lnr-heart"></span> 06 <span class="lnr lnr-bubble"></span>
-                                    02 </p>
-                            </div>
+                    <h4>Career Advice Blog</h4>
+                    <div class="blog-list" style="text-align: center">
+                        <div class="single-blog " style="background:#211e1e url(img/purpleBg.png);height: 120px">
+
+                                <h4 style="color: #0a0a23">Believe in yourself and your abilities. <br>
+                                    You have the power to achieve greatness.</h4>
+
+
                         </div>
-                        <div class="single-blog " style="background:#000 url(img/blog2.jpg);">
-                            <a href="single.html">
-                                <h4>Home Audio Recording <br>
-                                    For Everyone</h4>
-                            </a>
-                            <div class="meta justify-content-between d-flex">
-                                <p> 02 Hours ago </p>
-                                <p> <span class="lnr lnr-heart"></span> 06 <span class="lnr lnr-bubble"></span>
-                                    02 </p>
-                            </div>
+                        <div class="single-blog " style="background:#211e1e url(img/purpleBg.png);height: 120px">
+
+                                <h4 style="color: #0a0a23">Stay focused on your goals & <br>
+                                    never lose sight of your vision.</h4>
+
                         </div>
-                        <div class="single-blog " style="background:#000 url(img/blog1.jpg);">
-                            <a href="single.html">
-                                <h4>Home Audio Recording <br>
-                                    For Everyone</h4>
-                            </a>
-                            <div class="meta justify-content-between d-flex">
-                                <p> 02 Hours ago </p>
-                                <p> <span class="lnr lnr-heart"></span> 06 <span class="lnr lnr-bubble"></span>
-                                    02 </p>
-                            </div>
+                        <div class="single-blog " style="background:#211e1e url(img/purpleBg.png);height: 120px">
+
+                                <h4 style="color: #0a0a23">Learn from your failures and setbacks.<br>
+                                    They are stepping stones to success.</h4>
+
+
                         </div>
                     </div>
                 </div>
@@ -463,47 +359,14 @@
                         adipisicing elit, sed do eiusmod tempor incididunt ut labore et
                         dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
                         exercitation.</p>
-                    <a class="primary-btn" href="#">I am a Candidate</a> <a class="primary-btn"
+                    <a class="primary-btn" href="/login">I am a Candidate</a> <a class="primary-btn"
 
-                                                                            href="#">I Am Emloyer</a> </div>
+                                                                            href="/login">I Am Emloyer</a> </div>
             </div>
         </div>
     </div>
 </section>
-<!-- End calto-action Area -->
-<!-- Start download Area -->
-<section class="download-area section-gap" id="app">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 download-left"> <img class="img-fluid" src="img/d1.png"
-
-                                                      alt=""> </div>
-            <div class="col-lg-6 download-right">
-                <h1>Download the <br>
-                    Job gateway App Today!</h1>
-                <p class="subs"> It won’t be a bigger problem to find one video game
-                    lover in your neighbor. Since the introduction of Virtual Game, it
-                    has been achieving great heights so far as its popularity and
-                    technological advancement are concerned. </p>
-                <div class="d-flex flex-row">
-                    <div class="buttons"> <i class="fa fa-apple" aria-hidden="true"></i>
-                        <div class="desc"> <a href="#">
-                            <p> <span>Available</span> <br>
-                                on App Store </p>
-                        </a> </div>
-                    </div>
-                    <div class="buttons"> <i class="fa fa-android" aria-hidden="true"></i>
-                        <div class="desc"> <a href="#">
-                            <p> <span>Available</span> <br>
-                                on Play Store </p>
-                        </a> </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End download Area -->
+<
 <!-- start footer Area -->
 <footer class="footer-area section-gap">
     <div class="container">
