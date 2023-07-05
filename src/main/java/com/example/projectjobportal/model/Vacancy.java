@@ -13,16 +13,16 @@ public class Vacancy {
     private String description;
     private Date postedDate;
     private Date closingDate;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "job_field_id")
     private JobField jobField;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "vacancy_type_id")
     private VacancyType vacancyType;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "employer_id")
     private Employer employer;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "position_id")
     private Position position;
     private String vacancyImageName;

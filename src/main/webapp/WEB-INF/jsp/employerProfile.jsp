@@ -20,6 +20,44 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+
+    <script>
+        function postVacancy(){
+
+            document.postVacancyForm.action = "postVacancy.htm";
+            document.postVacancyForm.submit();
+            <%--console.log("1234");--%>
+
+            <%--var field = document.getElementById("field").value;--%>
+            <%--var vacancyType = document.getElementById("vacancyType").value;--%>
+            <%--var position = document.getElementById("position").value;--%>
+            <%--var closingDate = document.getElementById("closingDate").value;--%>
+            <%--var jobDes = document.getElementById("jobDes").value;--%>
+            <%--var image = document.getElementById("vacancyImg").files[0];--%>
+
+            <%--$.ajax({--%>
+            <%--    url : '<c:url value="/postVacancy.htm"/>',--%>
+            <%--    method: 'POST',--%>
+            <%--    contentType: false,--%>
+            <%--    data : ({--%>
+            <%--        'selectedFieldId' :field,--%>
+            <%--        'selectedVacancyTypeId' : vacancyType,--%>
+            <%--        'selectedPositionId' : position,--%>
+            <%--        'closingDate' : closingDate,--%>
+            <%--        'jobDes' : jobDes,--%>
+            <%--        'image':image--%>
+
+
+            <%--    }),--%>
+            <%--    success : function (response){--%>
+            <%--        var message = response;--%>
+            <%--        console.log(response);--%>
+
+            <%--    }--%>
+            <%--});--%>
+
+        }
+    </script>
 </head>
 <header class="head">
     <div class="logo border-bottom">
@@ -139,7 +177,7 @@
         <div class="contact-row m-0 row">
             <div>
                 <div class="shadow-md p-4 rounded bg-white">
-
+                <form name="postVacancyForm" method="POST" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="field" class="form-label fw-bolder fs-8">Select Job Field:</label>
                         <select class="form-control" id="field" name="field">
@@ -160,6 +198,7 @@
 
                         </select>
                     </div>
+
 
                     <div class="mb-3">
                         <label for="vacancyType" class="form-label fw-bolder fs-8">Select Vacancy Type:</label>
@@ -205,8 +244,8 @@
                             <label for="vacancyImg" class="form-label fw-bolder fs-8">Upload Image
                                 <input type="file" id="vacancyImg" name="vacancyImg" accept="image/png,image/jpeg"></label>
                         </div>
-                        <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill" onclick="">Post Vacancy</button>
-
+                        <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill" onclick="postVacancy()">Post Vacancy</button>
+                </form>
                 </div>
             </div>
 
@@ -221,14 +260,7 @@
             <h2 class="fw-bolder">Received Applications</h2>
         </div>
         <div class="row mt-5">
-<%--            <c:forEach var="entry" items="${applicants}">--%>
-<%--                <h3>${entry.key}</h3>--%>
-<%--                <c:forEach var="applicant" items="${entry.value}">--%>
 
-<%--                    <h5 class="mt-3 fs-6 fw-bold">${entry.value[status.index].jobSeeker.firstName}</h5>--%>
-
-<%--                </c:forEach>--%>
-<%--            </c:forEach>--%>
 
             <c:forEach items="${applicants}" var="applicant" varStatus="status">
                 <div class="col-lg-4 col-md-6 mb-4">
@@ -237,7 +269,7 @@
                         <h5 class="mt-3 fs-6 fw-bold">${applicant.vacancy.description} Position</h5>
                         <p>Posted on : <fmt:formatDate value="${applicant.vacancy.postedDate}" pattern="yyyy/MM/dd" />  <br>  Applied On Date : ${applicant.appliedDate} </p>
 
-                        <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill">Download Resume</button>
+                        <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill"><a href="/downloadCv?applicantId=${applicant.jobSeeker.jobSeekerId}">Download Resume</a></button>
                     </div>
                 </div>
             </c:forEach>

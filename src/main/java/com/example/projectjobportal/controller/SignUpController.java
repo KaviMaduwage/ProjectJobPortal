@@ -39,8 +39,8 @@ public class SignUpController {
     QualificationTypeService qualificationTypeService;
     JobSeekerQualificationService jobSeekerQualificationService;
     JobSeekerPreferenceService jobSeekerPreferenceService;
-    @PersistenceContext
-    private EntityManager entityManager;
+
+    RequestService requestService;
 
 
     public SignUpController(UserService userService, EmployerService employerService,
@@ -48,7 +48,7 @@ public class SignUpController {
                             JobSeekerService jobSeekerService, UserTypeService userTypeService,
                             QualificationTypeService qualificationTypeService,
                             JobSeekerQualificationService jobSeekerQualificationService,
-                            JobSeekerPreferenceService jobSeekerPreferenceService) {
+                            JobSeekerPreferenceService jobSeekerPreferenceService,RequestService requestService) {
         this.userService = userService;
         this.employerService = employerService;
         this.industryTypeService = industryTypeService;
@@ -58,6 +58,7 @@ public class SignUpController {
         this.qualificationTypeService = qualificationTypeService;
         this.jobSeekerQualificationService = jobSeekerQualificationService;
         this.jobSeekerPreferenceService = jobSeekerPreferenceService;
+        this.requestService = requestService;
     }
     @ModelAttribute("industryTypeList")
     public List<IndustryType> industryTypeList(){
@@ -117,12 +118,22 @@ public class SignUpController {
         employer.setUser(savedUser);
 
         IndustryType industryType = industryTypeService.getIndustryTypeById(Integer.parseInt(industryTypeId));
-        //IndustryType mergedIndustryType = entityManager.merge(industryType);
+
         employer.setIndustryType(industryType);
         employer.setWebsite(website);
         employer.setLogoImage(fileName);
 
         Employer savedEmployer = employerService.saveEmployer(employer);
+
+        //sending requests to admin
+        Request employerRequest = new Request();
+        employerRequest.setEmployer(savedEmployer);
+        employerRequest.setRequestedDate(new Date());
+        employerRequest.setApproved(false);
+
+        requestService.saveInitialRequest(employerRequest);
+
+
         String uploadDir = "src/main/resources/static/img/company-logos/"+savedEmployer.getEmployerId()+"_"+savedEmployer.getCompanyName();
         Path uploadpath = Paths.get(uploadDir);
         try{
