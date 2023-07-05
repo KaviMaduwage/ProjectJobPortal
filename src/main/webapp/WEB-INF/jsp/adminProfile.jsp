@@ -44,7 +44,9 @@
         <ul>
             <li><a href="/"><i class="bi bi-house-door fs-5 me-2"></i> Home</a></li>
 
-            <li><a href="#service"><i class="bi fs-5 bi-gear me-2"></i> Accept Requests</a></li>
+            <li><a href="#acceptRequest"><i class="bi fs-5 bi-gear me-2"></i> Accept Requests</a></li>
+
+            <li><a href="#viewEmployers"><i class="bi fs-5 bi-gear me-2"></i> View Employers</a></li>
         </ul>
     </div>
 </header>
@@ -67,9 +69,9 @@
         </div>
     </div>
 
-    <!--########################## Accept reasent job postings ############################# -->
+    <!--########################## Accept requests ############################# -->
 
-    <div id="service" class="service px-4 py-5">
+    <div id="acceptRequest" class="service px-4 py-5">
         <div class="titie-row row mb-3">
             <h2 class="fw-bolder">Accept Requests</h2>
 
@@ -88,7 +90,7 @@
                             <p>${employerRequest.employer.description}</p>
                             <p>${employerRequest.employer.tel}</p>
                             <p>${employerRequest.employer.address}</p>
-                            <p><fmt:formatDate value="${employerRequest.requestedDate}" pattern="yyyy/MM/dd" /></p>
+                            <p>Requested On :<fmt:formatDate value="${employerRequest.requestedDate}" pattern="yyyy/MM/dd" /></p>
 
                             <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill"><a href="/acceptRequest?requestId=${employerRequest.requestId}">Accept</a></button>
                         </div>
@@ -96,6 +98,37 @@
                 </c:forEach>
 
         </div>
+        </form>
+    </div>
+
+    <!--########################## view Accepted employer list ############################# -->
+
+    <div id="viewEmployers" class="service px-4 py-5">
+        <div class="titie-row row mb-3">
+            <h2 class="fw-bolder">View Employers</h2>
+
+        </div>
+        <form name="rejectRequestForm">
+            <div class="row mt-5">
+
+                <c:forEach items="${approvedRequest}" var="employerRequest" varStatus="status" >
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="serv-cove shadow-md rounded bg-white text-center p-4">
+                            <input type="hidden" value="${employerRequest.requestId}" id="hiddenrequestId_${status.index}">
+                            <img class="rounded-pill" src="img/company-logos/${employerRequest.employer.employerId}_${employerRequest.employer.companyName}/${employerRequest.employer.logoImage}"
+                                 style="width: 50px;height: 50px">
+                            <h5 class="mt-3 fs-6 fw-bold">${employerRequest.employer.companyName}</h5>
+                            <p>${employerRequest.employer.description}</p>
+                            <p>${employerRequest.employer.tel}</p>
+                            <p>${employerRequest.employer.address}</p>
+                            <p>Accepted On:<fmt:formatDate value="${employerRequest.approvedDate}" pattern="yyyy/MM/dd" /></p>
+
+                            <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill"><a href="/rejectRequest?requestId=${employerRequest.requestId}">Reject</a></button>
+                        </div>
+                    </div>
+                </c:forEach>
+
+            </div>
         </form>
     </div>
 

@@ -14,4 +14,8 @@ public interface RequestService {
 
 
     void updateRequest(boolean isApproved, Date approvedDate, int requestId);
+
+    List<Request> getApprovedRequestList();
+
+    Request getRequestById(int requestId);
 }
