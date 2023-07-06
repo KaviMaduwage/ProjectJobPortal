@@ -50,6 +50,7 @@
             <li><a href="#qualifications"><i class="bi fs-5 bi-people me-2"></i> Qualifications</a></li>
             <li><a href="#fields"><i class="bi fs-5 bi-gear me-2"></i> Preferred Fields</a></li>
             <li><a href="#appliedJobs"><i class="bi fs-5 bi-people me-2"></i> Applied Jobs</a></li>
+            <li><a href="#uploadResume"><i class="bi fs-5 bi-people me-2"></i> Resume Updates</a></li>
             <li><a href="#contact"><i class="bifs-5  bi-envelope me-2"></i> Contact</a></li>
         </ul>
     </div>
@@ -70,8 +71,9 @@
                 <p style="text-transform: uppercase">As a dedicated and experienced job seeker, I am motivated to contribute my versatile skills and be a results-oriented team player, bringing enthusiasm
                     and a detail-oriented approach to solve challenges in your organization.</p>
 
-                <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill">Download Resume</button>
-                <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill" onclick="showResumeInput()">Upload Resume</button>
+<%--                <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill">Download Resume</button>--%>
+                <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill"><a href="/downloadCv?applicantId=${jobSeeker.jobSeekerId}">Download Resume</a></button>
+                <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill"><a href="#uploadResume">Upload Resume</a></button>
                 <input type="file" id="resumeInput" accept="application/pdf" style="display: none;">
             </div>
         </div>
@@ -92,7 +94,8 @@
 
                 <div class="row skill-set">
                     <div class="col-md-6 py-3">
-                        <span><h6 class="fw-bold">Date Of Birth : </h6>${jobSeeker.dob}</span>
+                        <span><h6 class="fw-bold">Date Of Birth : </h6><fmt:formatDate value="${jobSeeker.dob}" pattern="yyyy/MM/dd" /></span>
+
                     </div>
                     <div class="col-md-6 py-3">
                         <span><h6 class="fw-bold">Age : </h6>${jobSeeker.age}</span>
@@ -125,7 +128,10 @@
 
     <div id="qualifications" class="service px-4 py-5">
         <div class="titie-row row mb-3">
-            <h2 class="fw-bolder">Educational Qualifications</h2>
+            <div class="d-flex align-items-center">
+                <h2 class="fw-bolder">Educational Qualifications</h2>
+                <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 ms-3 rounded-pill" style="margin-top: -9px">+</button>
+            </div>
 
         </div>
         <div class="row mt-5">
@@ -145,6 +151,7 @@
                             <span style="color: blue"><label class="fs-7 fst-italic" style="font-weight: bold">Status   : </label>  ${qualification.status}</span><br>
                             <span><label class="fs-7 fst-italic" style="font-weight: bold">Started On   : </label>  ${qualification.startDate}</span><br>
                             <span><label class="fs-7 fst-italic" style="font-weight: bold">Ended on   : </label>  ${qualification.endDate}</span><br>
+                            <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill" >Remove</button>
 
                         </div>
                     </div>
@@ -155,11 +162,14 @@
         </div>
     </div>
 
-    <!--########################## Services Starts Here ############################# -->
+    <!--##########################  Starts Here ############################# -->
 
     <div id="fields" class="service px-4 py-5">
         <div class="titie-row row mb-3">
-            <h2 class="fw-bolder">Preferred Fields</h2>
+            <div class="d-flex align-items-center">
+                <h2 class="fw-bolder">Preferred Fields</h2>
+                <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 ms-3 rounded-pill" style="margin-top: -9px">+</button>
+            </div>
         </div>
         <label>${noPreference}</label>
         <div class="row mt-5">
@@ -168,6 +178,8 @@
                     <div class="serv-cove shadow-md rounded bg-white text-center p-4">
                         <i class="bi fs-1 bi-boxes"></i>
                         <h5 class="mt-3 fs-6 fw-bold">${preference.jobField.description}</h5>
+
+                        <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill" >Remove</button>
 
                     </div>
                 </div>
@@ -204,7 +216,10 @@
                             <p class="fs-7 fst-italic">Job Nature : ${appliedJob.vacancy.vacancyType.description}</p>
                             <p class="fs-7 fst-italic">Applied on : ${appliedJob.appliedDate}"</p><br>
                             <ul class="btns">
-                                <li><button id="viewVacancy" onclick="viewVacancy(${status.index})">View</button></li>
+                                <li ><button id="viewVacancy" onclick="viewVacancy(${status.index})" style="padding: 5px">View</button>
+                                    <button id="removeVacancy" onclick="" style="padding: 5px">Remove</button></li>
+
+
 
                             </ul>
                         </div>
@@ -216,10 +231,29 @@
         </div>
     </div>
 
+    <div id="uploadResume" class="service px-4 py-5">
+        <div class="titie-row row mb-3">
+            <h2 class="fw-bolder">Resume Updates</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-7">
+                <div class="mb-3">
+                    <label for="vacancyImg" class="form-label fw-bolder fs-8">Upload CV
+                        <input type="file" id="vacancyImg" name="vacancyImg" accept="application/pdf"></label><br>
+                    <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill"><a href="">Upload</a></button>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
 
     <!--########################## Contact Us Starts Here ############################# -->
 
-    <div class="service px-4 py-5">
+    <div id="contact" class="service px-4 py-5">
         <div class="titie-row row mb-3">
             <h2 class="fw-bolder">Contact</h2>
 
@@ -296,6 +330,8 @@
 <%--            </div>--%>
 <%--        </div>--%>
     </div>
+
+
 
 
 

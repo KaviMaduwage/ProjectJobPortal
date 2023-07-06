@@ -135,7 +135,6 @@
           <li><a href="/about-us">About Us</a></li>
           <li><a href="/category">Category</a></li>
           <li><a href="/subscription">Subscriptions</a></li>
-          <li><a href="/blog-home">Blog</a></li>
           <li><a href="/contact">Contact</a></li>
             <c:if test="${not empty sessionScope.userLogin}">
                 <li><a  href="/viewProfile">Profile</a></li>
@@ -320,44 +319,34 @@
 
         </div>
 
-        <div class="single-slidebar">
-          <h4>Carrer Advice Blog</h4>
-          <div class="blog-list">
-            <div class="single-blog " style="background:#000 url(img/blog1.jpg);">
-              <a href="single.html">
-                <h4>Home Audio Recording <br>
-                  For Everyone</h4>
-              </a>
-              <div class="meta justify-content-between d-flex">
-                <p> 02 Hours ago </p>
-                <p> <span class="lnr lnr-heart"></span> 06 <span class="lnr lnr-bubble"></span>
-                  02 </p>
+
+
+            <div class="single-slidebar">
+              <h4>Career Advice Blog</h4>
+              <div class="blog-list" style="text-align: center">
+                <div class="single-blog " style="background:#211e1e url(img/purpleBg.png);height: 120px">
+
+                  <h4 style="color: #0a0a23">Your attitude determines your altitude <br>
+                    </h4>
+
+
+                </div>
+                <div class="single-blog " style="background:#211e1e url(img/purpleBg.png);height: 120px">
+
+                  <h4 style="color: #0a0a23">Celebrate your accomplishments, no matter how small.<br>
+                    </h4>
+
+                </div>
+                <div class="single-blog " style="background:#211e1e url(img/purpleBg.png);height: 140px">
+
+                  <h4 style="color: #0a0a23">Find passion in what you do. <br>
+                    When you love your work, success becomes even sweeter.</h4>
+
+
+                </div>
               </div>
             </div>
-            <div class="single-blog " style="background:#000 url(img/blog2.jpg);">
-              <a href="single.html">
-                <h4>Home Audio Recording <br>
-                  For Everyone</h4>
-              </a>
-              <div class="meta justify-content-between d-flex">
-                <p> 02 Hours ago </p>
-                <p> <span class="lnr lnr-heart"></span> 06 <span class="lnr lnr-bubble"></span>
-                  02 </p>
-              </div>
-            </div>
-            <div class="single-blog " style="background:#000 url(img/blog1.jpg);">
-              <a href="single.html">
-                <h4>Home Audio Recording <br>
-                  For Everyone</h4>
-              </a>
-              <div class="meta justify-content-between d-flex">
-                <p> 02 Hours ago </p>
-                <p> <span class="lnr lnr-heart"></span> 06 <span class="lnr lnr-bubble"></span>
-                  02 </p>
-              </div>
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
   </div>
@@ -370,10 +359,10 @@
       <div class="menu-content col-lg-9">
         <div class="title text-center">
           <h1 class="mb-10 text-white">Join us today without any hesitation</h1>
-          <p class="text-white">- Please login before applying to jobs - </p>
-          <a class="primary-btn" href="#">I am a Candidate</a> <a class="primary-btn"
+          <p class="text-white">- Please login before applying to jobs or posting vacancies - </p>
+          <a class="primary-btn" href="/login">I am a Candidate</a> <a class="primary-btn"
 
-                                                                  href="#">I am an Employer</a> </div>
+                                                                  href="/login">I am an Employer</a> </div>
       </div>
     </div>
   </div>

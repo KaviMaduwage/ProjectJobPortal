@@ -53,7 +53,6 @@
           <li><a href="/about-us">About Us</a></li>
           <li><a href="/category">Category</a></li>
           <li><a href="/subscription">Subscriptions</a></li>
-          <li><a href="/blog-home">Blog</a></li>
           <li><a href="/contact">Contact</a></li>
           <c:if test="${not empty sessionScope.userLogin}">
             <li><a  href="/viewProfile">Profile</a></li>
@@ -79,7 +78,9 @@
       <div class="about-content col-lg-12">
         <h1 class="text-white"> </h1>
 
-        <h1 class="text-white">About Us </h1>
+        <h1 class="text-white">JOB GATEWAY </h1>
+        <h3 class="text-white">Unlock Your Career Potential </h3>
+        <h3 class="text-white">Your Gateway To Opportunity </h3>
       </div>
     </div>
   </div>
@@ -91,50 +92,44 @@
     <div class="row d-flex justify-content-center">
       <div class="col-md-8 pb-40 header-text">
         <h1>Why Choose Us</h1>
-        <p> Who are in extremely love with eco friendly system. </p>
+
       </div>
     </div>
     <div class="row">
       <div class="col-lg-4 col-md-6">
         <div class="single-service">
-          <h4><span class="lnr lnr-user"></span>Expert Technicians</h4>
-          <p> Usage of the Internet is becoming more common due to rapid
-            advancement of technology and power. </p>
+          <h4><span class="lnr lnr-user"></span>Expert Job Search</h4>
+          <p> Job seekers can search for available job opportunities based on various criteria such as job title, location, industry, and salary range.</p>
         </div>
       </div>
       <div class="col-lg-4 col-md-6">
         <div class="single-service">
-          <h4><span class="lnr lnr-license"></span>Professional Service</h4>
-          <p> Usage of the Internet is becoming more common due to rapid
-            advancement of technology and power. </p>
+          <h4><span class="lnr lnr-license"></span>Resume/CV Upload</h4>
+          <p>Job seekers can create an account and upload their resumes or CVs to be viewed by potential employers. Some job portals also offer resume-building tools or templates to help job seekers create professional resumes.</p>
         </div>
       </div>
       <div class="col-lg-4 col-md-6">
         <div class="single-service">
-          <h4><span class="lnr lnr-phone"></span>Great Support</h4>
-          <p> Usage of the Internet is becoming more common due to rapid
-            advancement of technology and power. </p>
+          <h4><span class="lnr lnr-phone"></span>Application Management</h4>
+          <p>Job portals provide features for managing job applications. Job seekers can submit their applications directly through the portal, and employers can review, shortlist, and track applications.</p>
         </div>
       </div>
       <div class="col-lg-4 col-md-6">
         <div class="single-service">
-          <h4><span class="lnr lnr-rocket"></span>Technical Skills</h4>
-          <p> Usage of the Internet is becoming more common due to rapid
-            advancement of technology and power. </p>
+          <h4><span class="lnr lnr-rocket"></span>Company Profiles</h4>
+          <p>Employers can create profiles for their organizations, providing information about the company, its culture, and benefits. This helps job seekers learn more about potential employers before applying.</p>
         </div>
       </div>
       <div class="col-lg-4 col-md-6">
         <div class="single-service">
-          <h4><span class="lnr lnr-diamond"></span>Highly Recomended</h4>
-          <p> Usage of the Internet is becoming more common due to rapid
-            advancement of technology and power. </p>
+          <h4><span class="lnr lnr-diamond"></span>Candidate Matching</h4>
+          <p>Some job portals use algorithms or AI technologies to match job seekers with suitable job listings based on their skills, experience, and preferences.</p>
         </div>
       </div>
       <div class="col-lg-4 col-md-6">
         <div class="single-service">
-          <h4><span class="lnr lnr-bubble"></span>Positive Reviews</h4>
-          <p> Usage of the Internet is becoming more common due to rapid
-            advancement of technology and power. </p>
+          <h4><span class="lnr lnr-bubble"></span>Premium Services</h4>
+          <p>Job portals may offer additional premium services, such as resume critiques, personalized career coaching, or priority listing of job postings, for a fee.</p>
         </div>
       </div>
     </div>
@@ -150,18 +145,14 @@
                                                       alt=""> </div>
       <div class="col-lg-3 no-padding feat-txt">
         <h1>Who we are</h1>
-        <p> Computer users and programmers have become so accustomed to
-          using Windows, even for the changing capabilities and the
-          appearances of the graphical. </p>
+        <p>Welcome to our job portal, where we strive to bridge the gap between job seekers and employers. We understand the challenges individuals face when searching for their dream job or the perfect candidate to join their team. </p>
       </div>
       <div class="col-lg-3 feat-img no-padding"> <img class="img-fluid" src="img/pages/f2.jpg"
 
                                                       alt=""> </div>
       <div class="col-lg-3 no-padding feat-txt">
         <h1>What we do</h1>
-        <p> Computer users and programmers have become so accustomed to
-          using Windows, even for the changing capabilities and the
-          appearances of the graphical. </p>
+        <p>With a user-friendly interface and powerful search functionality, our job portal offers a vast database of job listings from various industries and locations.</p>
       </div>
     </div>
   </div>
@@ -173,58 +164,35 @@
     <div class="row d-flex justify-content-center">
       <div class="menu-content pb-70 col-lg-8">
         <div class="title text-center">
-          <h1 class="mb-10">Experienced Mentor Team</h1>
-          <p>Who are in extremely love with eco friendly system.</p>
+          <h1 class="mb-10">Our Team</h1>
+
         </div>
       </div>
     </div>
     <div class="row justify-content-center d-flex align-items-center">
       <div class="col-md-3 single-team">
-        <div class="thumb"> <img class="img-fluid" src="img/pages/t1.jpg" alt="">
-          <div class="align-items-center justify-content-center d-flex"> <a
-
-                  href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a> </div>
+        <div class="thumb"> <img class="img-fluid" src="img/profile photo.jpeg" alt="">
+          <div class="align-items-center justify-content-center d-flex">
+            </div>
         </div>
         <div class="meta-text mt-30 text-center">
-          <h4>Ethel Davis</h4>
-          <p>Managing Director (Sales)</p>
+          <h4>O.R.C. UDAYANGANI : E2045020</h4>
         </div>
       </div>
       <div class="col-md-3 single-team">
-        <div class="thumb"> <img class="img-fluid" src="img/pages/t2.jpg" alt="">
-          <div class="align-items-center justify-content-center d-flex"> <a
-
-                  href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a> </div>
+        <div class="thumb"> <img class="img-fluid" src="img/profile photo.jpeg" alt="">
+          <div class="align-items-center justify-content-center d-flex">  </div>
         </div>
         <div class="meta-text mt-30 text-center">
-          <h4>Rodney Cooper</h4>
-          <p>Creative Art Director (Project)</p>
+          <h4>H.M.K.M. RATHNAYAKA : E2046105</h4>
         </div>
       </div>
       <div class="col-md-3 single-team">
-        <div class="thumb"> <img class="img-fluid" src="img/pages/t3.jpg" alt="">
-          <div class="align-items-center justify-content-center d-flex"> <a
-
-                  href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a> </div>
+        <div class="thumb"> <img class="img-fluid" src="img/profile photo.jpeg" alt="">
+          <div class="align-items-center justify-content-center d-flex">  </div>
         </div>
         <div class="meta-text mt-30 text-center">
-          <h4>Dora Walker</h4>
-          <p>Senior Core Developer</p>
-        </div>
-      </div>
-      <div class="col-md-3 single-team">
-        <div class="thumb"> <img class="img-fluid" src="img/pages/t4.jpg" alt="">
-          <div class="align-items-center justify-content-center d-flex"> <a
-
-                  href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a> </div>
-        </div>
-        <div class="meta-text mt-30 text-center">
-          <h4>Lena Keller</h4>
-          <p>Creative Content Developer</p>
+          <h4>M.K.I DE SILVA : E1946316</h4>
         </div>
       </div>
     </div>
@@ -238,91 +206,15 @@
       <div class="menu-content col-lg-9">
         <div class="title text-center">
           <h1 class="mb-10 text-white">Join us today without any hesitation</h1>
-          <p class="text-white">Lorem ipsum dolor sit amet, consectetur
-            adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation.</p>
-          <a class="primary-btn" href="#">I am a Candidate</a> <a class="primary-btn"
 
-                                                                  href="#">We are an Employer</a> </div>
+          <a class="primary-btn" href="/login">I am a Candidate</a> <a class="primary-btn"
+
+                                                                  href="/login">We are an Employer</a> </div>
       </div>
     </div>
   </div>
 </section>
-<!-- End calto-action Area -->
-<!-- Start testimonial Area -->
-<section class="testimonial-area section-gap" id="review">
-  <div class="container">
-    <div class="row d-flex justify-content-center">
-      <div class="menu-content pb-60 col-lg-8">
-        <div class="title text-center">
-          <h1 class="mb-10">Testimonial from our Clients</h1>
-          <p>Who are in extremely love with eco friendly system.</p>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="active-review-carusel">
-        <div class="single-review"> <img src="img/r1.png" alt="">
-          <div class="title d-flex flex-row">
-            <h4>lorem ipusm</h4>
-            <div class="star"> <span class="fa fa-star checked"></span> <span
 
-                    class="fa fa-star checked"></span> <span class="fa fa-star checked"></span>
-              <span class="fa fa-star"></span> <span class="fa fa-star"></span>
-            </div>
-          </div>
-          <p> Accessories Here you can find the best computer accessory for
-            your laptop, monitor, printer, scanner, speaker. Here you can
-            find the best computer accessory for your laptop, monitor,
-            printer, scanner, speaker. </p>
-        </div>
-        <div class="single-review"> <img src="img/r2.png" alt="">
-          <div class="title d-flex flex-row">
-            <h4>lorem ipusm</h4>
-            <div class="star"> <span class="fa fa-star checked"></span> <span
-
-                    class="fa fa-star checked"></span> <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span> <span class="fa fa-star"></span>
-            </div>
-          </div>
-          <p> Accessories Here you can find the best computer accessory for
-            your laptop, monitor, printer, scanner, speaker. Here you can
-            find the best computer accessory for your laptop, monitor,
-            printer, scanner, speaker. </p>
-        </div>
-        <div class="single-review"> <img src="img/r1.png" alt="">
-          <div class="title d-flex flex-row">
-            <h4>lorem ipusm</h4>
-            <div class="star"> <span class="fa fa-star checked"></span> <span
-
-                    class="fa fa-star checked"></span> <span class="fa fa-star checked"></span>
-              <span class="fa fa-star"></span> <span class="fa fa-star"></span>
-            </div>
-          </div>
-          <p> Accessories Here you can find the best computer accessory for
-            your laptop, monitor, printer, scanner, speaker. Here you can
-            find the best computer accessory for your laptop, monitor,
-            printer, scanner, speaker. </p>
-        </div>
-        <div class="single-review"> <img src="img/r2.png" alt="">
-          <div class="title d-flex flex-row">
-            <h4>lorem ipusm</h4>
-            <div class="star"> <span class="fa fa-star checked"></span> <span
-
-                    class="fa fa-star checked"></span> <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span> <span class="fa fa-star"></span>
-            </div>
-          </div>
-          <p> Accessories Here you can find the best computer accessory for
-            your laptop, monitor, printer, scanner, speaker. Here you can
-            find the best computer accessory for your laptop, monitor,
-            printer, scanner, speaker. </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 <!-- End testimonial Area -->
 <!-- start footer Area -->
 <footer class="footer-area section-gap">
