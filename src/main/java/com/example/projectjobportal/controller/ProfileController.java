@@ -278,5 +278,18 @@ public class ProfileController {
         generateAdminData(model);
         return "adminProfile";
     }
+    @RequestMapping(value = "/removePreferences.htm", method = RequestMethod.POST)
+    public String removePreferences(@RequestParam("preferenceId") String preferenceId,HttpServletRequest request,Model model, HttpSession session){
+
+        String jobFieldId = preferenceId;
+        User user = (User) session.getAttribute("userLogin");
+        JobSeeker jobSeeker = jobSeekerService.getJobSeekerByUserId(user.getUserId());
+        int jobSeekerId = jobSeeker.getJobSeekerId();
+
+        jobSeekerPreferenceService.deleteJobSeekerPreference(Integer.parseInt(jobFieldId), jobSeekerId);
+
+        String pageName = getProfilePage(model,session);
+        return pageName;
+    }
 
 }

@@ -34,6 +34,12 @@
         function showResumeInput(){
             $('#resumeInput').show();
         }
+
+        function removePreferences(index){
+            var preferenceId= document.getElementById("hiddenPreferenceId_" + index).value;
+            document.jobSeekerPreferenceForm.action = "removePreferences.htm?preferenceId="+preferenceId;
+            document.jobSeekerPreferenceForm.submit();
+        }
     </script>
 </head>
 <header class="head">
@@ -163,7 +169,7 @@
     </div>
 
     <!--##########################  Starts Here ############################# -->
-
+    <form action="" name="jobSeekerPreferenceForm" method="POST">
     <div id="fields" class="service px-4 py-5">
         <div class="titie-row row mb-3">
             <div class="d-flex align-items-center">
@@ -178,15 +184,16 @@
                     <div class="serv-cove shadow-md rounded bg-white text-center p-4">
                         <i class="bi fs-1 bi-boxes"></i>
                         <h5 class="mt-3 fs-6 fw-bold">${preference.jobField.description}</h5>
+                        <input type="hidden" name="hiddenPreferenceId" value="${preference.jobField.jobFieldId}" id="hiddenPreferenceId_${status.index}">
 
-                        <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill" >Remove</button>
+                        <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill" onclick="removePreferences(${status.index})" >Remove</button>
 
                     </div>
                 </div>
             </c:forEach>
         </div>
     </div>
-
+    </form>
 
     <div id="appliedJobs" class="service px-4 py-5">
         <div class="titie-row row mb-3">
