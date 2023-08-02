@@ -40,6 +40,18 @@
             document.jobSeekerPreferenceForm.action = "removePreferences.htm?preferenceId="+preferenceId;
             document.jobSeekerPreferenceForm.submit();
         }
+
+        function showPreferenceDropDown(){
+
+            $('#preferenceDiv').show();
+            $('#noPreferenceLabel').hide();
+        }
+
+        function saveNewPreferences(){
+            $('#preferenceDiv').hide();
+            document.jobSeekerPreferenceForm.action = "saveNewPreferences.htm";
+            document.jobSeekerPreferenceForm.submit();
+        }
     </script>
 </head>
 <header class="head">
@@ -174,10 +186,35 @@
         <div class="titie-row row mb-3">
             <div class="d-flex align-items-center">
                 <h2 class="fw-bolder">Preferred Fields</h2>
-                <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 ms-3 rounded-pill" style="margin-top: -9px">+</button>
+                <button type="button" class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 ms-3 rounded-pill" style="margin-top: -9px" onclick="showPreferenceDropDown()">+</button>
             </div>
         </div>
-        <label>${noPreference}</label>
+        <div id="preferenceDiv" style="display: none">
+            <fieldset>
+                <label>Field Of Interest: </label><br>
+                <select multiple id="field" name="field" style="color: #0a0a23; width: 300px">
+                    <option value="0" style="font-weight: bold">Select Field</option>
+                    <c:forEach items="${jobFieldList}" var="jobField" varStatus="status">
+                        <c:if test="${jobField.jobFieldId eq selectedJobFiledId}">
+                            <option value="${jobField.jobFieldId}" SELECTED>
+                                    ${jobField.description}
+                            </option>
+                        </c:if>
+                        <c:if test="${jobField.jobFieldId ne selectedJobFiledId}">
+                            <option value="${jobField.jobFieldId}">
+                                    ${jobField.description}
+                            </option>
+                        </c:if>
+
+                    </c:forEach>
+
+                </select>
+                <button type="button" class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 ms-3 rounded-pill" style="margin-top: -9px" onclick="saveNewPreferences()">Save</button>
+
+
+            </fieldset>
+        </div>
+        <label id="noPreferenceLabel">${noPreference}</label>
         <div class="row mt-5">
             <c:forEach items="${preferences}" var="preference" varStatus="status">
                 <div class="col-lg-4 col-md-6 mb-4">

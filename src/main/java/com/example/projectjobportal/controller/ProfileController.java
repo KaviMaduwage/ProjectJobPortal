@@ -20,6 +20,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -288,6 +289,45 @@ public class ProfileController {
 
         jobSeekerPreferenceService.deleteJobSeekerPreference(Integer.parseInt(jobFieldId), jobSeekerId);
 
+        String pageName = getProfilePage(model,session);
+        return pageName;
+    }
+    @RequestMapping(value = "/saveNewPreferences.htm", method = RequestMethod.POST)
+    public String saveNewPreferences(HttpServletRequest request, HttpSession session, Model model){
+        String[] fields = request.getParameterValues("field");
+
+        User user = (User) session.getAttribute("userLogin");
+        JobSeeker jobSeeker = jobSeekerService.getJobSeekerByUserId(user.getUserId());
+        List<JobSeekerPreference> jobSeekerPreferenceList = jobSeekerPreferenceService.getPreferenceListByJobSeekerId(jobSeeker.getJobSeekerId());
+        List<Integer> savedPreferFieldIds = new ArrayList<>();
+        List<Integer> toBeSavedPreferFieldIdS = new ArrayList<>();
+
+        if(jobSeekerPreferenceList != null && jobSeekerPreferenceList.size() > 0){
+            for(int i=0;i<jobSeekerPreferenceList.size();i++){
+                savedPreferFieldIds.add(jobSeekerPreferenceList.get(0).getJobField().getJobFieldId());
+            }
+        }
+        for(int i=0;i<fields.length;i++){
+            if(!savedPreferFieldIds.contains(Integer.parseInt(fields[i]))){
+                toBeSavedPreferFieldIdS.add(Integer.parseInt(fields[i]));
+            }
+        }
+        if(toBeSavedPreferFieldIdS.size() > 0){
+            List<JobSeekerPreference> newPreferenceList = new ArrayList<>();
+            for(int i=0;i<toBeSavedPreferFieldIdS.size();i++){
+                JobField jobField = jobFieldService.getJobFieldList().get(Integer.parseInt(fields[i])-1);
+                JobSeekerPreference jobSeekerPreference = new JobSeekerPreference();
+                jobSeekerPreference.setJobField(jobField);
+                jobSeekerPreference.setJobSeeker(jobSeeker);
+
+                newPreferenceList.add(jobSeekerPreference);
+            }
+
+            jobSeekerPreferenceService.saveAllJobSeekerPreferences(newPreferenceList);
+
+        }else{
+            model.addAttribute("noPreference","No New Preference To Add.");
+        }
         String pageName = getProfilePage(model,session);
         return pageName;
     }
