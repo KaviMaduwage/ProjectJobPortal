@@ -4,6 +4,7 @@ import com.example.projectjobportal.dao.JobSeekerQualificationDao;
 import com.example.projectjobportal.model.JobSeekerQualification;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -22,5 +23,11 @@ public class JobSeekerQualificationServiceImpl implements JobSeekerQualification
     @Override
     public List<JobSeekerQualification> getQualificationsByJobSeekerId(int jobSeekerId) {
         return jobSeekerQualificationDao.getQualificationsByJobSeekerId(jobSeekerId);
+    }
+
+    @Override
+    @Transactional
+    public void deleteQualificationsByJobSeekerIdAndQuaId(int jobSeekerId, int jobSeekerQuaId) {
+        jobSeekerQualificationDao.deleteQualificationsByJobSeekerIdAndQuaId(jobSeekerId,jobSeekerQuaId);
     }
 }

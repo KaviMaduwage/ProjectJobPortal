@@ -8,4 +8,6 @@ public interface JobSeekerQualificationService {
     void saveAllJobSeekerQualifications(List<JobSeekerQualification> jobSeekerQualificationList);
 
     List<JobSeekerQualification> getQualificationsByJobSeekerId(int jobSeekerId);
+
+    void deleteQualificationsByJobSeekerIdAndQuaId(int jobSeekerId, int jobSeekerQuaId);
 }

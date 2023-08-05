@@ -295,6 +295,17 @@ public class ProfileController {
         String pageName = getProfilePage(model,session);
         return pageName;
     }
+    @RequestMapping(value = "/removeJobSeekerQualification.htm", method = RequestMethod.POST)
+    public String removeJobSeekerQualification(@RequestParam("jobSeekerQuaId") String jobSeekerQuaId, HttpServletRequest request, HttpSession session, Model model){
+        User user = (User) session.getAttribute("userLogin");
+        JobSeeker jobSeeker = jobSeekerService.getJobSeekerByUserId(user.getUserId());
+        int jobSeekerId = jobSeeker.getJobSeekerId();
+
+        jobSeekerQualificationService.deleteQualificationsByJobSeekerIdAndQuaId(jobSeekerId,Integer.parseInt(jobSeekerQuaId));
+
+        String pageName = getProfilePage(model,session);
+        return pageName;
+    }
     @RequestMapping(value = "/saveNewPreferences.htm", method = RequestMethod.POST)
     public String saveNewPreferences(HttpServletRequest request, HttpSession session, Model model){
         String[] fields = request.getParameterValues("field");

@@ -42,8 +42,10 @@
             document.jobSeekerPreferenceForm.action = "removePreferences.htm?preferenceId="+preferenceId;
             document.jobSeekerPreferenceForm.submit();
         }
-        function removeQua(){
-
+        function removeQua(index){
+            var quaId= document.getElementById("hiddenJobSeekerQId_" + index).value;
+            document.jobSeekerQualificationForm.action = "removeJobSeekerQualification.htm?jobSeekerQuaId="+quaId;
+            document.jobSeekerQualificationForm.submit();
         }
 
         function showPreferenceDropDown(){
@@ -209,7 +211,10 @@
                             <span style="color: blue"><label class="fs-7 fst-italic" style="font-weight: bold">Status   : </label>  ${qualification.status}</span><br>
                             <span><label class="fs-7 fst-italic" style="font-weight: bold">Started On   : </label>  ${qualification.startDate}</span><br>
                             <span><label class="fs-7 fst-italic" style="font-weight: bold">Ended on   : </label>  ${qualification.endDate}</span><br>
-                            <button type="button" class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill" onclick="removeQua()">Remove</button>
+
+                            <input type="hidden" name="hiddenJobSeekerQId" value="${qualification.jobSeekerQualificationId}" id="hiddenJobSeekerQId_${status.index}">
+
+                            <button type="button" class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill" onclick="removeQua(${status.index})">Remove</button>
 
                         </div>
                     </div>
