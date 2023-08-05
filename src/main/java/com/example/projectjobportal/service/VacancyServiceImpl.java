@@ -5,6 +5,7 @@ import com.example.projectjobportal.model.Vacancy;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 @Service
 public class VacancyServiceImpl implements VacancyService{
@@ -37,5 +38,10 @@ public class VacancyServiceImpl implements VacancyService{
     @Override
     public void saveVacancy(Vacancy vacancy) {
         vacancyDao.save(vacancy);
+    }
+    @Transactional
+    @Override
+    public void deleteVacancy(int vacancyId) {
+        vacancyDao.deleteById(vacancyId);
     }
 }

@@ -125,6 +125,12 @@ public class ProfileController {
             model.addAttribute("applicants",applicationList);
         }
 
+        List<Request> requestList = requestService.getRequestByEmployerId(employer.getEmployerId());
+        if(requestList != null && requestList.size() > 0){
+            boolean isApproved = requestList.get(0).isApproved();
+            model.addAttribute("isApproved", isApproved);
+
+        }
 
 //        if(applicationList !=null && applicationList.size() > 0){
 //            for(int i=0;i<applicationList.size();i++){
@@ -220,6 +226,16 @@ public class ProfileController {
 
         return "employerProfile";
 
+    }
+    @RequestMapping(value = "/removePostedVacancy.htm", method = RequestMethod.POST)
+    public String removePostedVacancy(@RequestParam("vacancyId") String vacancyId, HttpSession session, Model model){
+
+        vacancyService.deleteVacancy(Integer.parseInt(vacancyId));
+
+
+        generateEmployerData(model,userObject);
+
+        return "employerProfile";
     }
 
     @GetMapping("/downloadCv")
