@@ -8,4 +8,6 @@ public interface JobSeekerPreferenceService {
     void saveAllJobSeekerPreferences(List<JobSeekerPreference> jobSeekerPreferenceList);
 
     List<JobSeekerPreference> getPreferenceListByJobSeekerId(int jobSeekerId);
+
+    void deleteJobSeekerPreference(int jobFieldId, int jobSeekerId);
 }

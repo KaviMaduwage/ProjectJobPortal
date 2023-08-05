@@ -15,4 +15,6 @@ public interface VacancyService {
     List<Vacancy> getVacancyListByEmployerId(int employerId);
 
     void saveVacancy(Vacancy vacancy);
+
+    void deleteVacancy(int vacancyId);
 }

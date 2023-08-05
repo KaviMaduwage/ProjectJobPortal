@@ -44,5 +44,10 @@ public class RequestServiceImpl implements RequestService{
         return requestDao.findById(requestId).get();
     }
 
+    @Override
+    public List<Request> getRequestByEmployerId(int employerId) {
+        return requestDao.getRequestByEmployerId(employerId);
+    }
+
 
 }

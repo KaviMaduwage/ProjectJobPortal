@@ -17,4 +17,6 @@ public interface RequestDao extends JpaRepository<Request, Integer> {
     void updateRequest(boolean isApproved, Date approvedDate, int requestId);
     @Query("SELECT r FROM Request r WHERE r.isApproved = true ")
     List<Request> getApprovedRequestList();
+    @Query("SELECT r FROM Request  r WHERE r.employer.employerId = :employerId")
+    List<Request> getRequestByEmployerId(int employerId);
 }

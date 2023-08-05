@@ -4,6 +4,7 @@ import com.example.projectjobportal.dao.JobSeekerPreferenceDao;
 import com.example.projectjobportal.model.JobSeekerPreference;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -22,5 +23,11 @@ public class JobSeekerPreferenceServiceImpl implements JobSeekerPreferenceServic
     @Override
     public List<JobSeekerPreference> getPreferenceListByJobSeekerId(int jobSeekerId) {
         return jobSeekerPreferenceDao.getPreferenceListByJobSeekerId(jobSeekerId);
+    }
+
+    @Override
+    @Transactional
+    public void deleteJobSeekerPreference(int jobFieldId, int jobSeekerId) {
+        jobSeekerPreferenceDao.deleteJobSeekerPreference(jobFieldId, jobSeekerId);
     }
 }

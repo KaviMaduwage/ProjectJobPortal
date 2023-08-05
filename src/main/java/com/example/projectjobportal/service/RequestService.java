@@ -18,4 +18,6 @@ public interface RequestService {
     List<Request> getApprovedRequestList();
 
     Request getRequestById(int requestId);
+
+    List<Request> getRequestByEmployerId(int employerId);
 }

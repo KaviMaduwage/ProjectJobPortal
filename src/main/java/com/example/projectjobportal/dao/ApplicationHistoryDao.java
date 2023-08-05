@@ -2,6 +2,7 @@ package com.example.projectjobportal.dao;
 
 import com.example.projectjobportal.model.ApplicationHistory;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
@@ -17,4 +18,7 @@ public interface ApplicationHistoryDao extends JpaRepository<ApplicationHistory,
 
     @Query("SELECT h FROM ApplicationHistory  h WHERE h.vacancy.vacancyId = :vacancyId")
     List<ApplicationHistory> getApplicationsByVacancyId(int vacancyId);
+    @Modifying
+    @Query("DELETE FROM ApplicationHistory h WHERE h.jobSeeker.jobSeekerId =:jobSeekerId AND h.vacancy.vacancyId =:vacancyId")
+    void deleteAppliedHistoryByJobSeekerIdAndVacancyId(int jobSeekerId, int vacancyId);
 }

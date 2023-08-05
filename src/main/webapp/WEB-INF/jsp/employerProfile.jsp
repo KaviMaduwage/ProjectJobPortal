@@ -57,6 +57,12 @@
             <%--});--%>
 
         }
+
+        function removeVacancy(index){
+            var vacancyId= document.getElementById("hiddenVacancyId_" + index).value;
+            document.addedVacancyForm.action = "removePostedVacancy.htm?vacancyId="+vacancyId;
+            document.addedVacancyForm.submit();
+        }
     </script>
 </head>
 <header class="head">
@@ -146,7 +152,7 @@
     </div>
 
     <!--########################## Previous Vacancies Starts Here ############################# -->
-
+    <form action="" name="addedVacancyForm" method="POST">
     <div id="preVacancies" class="service px-4 py-5">
         <div class="titie-row row mb-3">
             <h2 class="fw-bolder">Previous Vacancies</h2>
@@ -159,12 +165,17 @@
                         <h5 class="mt-3 fs-6 fw-bold">${vacancy.description}</h5>
                         <h5>Job Nature: ${vacancy.vacancyType.description}</h5>
                         <p>Posted on : <fmt:formatDate value="${vacancy.postedDate}" pattern="yyyy/MM/dd" />  <br>  Closing Date : <fmt:formatDate value="${vacancy.closingDate}" pattern="yyyy/MM/dd" /></p>
+
+                        <input type="hidden" name="hiddenVacancyId" value="${vacancy.vacancyId}" id="hiddenVacancyId_${status.index}">
+
+                        <button type="button" class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill" onclick="removeVacancy(${status.index})" >Remove</button>
+
                     </div>
                 </div>
             </c:forEach>
         </div>
     </div>
-
+    </form>
 
 
 
@@ -244,8 +255,14 @@
                             <label for="vacancyImg" class="form-label fw-bolder fs-8">Upload Image
                                 <input type="file" id="vacancyImg" name="vacancyImg" accept="image/png,image/jpeg"></label>
                         </div>
+                    <c:if test="${isApproved}">
                         <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill" onclick="postVacancy()">Post Vacancy</button>
-                </form>
+                    </c:if>
+
+                    <c:if test="${!isApproved}">
+                        <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill" onclick="postVacancy()" disabled>Post Vacancy</button>
+                    </c:if>
+                       </form>
                 </div>
             </div>
 

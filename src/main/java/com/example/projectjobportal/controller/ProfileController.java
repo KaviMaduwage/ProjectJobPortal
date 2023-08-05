@@ -20,6 +20,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -37,13 +38,15 @@ public class ProfileController {
     JobFieldService jobFieldService;
     VacancyTypeService vacancyTypeService;
     RequestService requestService;
+    QualificationTypeService qualificationTypeService;
     User userObject;
     Employer employerObject;
 
     public ProfileController(JobSeekerService jobSeekerService,ApplicationHistoryService applicationHistoryService,
                              JobSeekerPreferenceService jobSeekerPreferenceService,JobSeekerQualificationService jobSeekerQualificationService,
                              EmployerService employerService,VacancyService vacancyService,PositionService positionService,
-                             JobFieldService jobFieldService,VacancyTypeService vacancyTypeService,RequestService requestService) {
+                             JobFieldService jobFieldService,VacancyTypeService vacancyTypeService,RequestService requestService,
+                             QualificationTypeService qualificationTypeService) {
         this.jobSeekerService = jobSeekerService;
         this.applicationHistoryService =applicationHistoryService;
         this.jobSeekerPreferenceService = jobSeekerPreferenceService;
@@ -54,6 +57,7 @@ public class ProfileController {
         this.jobFieldService = jobFieldService;
         this.vacancyTypeService = vacancyTypeService;
         this.requestService = requestService;
+        this.qualificationTypeService = qualificationTypeService;
     }
 
     @ModelAttribute("positionList")
@@ -121,6 +125,12 @@ public class ProfileController {
             model.addAttribute("applicants",applicationList);
         }
 
+        List<Request> requestList = requestService.getRequestByEmployerId(employer.getEmployerId());
+        if(requestList != null && requestList.size() > 0){
+            boolean isApproved = requestList.get(0).isApproved();
+            model.addAttribute("isApproved", isApproved);
+
+        }
 
 //        if(applicationList !=null && applicationList.size() > 0){
 //            for(int i=0;i<applicationList.size();i++){
@@ -217,6 +227,16 @@ public class ProfileController {
         return "employerProfile";
 
     }
+    @RequestMapping(value = "/removePostedVacancy.htm", method = RequestMethod.POST)
+    public String removePostedVacancy(@RequestParam("vacancyId") String vacancyId, HttpSession session, Model model){
+
+        vacancyService.deleteVacancy(Integer.parseInt(vacancyId));
+
+
+        generateEmployerData(model,userObject);
+
+        return "employerProfile";
+    }
 
     @GetMapping("/downloadCv")
     public void downloadCv(@RequestParam("applicantId") String jobSeekerId, HttpServletRequest request, HttpServletResponse response){
@@ -277,6 +297,132 @@ public class ProfileController {
 
         generateAdminData(model);
         return "adminProfile";
+    }
+    @RequestMapping(value = "/removePreferences.htm", method = RequestMethod.POST)
+    public String removePreferences(@RequestParam("preferenceId") String preferenceId,HttpServletRequest request,Model model, HttpSession session){
+
+        String jobFieldId = preferenceId;
+        User user = (User) session.getAttribute("userLogin");
+        JobSeeker jobSeeker = jobSeekerService.getJobSeekerByUserId(user.getUserId());
+        int jobSeekerId = jobSeeker.getJobSeekerId();
+
+        jobSeekerPreferenceService.deleteJobSeekerPreference(Integer.parseInt(jobFieldId), jobSeekerId);
+
+        String pageName = getProfilePage(model,session);
+        return pageName;
+    }
+    @RequestMapping(value = "/removeJobSeekerQualification.htm", method = RequestMethod.POST)
+    public String removeJobSeekerQualification(@RequestParam("jobSeekerQuaId") String jobSeekerQuaId, HttpServletRequest request, HttpSession session, Model model){
+        User user = (User) session.getAttribute("userLogin");
+        JobSeeker jobSeeker = jobSeekerService.getJobSeekerByUserId(user.getUserId());
+        int jobSeekerId = jobSeeker.getJobSeekerId();
+
+        jobSeekerQualificationService.deleteQualificationsByJobSeekerIdAndQuaId(jobSeekerId,Integer.parseInt(jobSeekerQuaId));
+
+        String pageName = getProfilePage(model,session);
+        return pageName;
+    }
+    @RequestMapping(value = "/removeAppliedVacancy.htm", method = RequestMethod.POST)
+    public String removeAppliedVacancy(@RequestParam("vacancyId")String vacancyId, HttpSession session, Model model){
+        User user = (User) session.getAttribute("userLogin");
+        JobSeeker jobSeeker = jobSeekerService.getJobSeekerByUserId(user.getUserId());
+        int jobSeekerId = jobSeeker.getJobSeekerId();
+
+        applicationHistoryService.deleteAppliedHistoryByJobSeekerIdAndVacancyId(jobSeekerId,Integer.parseInt(vacancyId));
+
+        String pageName = getProfilePage(model,session);
+        return pageName;
+    }
+    @RequestMapping(value = "/saveNewPreferences.htm", method = RequestMethod.POST)
+    public String saveNewPreferences(HttpServletRequest request, HttpSession session, Model model){
+        String[] fields = request.getParameterValues("field");
+
+        User user = (User) session.getAttribute("userLogin");
+        JobSeeker jobSeeker = jobSeekerService.getJobSeekerByUserId(user.getUserId());
+        List<JobSeekerPreference> jobSeekerPreferenceList = jobSeekerPreferenceService.getPreferenceListByJobSeekerId(jobSeeker.getJobSeekerId());
+        List<Integer> savedPreferFieldIds = new ArrayList<>();
+        List<Integer> toBeSavedPreferFieldIdS = new ArrayList<>();
+
+        if(jobSeekerPreferenceList != null && jobSeekerPreferenceList.size() > 0){
+            for(int i=0;i<jobSeekerPreferenceList.size();i++){
+                savedPreferFieldIds.add(jobSeekerPreferenceList.get(0).getJobField().getJobFieldId());
+            }
+        }
+        for(int i=0;i<fields.length;i++){
+            if(!savedPreferFieldIds.contains(Integer.parseInt(fields[i]))){
+                toBeSavedPreferFieldIdS.add(Integer.parseInt(fields[i]));
+            }
+        }
+        if(toBeSavedPreferFieldIdS.size() > 0){
+            List<JobSeekerPreference> newPreferenceList = new ArrayList<>();
+            for(int i=0;i<toBeSavedPreferFieldIdS.size();i++){
+                JobField jobField = jobFieldService.getJobFieldList().get(Integer.parseInt(fields[i])-1);
+                JobSeekerPreference jobSeekerPreference = new JobSeekerPreference();
+                jobSeekerPreference.setJobField(jobField);
+                jobSeekerPreference.setJobSeeker(jobSeeker);
+
+                newPreferenceList.add(jobSeekerPreference);
+            }
+
+            jobSeekerPreferenceService.saveAllJobSeekerPreferences(newPreferenceList);
+
+        }else{
+            model.addAttribute("noPreference","No New Preference To Add.");
+        }
+        String pageName = getProfilePage(model,session);
+        return pageName;
+    }
+
+    @RequestMapping("/addNewEducationQua.htm")
+    public String getQualificationPage(Model model,HttpServletRequest request){
+
+
+        return "addNewEducationQua";
+    }
+
+    @RequestMapping(value = "/saveNewQualification.htm", method = RequestMethod.POST)
+    public String saveNewQualifications(Model model,HttpServletRequest request, HttpSession session){
+
+        //get educational details
+        String[] qualifications = request.getParameterValues("qualification");
+        String[] educationFields = request.getParameterValues("educationField");
+        String[] startDates = request.getParameterValues("startDate");
+        String[] endDates = request.getParameterValues("endDate");
+        String[] statuses = request.getParameterValues("StatusType");
+        String[] description = request.getParameterValues("description");
+
+        User user = (User) session.getAttribute("userLogin");
+        JobSeeker jobSeeker = jobSeekerService.getJobSeekerByUserId(user.getUserId());
+
+        List<JobSeekerQualification> jobSeekerQualificationList = new ArrayList<>();
+        for(int i=0;i<qualifications.length;i++){
+            String qualification = qualifications[i];
+            String startDate = startDates[i];
+            String endDate = endDates[i];
+            String status = statuses[i];
+            String eduField = educationFields[i];
+            String des = description[i];
+
+            QualificationType qualificationType = qualificationTypeService.getQualificationTypeById(Integer.parseInt(qualification));
+
+            JobSeekerQualification jobSeekerQualification = new JobSeekerQualification();
+            jobSeekerQualification.setJobSeeker(jobSeeker);
+            jobSeekerQualification.setQualificationType(qualificationType);
+            jobSeekerQualification.setEduField(eduField);
+            jobSeekerQualification.setStartDate(startDate);
+            jobSeekerQualification.setEndDate(endDate);
+            jobSeekerQualification.setDescription(des);
+            jobSeekerQualification.setStatus(status);
+
+            jobSeekerQualificationList.add(jobSeekerQualification);
+
+        }
+        // job seeker qualifications saving
+        if(jobSeekerQualificationList.size() > 0){
+            jobSeekerQualificationService.saveAllJobSeekerQualifications(jobSeekerQualificationList);
+        }
+        String pageName = getProfilePage(model,session);
+        return pageName;
     }
 
 }
