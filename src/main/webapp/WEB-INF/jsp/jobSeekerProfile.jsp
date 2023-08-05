@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script>
         function viewVacancy(index){
@@ -40,6 +42,9 @@
             document.jobSeekerPreferenceForm.action = "removePreferences.htm?preferenceId="+preferenceId;
             document.jobSeekerPreferenceForm.submit();
         }
+        function removeQua(){
+
+        }
 
         function showPreferenceDropDown(){
 
@@ -52,6 +57,41 @@
             document.jobSeekerPreferenceForm.action = "saveNewPreferences.htm";
             document.jobSeekerPreferenceForm.submit();
         }
+        function showAddEducationQuaPanel(){
+            console.log("1234")
+            const url = "addNewEducationQua.htm";
+            const windowFeatures = "width=600,height=500"; // Customize the window size and features as needed
+            const newWindow = window.open(url, "_blank", windowFeatures);
+
+            // Add an event listener to the button in the newly opened window
+            newWindow.addEventListener('load', function() {
+                const saveButton = newWindow.document.getElementById('saveQuaBtn'); // Replace 'closeButton' with the actual ID of your button
+                if (saveButton) {
+                    // Handle the click event of the button
+                    saveButton.addEventListener('click', function() {
+                        // Refresh the parent window (the window that opened this new window)
+                        window.opener.location.reload();
+                        newWindow.close(); // Close the newly opened window if needed
+                    });
+                }
+            });
+
+        }
+
+        // $(function (){
+        //     $("#edit-education-qualifications").dialog({
+        //         modal : true,
+        //         autoOpen : false,
+        //         width : 900,
+        //         height :500,
+        //         closeOnEscape : false,
+        //         buttons : {
+        //             Save : function (){
+        //                 $(this).dialog("close");
+        //             }
+        //         }
+        //     });
+        // });
     </script>
 </head>
 <header class="head">
@@ -143,12 +183,12 @@
             </div>
         </div>
     </div>
-
+    <form action="" name="jobSeekerQualificationForm" method="POST">
     <div id="qualifications" class="service px-4 py-5">
         <div class="titie-row row mb-3">
             <div class="d-flex align-items-center">
                 <h2 class="fw-bolder">Educational Qualifications</h2>
-                <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 ms-3 rounded-pill" style="margin-top: -9px">+</button>
+                <button type="button" class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 ms-3 rounded-pill" onclick="showAddEducationQuaPanel()" style="margin-top: -9px">+</button>
             </div>
 
         </div>
@@ -169,7 +209,7 @@
                             <span style="color: blue"><label class="fs-7 fst-italic" style="font-weight: bold">Status   : </label>  ${qualification.status}</span><br>
                             <span><label class="fs-7 fst-italic" style="font-weight: bold">Started On   : </label>  ${qualification.startDate}</span><br>
                             <span><label class="fs-7 fst-italic" style="font-weight: bold">Ended on   : </label>  ${qualification.endDate}</span><br>
-                            <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill" >Remove</button>
+                            <button type="button" class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill" onclick="removeQua()">Remove</button>
 
                         </div>
                     </div>
@@ -179,7 +219,7 @@
 
         </div>
     </div>
-
+    </form>
     <!--##########################  Starts Here ############################# -->
     <form action="" name="jobSeekerPreferenceForm" method="POST">
     <div id="fields" class="service px-4 py-5">
@@ -223,7 +263,7 @@
                         <h5 class="mt-3 fs-6 fw-bold">${preference.jobField.description}</h5>
                         <input type="hidden" name="hiddenPreferenceId" value="${preference.jobField.jobFieldId}" id="hiddenPreferenceId_${status.index}">
 
-                        <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill" onclick="removePreferences(${status.index})" >Remove</button>
+                        <button type="button" class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill" onclick="removePreferences(${status.index})" >Remove</button>
 
                     </div>
                 </div>
@@ -231,6 +271,7 @@
         </div>
     </div>
     </form>
+
 
     <div id="appliedJobs" class="service px-4 py-5">
         <div class="titie-row row mb-3">
