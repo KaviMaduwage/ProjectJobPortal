@@ -26,11 +26,18 @@
     <script>
         function viewVacancy(index){
             var vacancyId= document.getElementById("hiddenVacancyId_" + index).value;
-            console.log(vacancyId);
+
             const url = "viewVacancy.htm?vacancyId="+vacancyId;
 
             window.open(url, '_blank', 'width=900,height=900');
 
+        }
+
+        function removeAppliedVacancy(index){
+            console.log(index);
+            var vacancyId= document.getElementById("hiddenVacancyId_" + index).value;
+            document.appliedJobForm.action = "removeAppliedVacancy.htm?vacancyId="+vacancyId;
+            document.appliedJobForm.submit();
         }
 
         function showResumeInput(){
@@ -277,7 +284,7 @@
     </div>
     </form>
 
-
+<%--    <form name="appliedJobForm" action="" method="POST">--%>
     <div id="appliedJobs" class="service px-4 py-5">
         <div class="titie-row row mb-3">
             <h2 class="fw-bolder">Applied Jobs</h2>
@@ -307,7 +314,8 @@
                             <p class="fs-7 fst-italic">Applied on : ${appliedJob.appliedDate}"</p><br>
                             <ul class="btns">
                                 <li ><button id="viewVacancy" onclick="viewVacancy(${status.index})" style="padding: 5px">View</button>
-                                    <button id="removeVacancy" onclick="" style="padding: 5px">Remove</button></li>
+                                    <button id="removeVacancy" onclick="removeAppliedVacancy(${status.index})" style="padding: 5px" >Remove</button>
+                                    </li>
 
 
 
@@ -320,6 +328,10 @@
 
         </div>
     </div>
+    <form name="appliedJobForm" action="" method="POST">
+
+    </form>
+<%--    </form>--%>
 
     <div id="uploadResume" class="service px-4 py-5">
         <div class="titie-row row mb-3">
@@ -430,7 +442,7 @@
 </body>
 
 <script src="assets/js/jquery-3.2.1.min.js"></script>
-<script src="assets/js/popper.min.js"></script>
+<%--<script src="assets/js/popper.min.js"></script>--%>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
 <script src="assets/plugins/scroll-fixed/jquery-scrolltofixed-min.js"></script>
 <script src="assets/plugins/testimonial/js/owl.carousel.min.js"></script>

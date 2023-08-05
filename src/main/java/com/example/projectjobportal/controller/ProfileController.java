@@ -306,6 +306,17 @@ public class ProfileController {
         String pageName = getProfilePage(model,session);
         return pageName;
     }
+    @RequestMapping(value = "/removeAppliedVacancy.htm", method = RequestMethod.POST)
+    public String removeAppliedVacancy(@RequestParam("vacancyId")String vacancyId, HttpSession session, Model model){
+        User user = (User) session.getAttribute("userLogin");
+        JobSeeker jobSeeker = jobSeekerService.getJobSeekerByUserId(user.getUserId());
+        int jobSeekerId = jobSeeker.getJobSeekerId();
+
+        applicationHistoryService.deleteAppliedHistoryByJobSeekerIdAndVacancyId(jobSeekerId,Integer.parseInt(vacancyId));
+
+        String pageName = getProfilePage(model,session);
+        return pageName;
+    }
     @RequestMapping(value = "/saveNewPreferences.htm", method = RequestMethod.POST)
     public String saveNewPreferences(HttpServletRequest request, HttpSession session, Model model){
         String[] fields = request.getParameterValues("field");

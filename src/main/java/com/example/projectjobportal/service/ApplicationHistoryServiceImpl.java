@@ -4,6 +4,7 @@ import com.example.projectjobportal.dao.ApplicationHistoryDao;
 import com.example.projectjobportal.model.ApplicationHistory;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -37,5 +38,10 @@ public class ApplicationHistoryServiceImpl implements ApplicationHistoryService{
     @Override
     public List<ApplicationHistory> getApplicationsByVacancyId(int vacancyId) {
         return applicationHistoryDao.getApplicationsByVacancyId(vacancyId);
+    }
+    @Transactional
+    @Override
+    public void deleteAppliedHistoryByJobSeekerIdAndVacancyId(int jobSeekerId, int vacancyId) {
+        applicationHistoryDao.deleteAppliedHistoryByJobSeekerIdAndVacancyId(jobSeekerId,vacancyId);
     }
 }

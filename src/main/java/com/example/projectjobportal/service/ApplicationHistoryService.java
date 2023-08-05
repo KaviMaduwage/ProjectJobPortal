@@ -14,4 +14,6 @@ public interface ApplicationHistoryService {
     List<ApplicationHistory> getApplicationsByEmployerId(int employerId);
 
     List<ApplicationHistory> getApplicationsByVacancyId(int vacancyId);
+
+    void deleteAppliedHistoryByJobSeekerIdAndVacancyId(int jobSeekerId, int vacancyId);
 }
